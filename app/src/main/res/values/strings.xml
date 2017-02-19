@@ -30,4 +30,5 @@
     <string name="cost_total">ค่าใช้จ่ายรวม</string>
     <string name="bath">บาท</string>
     <string name="plan_topic_text">วางแผนการท่องเที่ยว</string>
+    <string name="accom_text">ที่พัก</string>
 </resources>

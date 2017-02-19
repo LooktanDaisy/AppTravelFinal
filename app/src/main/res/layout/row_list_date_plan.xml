@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/row"
+        android:padding="@dimen/PaddingSpace4XL"
+        android:background="@drawable/border_row_list_date"
+        android:layout_margin="@dimen/MarginSpace">
+
+        <TextView
+            android:text="1 มกราคม 2560"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView24"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeM" />
+    </RelativeLayout>
+</RelativeLayout>
