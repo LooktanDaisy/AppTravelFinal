@@ -1,0 +1,58 @@
+<resources>
+
+    <!--
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw600dp devices (e.g. 7" tablets) here.
+    -->
+    <dimen name="bar_cursor">7dp</dimen>
+    <dimen name="menu_padding">-10dp</dimen>
+
+
+    <!-- Default Font Style -->
+    <dimen name="FontSize5S">14sp</dimen>
+    <dimen name="FontSizeSSS">18sp</dimen>
+    <dimen name="FontSizeSS">20sp</dimen>
+    <dimen name="FontSizeS">22sp</dimen>
+    <dimen name="FontSizeM">24sp</dimen>
+    <dimen name="FontSizeL">26sp</dimen>
+    <dimen name="FontSizeXL">28sp</dimen>
+    <dimen name="FontSizeXXL">30sp</dimen>
+    <dimen name="FontSizeXXXL">32sp</dimen>
+    <dimen name="FontSize5XL">36sp</dimen>
+
+    <!-- ListView Dimension -->
+    <dimen name="PaddingSpaceSS">3dp</dimen>
+    <dimen name="PaddingSpaceS">5dp</dimen>
+    <dimen name="PaddingSpace">8dp</dimen>
+    <dimen name="PaddingSpaceM">11dp</dimen>
+    <dimen name="PaddingSpaceL">13dp</dimen>
+    <dimen name="PaddingSpaceXL">18dp</dimen>
+    <dimen name="PaddingSpaceXXL">23dp</dimen>
+    <dimen name="PaddingSpace3XL">28dp</dimen>
+    <dimen name="PaddingSpace4XL">33dp</dimen>
+    <dimen name="MarginSpaceSS">3dp</dimen>
+    <dimen name="MarginSpaceS">6dp</dimen>
+    <dimen name="MarginSpace">11dp</dimen>
+    <dimen name="MarginSpaceL">16dp</dimen>
+    <dimen name="MarginSpaceXL">21dp</dimen>
+    <dimen name="MarginSpaceXXL">26dp</dimen>
+    <dimen name="WatchlistPageHeight">208dp</dimen>
+
+    <dimen name="XCalenRing">16dp</dimen>
+    <dimen name="XCalenCircle">18dp</dimen>
+
+    <!-- dateTitleLayout -->
+    <dimen name="dateTitleTextSize">@dimen/FontSizeM</dimen>
+    <dimen name="dateTitlePaddingBottom">@dimen/PaddingSpaceS</dimen>
+    <!-- weekLayout -->
+    <dimen name="weekDaysPaddingBottom">0dp</dimen>
+    <dimen name="dayOfWeekTextSize">@dimen/FontSizeS</dimen>
+    <!-- weekRowLayout -->
+    <dimen name="weekRowMinHeight">@dimen/PaddingSpaceXXL</dimen>
+    <dimen name="dayOfMonthTextSize">@dimen/FontSizeS</dimen>
+    <dimen name="dayOfMonthMinWidth">50dp</dimen>
+    <dimen name="dayOfMonthMinHeight">0dp</dimen>
+    <dimen name="dayOfMonthPaddingBottom">0dp</dimen>
+    <dimen name="dayOfMonthImageSize">4dp</dimen>
+    <dimen name="dayOfMonthImageMarginTop">@dimen/PaddingSpaceXXL</dimen>
+</resources>
