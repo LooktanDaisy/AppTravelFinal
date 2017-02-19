@@ -11,4 +11,14 @@
     <string name="hint_name_plan">กรุณากรอกชื่อแผนการท่องเที่ยว</string>
     <string name="hint_province">แตะเพื่อเลือกจังหวัด</string>
     <string name="day_start_text">วันที่ออกเดินทาง</string>
+    <string name="hint_date">แตะเพื่อเลือกวัน</string>
+    <string name="budget_text">งบประมาณ</string>
+    <string name="hint_budget">กรุณากรอกงบประมาณ</string>
+    <string name="cost_accom_text">ราคาที่พัก</string>
+    <string name="limit_text">*ไม่เกินที่ระบุ</string>
+    <string name="hint_cost_accom">กรุณากรอกราคาสูงสุดของที่พัก</string>
+    <string name="meal_text">ราคาอาหาร</string>
+    <string name="cost_per_meal_text">*ราคาต่อมื้อ</string>
+    <string name="hint_cost_per_meal">กรุณากรอกราคาสูงสุดของอาหารต่อมื้อ</string>
+    <string name="add_plan_button">เพิ่มแผน</string>
 </resources>

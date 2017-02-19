@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="Border_Edittext_Blue">
+        <item name="android:textColorHint">@color/grey_unactive</item>
+        <item name="android:background">@drawable/border_edittext_blue</item>
+        <item name="android:layout_marginTop">@dimen/MarginSpaceS</item>
+        <item name="android:layout_marginBottom">@dimen/MarginSpaceL</item>
+    </style>
+
+    <style name="Border_Button_Blue">
+
+        <item name="android:background">@drawable/border_button_dark_blue</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
