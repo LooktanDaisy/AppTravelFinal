@@ -4,4 +4,9 @@
     <string name="plan_text">วางแผน</string>
     <string name="my_plan_text">แผนของฉัน</string>
     <string name="user_text">บัญชีผู้ใช้</string>
+    <string name="name_plan">ชื่อแผนการท่องเที่ยว</string>
+    <string name="province_text">จังหวัด</string>
+    <string name="hint_name_plan">กรุณากรอกชื่อแผนการท่องเที่ยว</string>
+    <string name="hint_province">แตะเพื่อเลือกจังหวัด</string>
+    <string name="day_start_text">วันที่ออกเดินทาง</string>
 </resources>
