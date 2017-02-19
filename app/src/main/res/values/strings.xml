@@ -43,4 +43,5 @@
     <string name="cost_travel_place">ราคาที่ท่องเที่ยงรวม</string>
     <string name="cost_accom_total">ราคาที่พักรวม</string>
     <string name="add_accom_text">เพิ่มที่พัก</string>
+    <string name="add_travel_place">เพิ่มสถานที่ท่องเที่ยว</string>
 </resources>
