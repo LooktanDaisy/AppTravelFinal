@@ -6,10 +6,6 @@
     <color name="color_bg">#1ba0e2</color>
     <color name="color_hint_white">#aaffffff</color>
 
-<!--    <color name="colorPrimary">#1ba0e2</color>
-    <color name="colorPrimaryDark">#0287c9</color>
-    <color name="colorAccent">#0287c9</color>-->
-
     <color name="text_grey">#747474</color>
     <color name="grey_unactive">#C4C4C4</color>
     <color name="grey_bg">#F3F3F3</color>
