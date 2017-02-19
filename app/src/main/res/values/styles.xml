@@ -31,4 +31,13 @@
         <item name="android:background">@drawable/border_menu_bar_button</item>
     </style>
 
+    <style name="editText_border_blue">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_marginTop">@dimen/marginSpace20dp</item>
+        <item name="android:layout_marginBottom">@dimen/marginSpace30dp</item>
+        <item name="android:layout_marginLeft">@dimen/marginSpace30dp</item>
+        <item name="android:layout_marginRight">@dimen/marginSpace30dp</item>
+        <item name="android:background">@drawable/border_menu_bar_button_blue</item>
+    </style>
+
 </resources>

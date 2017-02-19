@@ -17,61 +17,38 @@
         android:id="@+id/edText_name"
         android:hint="ชื่อ"
         android:textColorHint="@color/colorPrimary"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/logo_app_blue"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace30dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_menu_bar_button_blue" />
+        style="@style/editText_border_blue"/>
 
     <EditText
         android:id="@+id/edText_email"
         android:hint="@string/email"
         android:textColorHint="@color/colorPrimary"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/edText_name"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace30dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_menu_bar_button_blue" />
+        style="@style/editText_border_blue"/>
 
     <EditText
         android:id="@+id/edText_password"
         android:hint="@string/password"
         android:textColorHint="@color/colorPrimary"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/edText_email"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace30dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_menu_bar_button_blue" />
+        style="@style/editText_border_blue"/>
 
     <EditText
         android:id="@+id/edText_confirmpassword"
         android:hint="@string/confirmpassword"
         android:textColorHint="@color/colorPrimary"
-        android:textColor="@color/colorPrimary"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edText_password"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace30dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_menu_bar_button_blue" />
+        style="@style/editText_border_blue"/>
 
     <Button
         android:id="@+id/btn_register"
