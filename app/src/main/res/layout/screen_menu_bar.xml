@@ -118,16 +118,26 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/imageView4"
                 android:textColor="@color/grey_unactive" />
+
         </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_above="@+id/menu_area"
+        android:background="@drawable/border_shadow"
+        android:layout_height="5dp"
+        android:id="@+id/shadow">
+
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/menu_area"
-        android:background="@color/grey_unactive">
+        android:layout_above="@+id/shadow"
+        android:layout_centerHorizontal="true">
 
     </FrameLayout>
+
+
 </RelativeLayout>
