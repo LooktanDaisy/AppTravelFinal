@@ -21,4 +21,7 @@
     <string name="cost_per_meal_text">*ราคาต่อมื้อ</string>
     <string name="hint_cost_per_meal">กรุณากรอกราคาสูงสุดของอาหารต่อมื้อ</string>
     <string name="add_plan_button">เพิ่มแผน</string>
+    <string name="email">อีเมล์</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="confirmpassword">ยืนยันรหัสผ่าน</string>
 </resources>
