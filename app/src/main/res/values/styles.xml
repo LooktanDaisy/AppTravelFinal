@@ -18,7 +18,7 @@
 
     <style name="Border_Button_Blue">
 
-        <item name="android:background">@drawable/border_button_dark_blue</item>
+        <item name="android:background">@drawable/border_button_light_blue</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

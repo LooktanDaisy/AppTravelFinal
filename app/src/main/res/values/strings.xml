@@ -24,4 +24,10 @@
     <string name="email">อีเมล์</string>
     <string name="password">รหัสผ่าน</string>
     <string name="confirmpassword">ยืนยันรหัสผ่าน</string>
+    <string name="back">กลับ</string>
+    <string name="done">เรียบร้อย</string>
+    <string name="budget_total">งบประมาณ</string>
+    <string name="cost_total">ค่าใช้จ่ายรวม</string>
+    <string name="bath">บาท</string>
+    <string name="plan_topic_text">วางแผนการท่องเที่ยว</string>
 </resources>
