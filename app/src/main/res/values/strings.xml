@@ -44,4 +44,6 @@
     <string name="cost_accom_total">ราคาที่พักรวม</string>
     <string name="add_accom_text">เพิ่มที่พัก</string>
     <string name="add_travel_place">เพิ่มสถานที่ท่องเที่ยว</string>
+    <string name="user_name">เอดเวิร์ด เจแอนเดอร์สัน</string>
+    <string name="logout">ลงชื่อออก</string>
 </resources>

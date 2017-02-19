@@ -51,7 +51,7 @@
         android:id="@+id/tv_register"
         android:text="@string/register"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/btn_facebook"
+        android:layout_below="@+id/btn_facebook"
         android:textColor="#ffffff"
         android:layout_marginTop="@dimen/marginSpace20dp"
         android:layout_marginBottom="@dimen/marginSpace10dp"

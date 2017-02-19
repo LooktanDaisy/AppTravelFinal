@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_profile"
+        android:src="@drawable/profile_bg"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="@dimen/MarginSpaceXXL"/>
+
+    <ImageView
+        android:id="@+id/ic_account_blue"
+        android:src="@drawable/ic_user_circle_white"
+        android:layout_width="64sp"
+        android:layout_height="64sp"
+        android:layout_marginTop="166dp"
+        android:layout_marginEnd="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:src="@drawable/ic_user_active"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/img_ic_user_blue"
+            android:layout_below="@+id/img_profile"
+            android:layout_alignParentStart="true"
+            android:padding="@dimen/PaddingSpaceXL" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="@string/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_profile"
+            android:layout_toRightOf="@id/img_ic_user_blue"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/PaddingSpaceXL"
+            android:layout_alignBottom="@+id/img_ic_user_blue"
+            android:gravity="center_vertical"/>
+
+
+        <ImageView
+            android:src="@drawable/ic_mail"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/img_ic_mail"
+            android:layout_below="@+id/img_ic_user_blue"
+            android:layout_alignParentStart="true"
+            android:padding="@dimen/PaddingSpaceXL" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:text="edwerd_j@gmail.com"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_toRightOf="@id/img_ic_mail"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/PaddingSpaceXL"
+        android:layout_alignBottom="@+id/img_ic_mail"
+        android:gravity="center_vertical"/>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:text="@string/logout"
+        android:textColor="@android:color/white"
+        android:background="@drawable/border_button_light_blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/MarginSpaceL"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
