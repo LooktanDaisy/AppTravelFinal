@@ -16,7 +16,6 @@
     <EditText
         android:id="@+id/edText_name"
         android:hint="ชื่อ"
-        android:textColorHint="@color/colorPrimary"
         android:layout_below="@id/logo_app_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +24,6 @@
     <EditText
         android:id="@+id/edText_email"
         android:hint="@string/email"
-        android:textColorHint="@color/colorPrimary"
         android:layout_below="@id/edText_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +32,6 @@
     <EditText
         android:id="@+id/edText_password"
         android:hint="@string/password"
-        android:textColorHint="@color/colorPrimary"
         android:layout_below="@id/edText_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +40,6 @@
     <EditText
         android:id="@+id/edText_confirmpassword"
         android:hint="@string/confirmpassword"
-        android:textColorHint="@color/colorPrimary"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edText_password"
         android:layout_width="match_parent"
