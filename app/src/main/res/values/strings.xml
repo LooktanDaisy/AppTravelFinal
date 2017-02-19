@@ -31,4 +31,10 @@
     <string name="bath">บาท</string>
     <string name="plan_topic_text">วางแผนการท่องเที่ยว</string>
     <string name="accom_text">ที่พัก</string>
+    <string name="travel_place_text">สถานที่ท่องเที่ยว</string>
+    <string name="restaurant_text">ร้านอาหาร</string>
+    <string name="cost_of_restaurant">ราคาอาหารรวม</string>
+    <string name="cost_travel_place">ราคาที่ท่องเที่ยงรวม</string>
+    <string name="cost_accom_total">ราคาที่พักรวม</string>
+    <string name="add_accom_text">เพิ่มที่พัก</string>
 </resources>

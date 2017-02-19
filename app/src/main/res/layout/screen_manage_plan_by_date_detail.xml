@@ -45,31 +45,18 @@
         android:layout_alignBottom="@+id/imageView7" />
 
     <TextView
-        android:text="@string/cost_total"
+        android:text="@string/cost_of_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView16"
         android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
+        android:textSize="@dimen/FontSizeSS"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:padding="@dimen/MarginSpace"
-        android:textAlignment="textStart" />
-
-    <TextView
-        android:text="@string/budget_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView17"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:layout_above="@+id/textView16"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView16"
-        android:textAlignment="textStart" />
+        android:textAlignment="textStart"
+        android:layout_marginBottom="@dimen/MarginSpaceS"
+        android:layout_marginLeft="@dimen/MarginSpaceS" />
 
     <TextView
         android:text="@string/bath"
@@ -77,39 +64,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView18"
         android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
+        android:textSize="@dimen/FontSizeSS"
         android:gravity="center"
-        android:padding="@dimen/MarginSpace"
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/bath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView19"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:textAlignment="textStart"
-        android:layout_above="@+id/textView18"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="12000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView20"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:textAlignment="textStart"
-        android:layout_alignBaseline="@+id/textView17"
-        android:layout_alignBottom="@+id/textView17"
-        android:layout_alignEnd="@+id/textView21" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:layout_marginBottom="@dimen/MarginSpaceS" />
 
     <TextView
         android:text="12000"
@@ -117,27 +78,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView21"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeS"
+        android:textSize="@dimen/FontSizeSS"
         android:gravity="center"
-        android:padding="@dimen/MarginSpace"
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/textView16"
-        android:layout_toStartOf="@+id/imageView7" />
-
-    <TextView
-        android:text="@string/budget_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView23"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:layout_above="@+id/textView16"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView16"
-        android:textAlignment="textStart" />
+        android:layout_toStartOf="@+id/imageView7"
+        android:layout_marginBottom="@dimen/MarginSpaceS"
+        android:layout_marginRight="@dimen/MarginSpaceS" />
 
     <TextView
         android:text="@string/plan_topic_text"
@@ -163,7 +111,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/row"
+        android:id="@+id/row_hotel"
         android:padding="@dimen/PaddingSpace"
         android:background="@drawable/border_row_list_date"
         android:layout_below="@+id/textView22"
@@ -205,4 +153,179 @@
             android:layout_marginBottom="@dimen/MarginSpaceS"></android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/row_travel_place"
+        android:padding="@dimen/PaddingSpace"
+        android:background="@drawable/border_row_list_date"
+        android:layout_below="@+id/row_hotel"
+        android:layout_marginLeft="@dimen/MarginSpace"
+        android:layout_marginRight="@dimen/MarginSpace"
+        android:layout_marginBottom="@dimen/MarginSpace">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_travel_place"
+            android:id="@+id/travel_place_img" />
+
+        <TextView
+            android:text="@string/travel_place_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/travel_place_text"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/travel_place_img"
+            android:layout_alignBottom="@+id/travel_place_img"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/MarginSpaceS"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeS" />
+
+        <ImageView
+            app:srcCompat="@drawable/ic_add"
+            android:id="@+id/add_travel_place"
+            android:layout_alignParentEnd="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/add_travel_place"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/MarginSpaceS"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/MarginSpaceS"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/row_restaurant"
+        android:padding="@dimen/PaddingSpace"
+        android:background="@drawable/border_row_list_date"
+        android:layout_below="@+id/row_travel_place"
+        android:layout_marginLeft="@dimen/MarginSpace"
+        android:layout_marginRight="@dimen/MarginSpace"
+        android:layout_marginBottom="@dimen/MarginSpace">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_restaurant"
+            android:id="@+id/restaurant_img" />
+
+        <TextView
+            android:text="@string/restaurant_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurant_text"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/restaurant_img"
+            android:layout_alignBottom="@+id/restaurant_img"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/MarginSpaceS"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeS" />
+
+        <ImageView
+            app:srcCompat="@drawable/ic_add"
+            android:id="@+id/add_restaurant"
+            android:layout_alignParentEnd="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/add_restaurant"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/MarginSpaceS"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/MarginSpaceS"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="@string/cost_travel_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView27"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_above="@+id/textView16"
+        android:layout_alignStart="@+id/textView16" />
+
+    <TextView
+        android:text="@string/cost_accom_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView28"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_above="@+id/textView27"
+        android:layout_alignStart="@+id/textView27" />
+
+    <TextView
+        android:text="@string/bath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:layout_above="@+id/textView18"
+        android:layout_alignStart="@+id/textView18" />
+
+    <TextView
+        android:text="@string/bath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView31"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:layout_above="@+id/textView27"
+        android:layout_alignStart="@+id/textView30" />
+
+    <TextView
+        android:text="12000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView32"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:layout_above="@+id/textView21"
+        android:layout_alignStart="@+id/textView21"
+        android:layout_alignTop="@+id/textView27" />
+
+    <TextView
+        android:text="12000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView33"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/FontSizeSS"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:layout_above="@+id/textView32"
+        android:layout_alignStart="@+id/textView32" />
+
+
 </RelativeLayout>
