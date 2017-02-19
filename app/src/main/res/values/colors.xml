@@ -6,6 +6,8 @@
     <color name="color_bg">#1ba0e2</color>
     <color name="color_hint_white">#aaffffff</color>
 
+    <color name="text_blue_trans">#531ba0e2</color>
+
     <color name="text_grey">#747474</color>
     <color name="grey_unactive">#C4C4C4</color>
     <color name="grey_bg">#F3F3F3</color>
