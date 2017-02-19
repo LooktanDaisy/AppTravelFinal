@@ -4,4 +4,6 @@
     <string name="plan_text">วางแผน</string>
     <string name="my_plan_text">แผนของฉัน</string>
     <string name="user_text">บัญชีผู้ใช้</string>
+    <string name="login">ลงชื่อเข้าใช้</string>
+    <string name="register">สร้างบัญชีผู้ใช้</string>
 </resources>
