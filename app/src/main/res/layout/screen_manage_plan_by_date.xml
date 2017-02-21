@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/imageView6"
-        />
+        android:clickable="true" />
 
     <TextView
         android:text="@string/back"

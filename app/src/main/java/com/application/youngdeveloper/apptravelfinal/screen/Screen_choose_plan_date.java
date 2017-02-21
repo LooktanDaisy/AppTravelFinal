@@ -3,9 +3,11 @@ package com.application.youngdeveloper.apptravelfinal.screen;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 
@@ -13,7 +15,7 @@ import com.application.youngdeveloper.apptravelfinal.R;
  * Created by theerawat on 2/21/2017 AD.
  */
 
-public class Screen_choose_plan_date extends Fragment {
+public class Screen_choose_plan_date extends Fragment implements View.OnClickListener{
 
 
     public Screen_choose_plan_date() {
@@ -32,6 +34,9 @@ public class Screen_choose_plan_date extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.screen_manage_plan_by_date, container, false);
         initInstances(rootView);
+
+        ImageView imageView =(ImageView) rootView.findViewById(R.id.imageView6);
+        imageView.setOnClickListener(this);
         return rootView;
     }
 
@@ -70,4 +75,12 @@ public class Screen_choose_plan_date extends Fragment {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.imageView6){
+            final FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container, Screen_Add_Plan.newInstance(), "Screen_choose_plan_date");
+            ft.commit();
+        }
+    }
 }

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -170,6 +171,9 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                      * Insert Plan to Database
                                                      */
                                                     DataManager.insertPlan();
+                                                    final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                                    ft.replace(R.id.fragment_container, new Screen_choose_plan_date(), "Screen_choose_plan_date");
+                                                    ft.commit();
 
                                                 }
                                             })
