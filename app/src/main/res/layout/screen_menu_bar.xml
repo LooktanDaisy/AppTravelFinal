@@ -6,13 +6,13 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="false"
         android:id="@+id/menu_area"
-        android:paddingBottom="@dimen/PaddingSpaceM"
-        android:paddingTop="@dimen/PaddingSpaceM"
-        android:background="@color/grey_bg">
+        android:background="@color/grey_bg"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/MarginSpaceSS"
+        android:paddingTop="@dimen/MarginSpaceSS">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -135,7 +135,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/shadow"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/fragment_container">
 
     </FrameLayout>
 

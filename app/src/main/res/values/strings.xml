@@ -46,4 +46,8 @@
     <string name="add_travel_place">เพิ่มสถานที่ท่องเที่ยว</string>
     <string name="user_name">เอดเวิร์ด เจแอนเดอร์สัน</string>
     <string name="logout">ลงชื่อออก</string>
+
+
+    //ERROR
+    <string name="E01">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
 </resources>

@@ -19,23 +19,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/logo_app_blue"
-        android:layout_above="@+id/tv_kan1"
+        android:layout_above="@+id/tv_kan2"
         android:scaleType="centerCrop"/>
 
     <TextView
-        android:id="@+id/tv_kan1"
-        android:text="@string/travel_kan"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_kan2"
-        android:textSize="@dimen/FontSizeS"
-        android:padding="@dimen/marginSpace10dp" />
-
-    <TextView
         android:id="@+id/tv_kan2"
-        android:text="@string/kan_slogan1"
-        android:textSize="@dimen/FontSizeSS"
+        android:text="@string/travel_kan"
+        android:textSize="@dimen/FontSizeS"
         android:padding="@dimen/marginSpace5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,8 +34,8 @@
 
     <TextView
         android:id="@+id/tv_kan3"
-        android:text="@string/kan_slogan2"
-        android:textSize="@dimen/FontSizeSS"
+        android:text="@string/kan_slogan1"
+        android:textSize="@dimen/FontSizeSSS"
         android:padding="@dimen/marginSpace5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,18 +43,19 @@
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
-        android:layout_below="@id/tv_kan3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/marginSpace10dp">
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tv_kan4">
 
         <RelativeLayout
             android:id="@+id/content_news"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:padding="@dimen/marginSpace5dp">
+            android:paddingLeft="@dimen/marginSpace5dp"
+            android:paddingTop="@dimen/marginSpace5dp">
 
             <TextView
                 android:id="@+id/tv_news"
@@ -90,7 +81,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:padding="@dimen/marginSpace5dp" >
+            android:paddingLeft="@dimen/marginSpace5dp"
+            android:paddingTop="@dimen/marginSpace5dp">
 
             <TextView
                 android:id="@+id/tv_calendar"
@@ -116,7 +108,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:padding="@dimen/marginSpace5dp" >
+            android:paddingTop="@dimen/marginSpace5dp"
+            android:paddingLeft="@dimen/marginSpace5dp"
+            android:paddingRight="@dimen/marginSpace5dp">
 
             <TextView
                 android:id="@+id/tv_travel"
@@ -158,6 +152,18 @@
             android:layout_height="match_parent" />-->
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_kan4"
+        android:text="@string/kan_slogan2"
+        android:textSize="@dimen/FontSizeSSS"
+        android:padding="@dimen/marginSpace5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_kan3"
+        android:layout_alignStart="@+id/tv_kan3"
+        android:layout_alignEnd="@+id/tv_kan3"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>
