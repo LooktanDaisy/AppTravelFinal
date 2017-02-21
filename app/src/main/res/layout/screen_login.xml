@@ -14,23 +14,48 @@
         android:layout_height="wrap_content" />
 
 
-    <EditText
-        android:id="@+id/edText_username"
-        android:hint="อีเมล์"
-        android:textColorHint="@color/color_hint_white"
-        android:layout_below="@id/logo_app_white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/editText_border_white" />
 
-    <EditText
-        android:id="@+id/edText_password"
-        android:hint="รหัสผ่าน"
-        android:textColorHint="@color/color_hint_white"
-        android:layout_below="@id/edText_username"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/editText_border_white" />
+        android:layout_below="@id/logo_app_white"
+        android:id="@+id/layoutEdtUser"
+        android:textColorHint="@color/color_hint_white"
+        >
+
+        <EditText
+            android:id="@+id/edText_username"
+            android:hint="@string/email"
+            android:textColorHint="@color/color_hint_white"
+            android:layout_below="@id/logo_app_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/editText_border_white"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutEdtUser"
+        android:id="@+id/layoutEdtpassword"
+        android:textColorHint="@color/color_hint_white"
+        >
+
+        <EditText
+            android:id="@+id/edText_password"
+            android:hint="@string/password"
+            android:textColorHint="@color/color_hint_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/editText_border_white" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
 
 
     <Button
@@ -38,7 +63,7 @@
         android:text="@string/login"
         android:textColor="@android:color/white"
         android:background="@drawable/border_button_dark_blue"
-        android:layout_below="@id/edText_password"
+        android:layout_below="@id/layoutEdtpassword"
         android:layout_marginTop="@dimen/marginSpace20dp"
         android:layout_marginBottom="@dimen/marginSpace20dp"
         android:layout_marginLeft="@dimen/marginSpace30dp"
@@ -51,21 +76,22 @@
         android:id="@+id/tv_register"
         android:text="@string/register"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btn_facebook"
+        android:layout_below="@+id/btn_login"
         android:textColor="#ffffff"
         android:layout_marginTop="@dimen/marginSpace20dp"
         android:layout_marginBottom="@dimen/marginSpace10dp"
         android:layout_marginLeft="@dimen/marginSpace30dp"
         android:layout_marginRight="@dimen/marginSpace30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/btn_facebook"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_login"
-        android:layout_alignStart="@+id/btn_login"
-        android:layout_alignEnd="@+id/btn_login" />
+        android:clickable="true" />
+
+    <!--<com.facebook.login.widget.LoginButton-->
+        <!--android:id="@+id/btn_facebook"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/btn_login"-->
+        <!--android:layout_alignStart="@+id/btn_login"-->
+        <!--android:layout_alignEnd="@+id/btn_login" />-->
 
 </RelativeLayout>

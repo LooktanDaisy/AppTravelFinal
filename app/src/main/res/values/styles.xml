@@ -5,7 +5,7 @@
         <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/color_hint_white</item>
     </style>
 
 
@@ -29,7 +29,11 @@
         <item name="android:layout_marginLeft">@dimen/marginSpace30dp</item>
         <item name="android:layout_marginRight">@dimen/marginSpace30dp</item>
         <item name="android:background">@drawable/border_menu_bar_button</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+
     </style>
+
+
 
     <style name="editText_border_blue">
         <item name="android:textColor">@color/colorPrimary</item>
@@ -39,6 +43,8 @@
         <item name="android:layout_marginLeft">@dimen/marginSpace30dp</item>
         <item name="android:layout_marginRight">@dimen/marginSpace30dp</item>
         <item name="android:background">@drawable/border_menu_bar_button_blue</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor_blue</item>
+
     </style>
 
 </resources>
