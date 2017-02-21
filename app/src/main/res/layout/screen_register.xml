@@ -30,7 +30,8 @@
         android:layout_below="@id/logo_app_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/editText_border_blue"/>
+        style="@style/editText_border_blue"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/edText_email"
@@ -38,7 +39,8 @@
         android:layout_below="@id/edText_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/editText_border_blue"/>
+        style="@style/editText_border_blue"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/edText_password"
@@ -46,7 +48,8 @@
         android:layout_below="@id/edText_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/editText_border_blue"/>
+        style="@style/editText_border_blue"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/edText_confirmpassword"
@@ -55,7 +58,8 @@
         android:layout_below="@id/edText_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/editText_border_blue"/>
+        style="@style/editText_border_blue"
+        android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/btn_register"

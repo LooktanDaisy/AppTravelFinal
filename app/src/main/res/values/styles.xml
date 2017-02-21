@@ -16,6 +16,8 @@
         <item name="android:layout_marginTop">@dimen/MarginSpaceS</item>
         <item name="android:layout_marginBottom">@dimen/MarginSpaceL</item>
         <item name="android:textSize">@dimen/FontSizeSSS</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor_blue</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="Border_Button_Blue">
@@ -71,6 +73,10 @@
     <style name="Dialog_animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="TextHeaderMonth">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>

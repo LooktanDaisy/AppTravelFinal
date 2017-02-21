@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         frameLayout.animate()
                 .translationY(frameLayout.getHeight())
                 .alpha(0.0f)
-                .setDuration(2000)
+                .setDuration(1000)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {

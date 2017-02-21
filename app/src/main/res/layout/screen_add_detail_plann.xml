@@ -23,7 +23,7 @@
         android:ems="10"
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText"
+        android:id="@+id/editTextNamePlan"
         android:hint="@string/hint_name_plan"
         style="@style/Border_Edittext_Blue"
          />
@@ -34,15 +34,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
         style="@style/text_above_edittext"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextNamePlan"
         android:layout_alignParentStart="true" />
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/editTextProvince"
         android:hint="@string/hint_province"
         android:layout_below="@+id/textView6"
         android:layout_alignParentStart="true"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView7"
         style="@style/text_above_edittext"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editTextProvince"
         android:layout_alignParentStart="true" />
 
     <Space
@@ -80,22 +80,26 @@
         android:ems="10"
         android:layout_below="@+id/textView7"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText3"
+        android:id="@+id/editTextGo"
         android:layout_alignEnd="@+id/space"
         android:hint="@string/hint_date"
         style="@style/Border_Edittext_Blue"
-        android:layout_marginRight="@dimen/MarginSpaceS" />
+        android:layout_marginRight="@dimen/MarginSpaceS"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/editTextBack"
         android:hint="@string/hint_date"
         android:layout_below="@+id/textView8"
         android:layout_toEndOf="@+id/space"
-        style="@style/Border_Edittext_Blue"/>
+        style="@style/Border_Edittext_Blue"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <TextView
         android:text="@string/budget_text"
@@ -103,19 +107,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView9"
         style="@style/text_above_edittext"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/editTextGo"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/editTextBudget"
         android:hint="@string/hint_budget"
         android:layout_below="@+id/textView9"
         android:layout_alignParentStart="true"
-        style="@style/Border_Edittext_Blue"/>
+        style="@style/Border_Edittext_Blue"
+        android:inputType="number" />
 
     <TextView
         android:text="@string/cost_accom_text"
@@ -123,7 +127,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView10"
         style="@style/text_above_edittext"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/editTextBudget"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -132,7 +136,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView12"
         style="@style/text_above_edittext"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/editTextAccomCost"
         android:layout_alignParentStart="false" />
 
     <TextView
@@ -142,7 +146,7 @@
         android:id="@+id/textView11"
         style="@style/text_above_edittext"
         android:textColor="@color/red_main"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/editTextBudget"
         android:layout_alignParentStart="false"
         android:layout_toRightOf="@+id/textView10"
         android:layout_marginLeft="@dimen/MarginSpaceS" />
@@ -154,7 +158,7 @@
         android:id="@+id/textView13"
         style="@style/text_above_edittext"
         android:textColor="@color/red_main"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/editTextAccomCost"
         android:layout_alignParentStart="false"
         android:layout_toRightOf="@+id/textView12"
         android:layout_marginLeft="@dimen/MarginSpaceS" />
@@ -166,7 +170,7 @@
         android:ems="10"
         android:layout_below="@+id/textView10"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText6"
+        android:id="@+id/editTextAccomCost"
         android:hint="@string/hint_cost_accom"
         style="@style/Border_Edittext_Blue"/>
 
@@ -175,7 +179,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText7"
+        android:id="@+id/editTextFoodCost"
         android:hint="@string/hint_cost_per_meal"
         android:layout_below="@+id/textView12"
         android:layout_alignParentStart="true"
@@ -185,7 +189,7 @@
         android:text="@string/add_plan_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/buttonAddPlan"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         style="@style/Border_Button_Blue"

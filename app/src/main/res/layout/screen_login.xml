@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/editText_border_white"
-                />
+                android:inputType="textEmailAddress" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/editText_border_white"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields"
+                android:inputType="textPassword" />
 
 
         </android.support.design.widget.TextInputLayout>
