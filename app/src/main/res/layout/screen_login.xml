@@ -93,7 +93,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/logo_app_white"
         android:layout_alignParentEnd="true"
         android:background="@color/colorPrimary"
         android:id="@+id/first_open_anim">

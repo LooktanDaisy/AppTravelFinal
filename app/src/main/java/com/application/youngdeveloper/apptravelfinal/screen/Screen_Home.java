@@ -26,6 +26,8 @@ public class Screen_Home extends Fragment {
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
+
+
     }
 
 
@@ -33,6 +35,7 @@ public class Screen_Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.screen_home, container, false);
         initInstances(rootView);
+
         return rootView;
     }
 

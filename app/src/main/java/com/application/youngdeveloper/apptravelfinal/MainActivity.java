@@ -2,22 +2,27 @@ package com.application.youngdeveloper.apptravelfinal;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.LayoutTransition;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
 
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
+        initInstances();
     }
 
 
@@ -102,8 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
 
-
-
     }
 
     private boolean CheckBlankEditText(EditText edittext) {
@@ -115,4 +119,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
     }
+
+
+    private void initInstances() {
+
+        //Call service for download data from server
+        Call<PlaceListCollectionDao> call = HttpManager.getInstance().getService().loadPlaceList();
+        call.enqueue(new Callback<PlaceListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<PlaceListCollectionDao> call,
+                                   Response<PlaceListCollectionDao> response) {
+
+                if(response.isSuccessful()){
+                    PlaceListCollectionDao dao = response.body();
+                    Toast.makeText(getApplicationContext(),
+                            dao.getData().get(0).getName(),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                } else{
+                    // Handle
+                    try {
+                        Toast.makeText(getApplicationContext(),
+                                response.errorBody().string(),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlaceListCollectionDao> call, Throwable t) {
+                // Handle
+
+                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+
+                Log.d("ggg",t.toString());
+            }
+        });
+    }
+
+
+
 }
