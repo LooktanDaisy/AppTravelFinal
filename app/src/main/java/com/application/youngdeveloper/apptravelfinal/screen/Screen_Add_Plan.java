@@ -3,9 +3,13 @@ package com.application.youngdeveloper.apptravelfinal.screen;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,8 +25,11 @@ import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
+import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+
+import static com.application.youngdeveloper.apptravelfinal.R.id.dialog;
 
 /**
  * Created by theerawat on 2/21/2017 AD.
@@ -146,9 +153,39 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                             if(checkValidEditText(edtAccomCost)){
                                 if(checkValidEditText(edtFoodCost)){
 
-                                    /**
-                                     * Insert Plan to Database
-                                     */
+
+
+
+                                    AlertDialog alert = new AlertDialog.Builder(getContext())
+                                            .setTitle(R.string.are_you_sure)
+                                            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    // continue with delete
+
+                                                    /**
+                                                     * confirmed
+                                                     */
+
+                                                    /**
+                                                     * Insert Plan to Database
+                                                     */
+                                                    DataManager.insertPlan();
+
+                                                }
+                                            })
+
+                                            .setIcon(R.drawable.ic_plan_active)
+                                            .create();
+
+                                    alert.show();
+
+                                    Button pbutton = alert.getButton(DialogInterface.BUTTON_POSITIVE);
+                                    //Set positive button background
+                                    pbutton.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+
+
+
 
                                 }
                             }
@@ -160,6 +197,8 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
 
         }
     }
+
+
 
     private boolean checkValidEditText(EditText editText){
         String text = editText.getText().toString();

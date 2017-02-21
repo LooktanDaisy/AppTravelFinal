@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/color_hint_white</item>
+
+
         
     </style>
 
@@ -78,5 +80,8 @@
     <style name="TextHeaderMonth">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+
+
+
 
 </resources>

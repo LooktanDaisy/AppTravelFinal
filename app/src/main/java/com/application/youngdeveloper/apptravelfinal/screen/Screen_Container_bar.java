@@ -100,6 +100,11 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
             setColorUnActive(tvAddPlan,imgAddPlan);
             setColorActive(tvMyPlan,imgMyPlan);
             setColorUnActive(tvProfile,imgProfile);
+
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Add_Plan.newInstance(),TAG).commit();
+
+
         }else if(view == menu_profile){
             setColorUnActive(tvHome,imgHome);
             setColorUnActive(tvAddPlan,imgAddPlan);
