@@ -1,90 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg">
 
-    <ImageView
-        android:id="@+id/logo_app_white"
-        android:src="@drawable/logo_white"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-
-    <android.support.design.widget.TextInputLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo_app_white"
-        android:id="@+id/layoutEdtUser"
-        android:textColorHint="@color/color_hint_white"
-        >
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edText_username"
-            android:hint="@string/email"
-            android:textColorHint="@color/color_hint_white"
+        <ImageView
+            android:id="@+id/logo_app_white"
+            android:src="@drawable/logo_white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/marginSpace20dp"
+            android:layout_marginBottom="@dimen/marginSpace30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/logo_app_white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/editText_border_white"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layoutEdtUser"
-        android:id="@+id/layoutEdtpassword"
-        android:textColorHint="@color/color_hint_white"
-        >
-
-        <EditText
-            android:id="@+id/edText_password"
-            android:hint="@string/password"
+            android:id="@+id/layoutEdtUser"
             android:textColorHint="@color/color_hint_white"
+            >
+
+            <EditText
+                android:id="@+id/edText_username"
+                android:hint="@string/email"
+                android:textColorHint="@color/color_hint_white"
+                android:layout_below="@id/logo_app_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/editText_border_white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/editText_border_white" />
+            android:layout_below="@id/layoutEdtUser"
+            android:id="@+id/layoutEdtpassword"
+            android:textColorHint="@color/color_hint_white"
+            >
+
+            <EditText
+                android:id="@+id/edText_password"
+                android:hint="@string/password"
+                android:textColorHint="@color/color_hint_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/editText_border_white"
+                tools:ignore="TextFields" />
 
 
-    </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:background="@drawable/border_button_dark_blue"
+            android:layout_below="@id/layoutEdtpassword"
+            android:layout_marginTop="@dimen/marginSpace20dp"
+            android:layout_marginBottom="@dimen/marginSpace20dp"
+            android:layout_marginLeft="@dimen/marginSpace30dp"
+            android:layout_marginRight="@dimen/marginSpace30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:text="@string/register"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/btn_login"
+            android:textColor="#ffffff"
+            android:layout_marginTop="@dimen/marginSpace20dp"
+            android:layout_marginBottom="@dimen/marginSpace10dp"
+            android:layout_marginLeft="@dimen/marginSpace30dp"
+            android:layout_marginRight="@dimen/marginSpace30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" />
+    </RelativeLayout>
 
 
-
-
-    <Button
-        android:id="@+id/btn_login"
-        android:text="@string/login"
-        android:textColor="@android:color/white"
-        android:background="@drawable/border_button_dark_blue"
-        android:layout_below="@id/layoutEdtpassword"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace20dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/logo_app_white"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorPrimary"
+        android:id="@+id/first_open_anim">
 
-
-    <TextView
-        android:id="@+id/tv_register"
-        android:text="@string/register"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btn_login"
-        android:textColor="#ffffff"
-        android:layout_marginTop="@dimen/marginSpace20dp"
-        android:layout_marginBottom="@dimen/marginSpace10dp"
-        android:layout_marginLeft="@dimen/marginSpace30dp"
-        android:layout_marginRight="@dimen/marginSpace30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true" />
+    </FrameLayout>
 
     <!--<com.facebook.login.widget.LoginButton-->
         <!--android:id="@+id/btn_facebook"-->

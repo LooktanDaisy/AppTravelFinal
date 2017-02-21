@@ -11,8 +11,8 @@
     <corners android:radius="5dp" />
 
     <padding
-        android:bottom="@dimen/MarginSpace"
-        android:left="@dimen/PaddingSpace4XL"
-        android:right="@dimen/PaddingSpace4XL"
-        android:top="@dimen/MarginSpace" />
+
+        android:left="@dimen/PaddingSpaceXL"
+        android:right="@dimen/PaddingSpaceXL"
+         />
 </shape>

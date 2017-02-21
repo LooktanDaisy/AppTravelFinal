@@ -1,11 +1,17 @@
 package com.application.youngdeveloper.apptravelfinal;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.LayoutTransition;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +26,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edt_user,edt_password;
     private Button btn_login;
     private TextView tv_register;
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_login);
 
+        frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+        frameLayout.animate()
+                .translationY(frameLayout.getHeight())
+                .alpha(0.0f)
+                .setDuration(2000)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        frameLayout.setVisibility(View.GONE);
+                    }
+                });
+
     }
 
     private void initialView() {
@@ -47,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(view == tv_register){
                 Intent callRegisterScreen = new Intent(MainActivity.this, Screen_register.class);
                 startActivity(callRegisterScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
             }else if(view == btn_login){
                 /**
                  * Check blank and Valid with method
@@ -60,7 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          */
 
                         Intent ShowBarMenuScreen = new Intent(MainActivity.this, Screen_Container_bar.class);
+                        ShowBarMenuScreen.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(ShowBarMenuScreen);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
 
                         finish();
 

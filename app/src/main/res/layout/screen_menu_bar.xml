@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu1"
             android:layout_weight="1"
-            android:background="@drawable/border_menu_bar_right">
+            android:background="@drawable/border_menu_bar_right"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -27,7 +28,7 @@
                 app:srcCompat="@drawable/ic_home"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/imageView" />
+                android:id="@+id/imageHome" />
 
             <TextView
                 android:text="@string/home_text"
@@ -35,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/textView"
-                android:layout_below="@+id/imageView"
+                android:id="@+id/textViewHome"
+                android:layout_below="@+id/imageHome"
                 android:textColor="@color/grey_unactive" />
         </RelativeLayout>
 
@@ -45,13 +46,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu2"
             android:layout_weight="1"
-            android:background="@drawable/border_menu_bar_right">
+            android:background="@drawable/border_menu_bar_right"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_plan"
-                android:id="@+id/imageView2"
+                android:id="@+id/imageAddPlan"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
@@ -61,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentEnd="false"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/imageView2"
+                android:id="@+id/textViewAddPlan"
+                android:layout_below="@+id/imageAddPlan"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/grey_unactive" />
         </RelativeLayout>
@@ -72,7 +74,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu3"
             android:layout_weight="1"
-            android:background="@drawable/border_menu_bar_right">
+            android:background="@drawable/border_menu_bar_right"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -80,7 +83,7 @@
                 app:srcCompat="@drawable/ic_trip"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/imageView3" />
+                android:id="@+id/imageMyPlan" />
 
             <TextView
                 android:text="@string/my_plan_text"
@@ -88,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentEnd="false"
-                android:id="@+id/textView3"
-                android:layout_below="@+id/imageView3"
+                android:id="@+id/textViewMyPlan"
+                android:layout_below="@+id/imageMyPlan"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/grey_unactive" />
         </RelativeLayout>
@@ -98,7 +101,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/menu4"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -106,7 +110,7 @@
                 app:srcCompat="@drawable/ic_profile"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/imageView4" />
+                android:id="@+id/imageProfile" />
 
             <TextView
                 android:text="@string/user_text"
@@ -114,9 +118,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentEnd="false"
-                android:id="@+id/textView4"
+                android:id="@+id/textViewProfile"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/imageView4"
+                android:layout_below="@+id/imageProfile"
                 android:textColor="@color/grey_unactive" />
 
         </RelativeLayout>

@@ -46,6 +46,9 @@
     <string name="add_travel_place">เพิ่มสถานที่ท่องเที่ยว</string>
     <string name="user_name">เอดเวิร์ด เจแอนเดอร์สัน</string>
     <string name="logout">ลงชื่อออก</string>
+    <string name="exit">ออกจากระบบ</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="confirm">ยืนยัน</string>
 
 
     //ERROR
