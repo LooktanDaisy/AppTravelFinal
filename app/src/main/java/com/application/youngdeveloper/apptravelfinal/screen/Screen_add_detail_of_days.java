@@ -171,7 +171,6 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
     private void showDialogListPlace(){
         DialogFragment newFragment = Screen_Dialog_Place.newInstance();
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen );
-        
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
     }
 

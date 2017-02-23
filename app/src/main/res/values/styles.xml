@@ -77,6 +77,11 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
+    <style name="Dialog_animation_fast">
+        <item name="android:windowEnterAnimation">@anim/fade_in_fast</item>
+        <item name="android:windowExitAnimation">@anim/fade_out_fast</item>
+    </style>
+
     <style name="TextHeaderMonth">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:headerBackground">@color/colorPrimary</item>

@@ -71,9 +71,14 @@ public class Screen_Dialog_Place extends DialogFragment {
     }
 
 
+
     @Override
     public void onStart() {
         super.onStart();
+        if(getDialog()!=null) {
+            getDialog().getWindow().setWindowAnimations(
+                    R.style.Dialog_animation_fast);
+        }
     }
 
     @Override
@@ -98,6 +103,9 @@ public class Screen_Dialog_Place extends DialogFragment {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             // Restore Instance State here
+
         }
     }
+
+
 }
