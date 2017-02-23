@@ -8,27 +8,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="@dimen/MarginSpace"
         android:background="@drawable/border_row_list_on_dialog"
         android:paddingBottom="@dimen/PaddingSpaceL"
         android:paddingLeft="@dimen/PaddingSpace"
         android:paddingRight="@dimen/PaddingSpace"
-        android:paddingTop="@dimen/PaddingSpace">
+        android:paddingTop="@dimen/PaddingSpace"
+        android:layout_marginTop="@dimen/MarginSpace"
+        android:layout_marginLeft="@dimen/MarginSpace"
+        android:layout_marginRight="@dimen/MarginSpace"
+        android:id="@+id/row_list">
 
         <TextView
             android:text="ชื่อ"
-            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvNamePlace"
             android:layout_toRightOf="@+id/ivImgPlace"
             android:layout_marginLeft="@dimen/MarginSpaceS"
+            android:paddingRight="@dimen/PaddingSpaceXL"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/FontSizeS" />
+            android:textSize="@dimen/FontSizeSS"
+            android:layout_marginRight="@dimen/PaddingSpaceL" />
 
         <ImageView
             android:layout_height="120dp"
-            app:srcCompat="@color/text_grey"
             android:id="@+id/ivImgPlace"
+            android:scaleType="fitXY"
             android:layout_width="120dp" />
 
         <TextView
@@ -42,6 +49,9 @@
             android:layout_alignStart="@+id/tvNamePlace"
             android:layout_above="@+id/tvCostPlace"
             android:layout_alignParentEnd="true"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:paddingRight="@dimen/PaddingSpaceXL"
             android:layout_marginRight="@dimen/PaddingSpace4XL" />
 
         <TextView
@@ -50,7 +60,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCostPlace"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/FontSizeS"
+            android:textSize="@dimen/FontSizeSS"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingRight="@dimen/PaddingSpaceXL"
             android:layout_alignBottom="@+id/ivImgPlace"
             android:layout_alignStart="@+id/tvAddressPlace" />
 
@@ -60,7 +73,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView38"
             android:textColor="@color/text_grey"
-            android:textSize="@dimen/FontSizeS"
+            android:textSize="@dimen/FontSizeSS"
+            android:paddingRight="@dimen/PaddingSpaceL"
             android:layout_alignBaseline="@+id/tvCostPlace"
             android:layout_alignBottom="@+id/tvCostPlace"
             android:layout_toEndOf="@+id/tvCostPlace" />

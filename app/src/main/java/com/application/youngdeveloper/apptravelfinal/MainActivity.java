@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
 
-        downloadDataFromServer();
+        //downloadDataFromServer();
 
     }
 

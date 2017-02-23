@@ -12,14 +12,21 @@ import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.MainActivity;
+import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.view.BaseCustomViewGroup;
 import com.application.youngdeveloper.apptravelfinal.view.state.BundleSavedState;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by Wachiraya_Kam on 2/22/2017.
  */
 
 public class PlaceListItem extends BaseCustomViewGroup {
+
+    private Context mContext;
 
     ImageView ivImgPlace;
     TextView tvNamePlace;
@@ -118,8 +125,15 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     public void setIvImgPlaceText (String url){
-        //TODO: Load Image
 
+        url = HttpManager.UrlImage+url;
+
+        Glide.with(getContext())
+                .load(url)
+                .bitmapTransform(new RoundedCornersTransformation(mContext, 20, 0,
+                        RoundedCornersTransformation.CornerType.ALL))
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(ivImgPlace);
     }
 
     public void setTvNamePlaceText (String text){
@@ -127,10 +141,10 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     public void setTvAddressPlaceText (String text){
-        tvNamePlace.setText("ที่อยู่ : "+text);
+        tvAddressPlace.setText("ที่อยู่ : "+text);
     }
 
     public void setTvCostPlaceText (int text){
-        tvNamePlace.setText(text);
+        tvCostPlace.setText(String.valueOf(text));
     }
 }

@@ -21,6 +21,10 @@
         <activity android:name=".screen.Screen_register"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity android:name=".screen.Screen_Container_bar"></activity>
+
+        <meta-data android:name="com.application.youngdeveloper.apptravelfinal.config.GlideConfiguration"
+            android:value="GlideModule"/>
+
     </application>
 
 </manifest>

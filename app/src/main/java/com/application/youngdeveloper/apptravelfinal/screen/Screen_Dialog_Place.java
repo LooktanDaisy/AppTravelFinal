@@ -28,8 +28,8 @@ public class Screen_Dialog_Place extends Fragment {
         super();
     }
 
-    public static Screen_Add_Plan newInstance() {
-        Screen_Add_Plan fragment = new Screen_Add_Plan();
+    public static Screen_Dialog_Place newInstance() {
+        Screen_Dialog_Place fragment = new Screen_Dialog_Place();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
