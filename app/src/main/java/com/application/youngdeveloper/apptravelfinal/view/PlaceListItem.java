@@ -110,19 +110,19 @@ public class PlaceListItem extends BaseCustomViewGroup {
         // Restore State from bundle here
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int width = MeasureSpec.getSize(widthMeasureSpec); //width in px
-        int height = width *2 /3;
-        int newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
-                height,
-                MeasureSpec.EXACTLY
-        );
-        //Child view
-        super.onMeasure(widthMeasureSpec, newHeightMeasureSpec);
-        //Self
-        setMeasuredDimension(width, height);
-    }
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        int width = MeasureSpec.getSize(widthMeasureSpec); //width in px
+//        int height = width *2 /3;
+//        int newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
+//                height,
+//                MeasureSpec.EXACTLY
+//        );
+//        //Child view
+//        super.onMeasure(widthMeasureSpec, newHeightMeasureSpec);
+//        //Self
+//        setMeasuredDimension(width, height);
+//    }
 
     public void setIvImgPlaceText (String url){
 

@@ -1,8 +1,10 @@
 package com.application.youngdeveloper.apptravelfinal.screen;
 
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +40,7 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
     private Date thisDate;
     private TextView tvDate,tvBack;
-    private ImageView imgBack;
+    private ImageView imgBack,imgAddAccom;
 
     public Screen_add_detail_of_days() {
         super();
@@ -77,6 +81,9 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
         imgBack = (ImageView) rootView.findViewById(R.id.imageViewBack);
         imgBack.setOnClickListener(this);
+
+        imgAddAccom = (ImageView) rootView.findViewById(R.id.addAccom);
+        imgAddAccom.setOnClickListener(this);
 
 
 
@@ -122,6 +129,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
             showAlertDialog();
 
+        }else if(view == imgAddAccom){
+            showDialogListPlace();
         }
 
     }
@@ -157,5 +166,13 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         nbutton.setTextColor(getResources().getColor(R.color.text_blue_trans));
     }
 
+
+
+    private void showDialogListPlace(){
+        DialogFragment newFragment = Screen_Dialog_Place.newInstance();
+        newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen );
+        
+        newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
+    }
 
 }

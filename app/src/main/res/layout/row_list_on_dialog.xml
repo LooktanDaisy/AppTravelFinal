@@ -9,13 +9,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/border_row_list_on_dialog"
-        android:paddingBottom="@dimen/PaddingSpaceL"
+        android:paddingBottom="@dimen/PaddingSpace3XL"
         android:paddingLeft="@dimen/PaddingSpace"
         android:paddingRight="@dimen/PaddingSpace"
-        android:paddingTop="@dimen/PaddingSpace"
-        android:layout_marginTop="@dimen/MarginSpace"
-        android:layout_marginLeft="@dimen/MarginSpace"
-        android:layout_marginRight="@dimen/MarginSpace"
+        android:paddingTop="@dimen/PaddingSpaceL"
+
         android:id="@+id/row_list">
 
         <TextView
@@ -29,7 +27,7 @@
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:paddingRight="@dimen/PaddingSpaceXL"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/FontSizeSS"
+            android:textSize="@dimen/FontSizeS"
             android:layout_marginRight="@dimen/PaddingSpaceL" />
 
         <ImageView
@@ -60,10 +58,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCostPlace"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/FontSizeSS"
+            android:textSize="@dimen/FontSizeS"
             android:maxLines="1"
             android:ellipsize="end"
             android:paddingRight="@dimen/PaddingSpaceXL"
+
             android:layout_alignBottom="@+id/ivImgPlace"
             android:layout_alignStart="@+id/tvAddressPlace" />
 
@@ -84,12 +83,12 @@
 
             android:id="@+id/imageView5"
             android:layout_alignParentEnd="true"
-            android:layout_width="35dp"
-            android:layout_height="35dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:srcCompat="@drawable/ic_map"
 
             android:id="@+id/imageView12"

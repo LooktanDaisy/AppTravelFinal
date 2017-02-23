@@ -99,7 +99,7 @@
 
         <ImageView
             app:srcCompat="@drawable/ic_add"
-            android:id="@+id/imageView9"
+            android:id="@+id/addAccom"
             android:layout_alignParentEnd="true"
             android:layout_width="30dp"
             android:layout_height="30dp" />
@@ -107,7 +107,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_below="@+id/imageView9"
+            android:layout_below="@+id/addAccom"
             android:layout_alignParentStart="true"
             android:layout_marginTop="@dimen/MarginSpaceS"
             android:layout_height="80dp"

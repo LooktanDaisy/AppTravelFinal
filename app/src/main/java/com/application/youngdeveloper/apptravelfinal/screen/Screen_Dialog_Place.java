@@ -1,6 +1,7 @@
 package com.application.youngdeveloper.apptravelfinal.screen;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.application.youngdeveloper.apptravelfinal.config.Provinces;
  * Created by Wachiraya_Kam on 2/23/2017.
  */
 
-public class Screen_Dialog_Place extends Fragment {
+public class Screen_Dialog_Place extends DialogFragment {
 
     private ListView lvListPlace;
 
