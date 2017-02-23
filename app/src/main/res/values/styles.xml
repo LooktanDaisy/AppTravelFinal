@@ -79,6 +79,7 @@
 
     <style name="TextHeaderMonth">
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:headerBackground">@color/colorPrimary</item>
     </style>
 
 

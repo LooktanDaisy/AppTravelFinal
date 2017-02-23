@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <ImageView
         android:layout_width="40dp"
@@ -9,7 +10,7 @@
         app:srcCompat="@drawable/ic_back"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/imageView6"
+        android:id="@+id/imageViewBack"
         android:clickable="true" />
 
     <TextView
@@ -17,11 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView6"
-        android:id="@+id/textView14"
+        android:layout_toEndOf="@+id/imageViewBack"
+        android:id="@+id/textViewBack"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/FontSizeS"
-        android:layout_alignBottom="@+id/imageView6"
+        android:layout_alignBottom="@+id/imageViewBack"
         android:gravity="center" />
 
     <ImageView
@@ -98,10 +99,10 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="12000"
+        android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView20"
+        android:id="@+id/textViewBudget"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/FontSizeS"
         android:gravity="center"
@@ -112,7 +113,7 @@
         android:layout_alignEnd="@+id/textView21" />
 
     <TextView
-        android:text="12000"
+        android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView21"
@@ -154,5 +155,6 @@
         android:layout_below="@+id/textView22"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/textView17"
-        android:background="@color/grey_unactive" />
+        android:background="@android:color/white"
+        android:id="@+id/list_date" />
 </RelativeLayout>

@@ -6,22 +6,23 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
-import com.application.youngdeveloper.apptravelfinal.adapter.ListDateAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
+import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
+import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,28 +32,22 @@ import java.util.Date;
  * Created by theerawat on 2/21/2017 AD.
  */
 
-public class Screen_choose_plan_date extends Fragment implements View.OnClickListener{
+public class Screen_add_detail_of_days extends Fragment implements View.OnClickListener{
 
-    private int numberOfDate;
-    private String startDate,budget;
-    private RecyclerView listDate;
-    private ListDateAdapter listDateAdapter;
-    private TextView tvBudget,tvBack;
-    private ImageView ImgBack;
+    private Date thisDate;
+    private TextView tvDate,tvBack;
+    private ImageView imgBack;
 
-
-    public Screen_choose_plan_date() {
+    public Screen_add_detail_of_days() {
         super();
     }
 
-    public Screen_choose_plan_date(int numberOfDate,String startDate,String budget) {
-        this.numberOfDate = numberOfDate;
-        this.startDate = startDate;
-        this.budget = budget;
+    public Screen_add_detail_of_days(Date date){
+        thisDate = date;
     }
 
-    public static Screen_choose_plan_date newInstance() {
-        Screen_choose_plan_date fragment = new Screen_choose_plan_date();
+    public static Screen_add_detail_of_days newInstance() {
+        Screen_add_detail_of_days fragment = new Screen_add_detail_of_days();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -61,31 +56,34 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.screen_manage_plan_by_date, container, false);
-        initInstances(rootView);
+        View rootView = inflater.inflate(R.layout.screen_manage_plan_by_date_detail, container, false);
+
+
+
+        initialView(rootView);
+
 
         return rootView;
     }
 
+    private void initialView(View rootView) {
 
-    private void initInstances(View rootView) {
-        listDate = (RecyclerView) rootView.findViewById(R.id.list_date);
-        listDate.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayout.VERTICAL, false));
-        listDate.setHasFixedSize(true);
-        listDateAdapter = new ListDateAdapter(getActivity(),numberOfDate,startDate);
-        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        listDateAdapter.setFragmentTran(ft);
-        listDate.setAdapter(listDateAdapter);
 
-        tvBudget = (TextView) rootView.findViewById(R.id.textViewBudget);
-        tvBudget.setText(budget);
-
-        ImgBack =(ImageView) rootView.findViewById(R.id.imageViewBack);
-        ImgBack.setOnClickListener(this);
+        tvDate = (TextView) rootView.findViewById(R.id.tvDate);
+        tvDate.setText(MainFunction.getDateString(thisDate));
 
         tvBack = (TextView) rootView.findViewById(R.id.textViewBack);
         tvBack.setOnClickListener(this);
+
+        imgBack = (ImageView) rootView.findViewById(R.id.imageViewBack);
+        imgBack.setOnClickListener(this);
+
+
+
     }
+
+
+
 
     @Override
     public void onStart() {
@@ -119,11 +117,13 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if(view == ImgBack || view == tvBack){
+
+        if(view == imgBack || view == tvBack){
 
             showAlertDialog();
 
         }
+
     }
 
 
@@ -132,23 +132,20 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
     private void showAlertDialog(){
 
         AlertDialog alert = new AlertDialog.Builder(getContext())
-                .setTitle(R.string.are_you_sure_cancel_plan)
-                .setPositiveButton(R.string.edit, new DialogInterface.OnClickListener() {
+                .setTitle(R.string.are_you_sure_back_to_choose_day)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO: Edit plan , send key of Plan to previous screen
-                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.fragment_container, new Screen_Add_Plan(1000), "Screen_choose_plan_date with Key");
-                        ft.commit();
+                        getFragmentManager().popBackStack();
                     }
                 })
-                .setNegativeButton(R.string.delete, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        //TODO: delete plan , send key to server for delete and delete on model
-                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.fragment_container, Screen_Add_Plan.newInstance(), "Screen_choose_plan_date from delete");
-                        ft.commit();
+//                        //TODO: delete plan , send key to server for delete and delete on model
+//                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                        ft.replace(R.id.fragment_container, Screen_Add_Plan.newInstance(), "Screen_choose_plan_date from delete");
+//                        ft.commit();
 
                     }
                 })
@@ -164,4 +161,6 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
         pbutton.setTextColor(getResources().getColor(R.color.colorPrimary));
         nbutton.setTextColor(getResources().getColor(R.color.text_blue_trans));
     }
+
+
 }

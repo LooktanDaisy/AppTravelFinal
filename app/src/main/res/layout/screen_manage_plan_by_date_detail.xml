@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <ImageView
         android:layout_width="40dp"
@@ -9,7 +10,7 @@
         app:srcCompat="@drawable/ic_back"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/imageView6"
+        android:id="@+id/imageViewBack"
         />
 
     <TextView
@@ -17,11 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView6"
-        android:id="@+id/textView14"
+        android:layout_toEndOf="@+id/imageViewBack"
+        android:id="@+id/textViewBack"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/FontSizeS"
-        android:layout_alignBottom="@+id/imageView6"
+        android:layout_alignBottom="@+id/imageViewBack"
         android:gravity="center" />
 
     <ImageView
@@ -45,55 +46,12 @@
         android:layout_alignBottom="@+id/imageView7" />
 
     <TextView
-        android:text="@string/cost_of_restaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView16"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:textAlignment="textStart"
-        android:layout_marginBottom="@dimen/MarginSpaceS"
-        android:layout_marginLeft="@dimen/MarginSpaceS" />
-
-    <TextView
-        android:text="@string/bath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView18"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="@dimen/MarginSpaceS"
-        android:layout_marginBottom="@dimen/MarginSpaceS" />
-
-    <TextView
-        android:text="12000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView21"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView16"
-        android:layout_toStartOf="@+id/imageView7"
-        android:layout_marginBottom="@dimen/MarginSpaceS"
-        android:layout_marginRight="@dimen/MarginSpaceS" />
-
-    <TextView
         android:text="@string/plan_topic_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView22"
-        android:textSize="@dimen/FontSizeS"
-        android:layout_below="@+id/imageView6"
+        android:textSize="@dimen/FontSizeSS"
+        android:layout_below="@+id/imageViewBack"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="@dimen/MarginSpace"/>
 
@@ -101,8 +59,8 @@
         android:text="1 มกราคม 2560"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView25"
-        android:textSize="@dimen/FontSizeS"
+        android:id="@+id/tvDate"
+        android:textSize="@dimen/FontSizeSS"
         android:layout_marginLeft="@dimen/MarginSpace"
         android:layout_below="@+id/imageView7"
         android:layout_toEndOf="@+id/textView22"
@@ -115,7 +73,10 @@
         android:padding="@dimen/PaddingSpace"
         android:background="@drawable/border_row_list_date"
         android:layout_below="@+id/textView22"
-        android:layout_margin="@dimen/MarginSpace">
+        android:layout_marginLeft="@dimen/MarginSpace"
+        android:layout_marginRight="@dimen/MarginSpace"
+        android:layout_marginTop="@dimen/MarginSpace"
+        android:layout_marginBottom="@dimen/MarginSpace">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -134,7 +95,7 @@
             android:gravity="center"
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:textColor="@color/text_grey"
-            android:textSize="@dimen/FontSizeS" />
+            android:textSize="@dimen/FontSizeSS" />
 
         <ImageView
             app:srcCompat="@drawable/ic_add"
@@ -182,7 +143,7 @@
             android:gravity="center"
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:textColor="@color/text_grey"
-            android:textSize="@dimen/FontSizeS" />
+            android:textSize="@dimen/FontSizeSS" />
 
         <ImageView
             app:srcCompat="@drawable/ic_add"
@@ -230,7 +191,7 @@
             android:gravity="center"
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:textColor="@color/text_grey"
-            android:textSize="@dimen/FontSizeS" />
+            android:textSize="@dimen/FontSizeSS" />
 
         <ImageView
             app:srcCompat="@drawable/ic_add"
@@ -249,83 +210,6 @@
             android:layout_marginBottom="@dimen/MarginSpaceS"></android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
-
-    <TextView
-        android:text="@string/cost_travel_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView27"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_above="@+id/textView16"
-        android:layout_alignStart="@+id/textView16" />
-
-    <TextView
-        android:text="@string/cost_accom_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView28"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_above="@+id/textView27"
-        android:layout_alignStart="@+id/textView27" />
-
-    <TextView
-        android:text="@string/bath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView30"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_marginRight="@dimen/MarginSpaceS"
-        android:layout_above="@+id/textView18"
-        android:layout_alignStart="@+id/textView18" />
-
-    <TextView
-        android:text="@string/bath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView31"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_marginRight="@dimen/MarginSpaceS"
-        android:layout_above="@+id/textView27"
-        android:layout_alignStart="@+id/textView30" />
-
-    <TextView
-        android:text="12000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView32"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_marginRight="@dimen/MarginSpaceS"
-        android:layout_above="@+id/textView21"
-        android:layout_alignStart="@+id/textView21"
-        android:layout_alignTop="@+id/textView27" />
-
-    <TextView
-        android:text="12000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView33"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeSS"
-        android:gravity="center"
-        android:textAlignment="textStart"
-        android:layout_marginRight="@dimen/MarginSpaceS"
-        android:layout_above="@+id/textView32"
-        android:layout_alignStart="@+id/textView32" />
 
 
 </RelativeLayout>

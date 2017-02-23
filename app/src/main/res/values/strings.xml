@@ -49,7 +49,12 @@
     <string name="exit">ออกจากระบบ</string>
     <string name="cancel">ยกเลิก</string>
     <string name="confirm">ยืนยัน</string>
+    <string name="edit">แก้ไข</string>
+    <string name="delete">ลบ</string>
     <string name="are_you_sure">เพิ่มแผนการท่องเที่ยว</string>
+    <string name="are_you_sure_cancel_plan">แก้ไขแผนการท่องเที่ยว</string>
+    <string name="are_you_sure_back_to_choose_day">กลับไปยังหน้าเลือกวันที่</string>
+    <string name="choose_day">กรุณาเลือกวันที่ต้องการ</string>
 
     <string-array name="custom_months">
         <item>มกราคม</item>
@@ -69,4 +74,5 @@
     //ERROR
     <string name="E01">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
     <string name="E02">กรุณากรอกข้อมูลให้ครบถ้วน</string>
+    <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
 </resources>

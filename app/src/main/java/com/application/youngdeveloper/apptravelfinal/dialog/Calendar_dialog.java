@@ -17,9 +17,7 @@ import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormat
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by theerawat on 2/21/2017 AD.
@@ -31,6 +29,7 @@ public class Calendar_dialog extends DialogFragment implements OnDateSelectedLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        getDialog().setTitle(R.string.choose_day);
         return inflater.inflate(R.layout.dialog_calendar, container, false);
     }
 
@@ -43,6 +42,10 @@ public class Calendar_dialog extends DialogFragment implements OnDateSelectedLis
         widget.setArrowColor(getResources().getColor(R.color.colorPrimary));
         widget.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
         widget.setHeaderTextAppearance(R.style.TextHeaderMonth);
+
+
+
+
 
         Calendar calendar = Calendar.getInstance();
 

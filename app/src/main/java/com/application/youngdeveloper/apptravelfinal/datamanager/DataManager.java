@@ -6,6 +6,19 @@ package com.application.youngdeveloper.apptravelfinal.datamanager;
 
 public class DataManager {
 
+    private static DataManager instance;
+
+
+    public static DataManager IsInstance(){
+        if (instance==null){
+            instance = new DataManager();
+            return instance;
+        }else{
+            return instance;
+        }
+    }
+
+
     public static void insertPlan(){
 
         insertPlanToServer();

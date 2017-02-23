@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,10 +26,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
+import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.application.youngdeveloper.apptravelfinal.R.id.dialog;
 
@@ -41,6 +47,10 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
 
     public Screen_Add_Plan() {
         super();
+    }
+
+    public Screen_Add_Plan(int keyOfPlan){
+
     }
 
     public static Screen_Add_Plan newInstance() {
@@ -164,16 +174,49 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                     // continue with delete
 
                                                     /**
+                                                     * find number of date
+                                                     */
+                                                    int numberOfDate = 0;
+                                                    String dateGo = edtDateGo.getText().toString();
+                                                    String dateBack = edtDateBack.getText().toString();
+                                                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                                                    try {
+                                                        Date date1 = formatter.parse(dateGo);
+                                                        Date date2 = formatter.parse(dateBack);
+
+                                                        date1 = MainFunction.removeTime(date1);
+                                                        date2 = MainFunction.removeTime(date2);
+
+                                                        numberOfDate = (MainFunction.daysBetween(date1.getTime(), date2.getTime()) ) + 1;
+                                                        Log.d("Days : ",String.valueOf(numberOfDate));
+
+                                                    } catch (ParseException e) {
+                                                        e.printStackTrace();
+                                                    }
+
+                                                    /**
                                                      * confirmed
                                                      */
 
                                                     /**
                                                      * Insert Plan to Database
                                                      */
-                                                    DataManager.insertPlan();
-                                                    final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                                    ft.replace(R.id.fragment_container, new Screen_choose_plan_date(), "Screen_choose_plan_date");
-                                                    ft.commit();
+                                                    //TODO: insert Plan to app and Server
+
+                                                    /**
+                                                     * send Budget to next screen
+                                                     */
+                                                    String budget = edtBudget.getText().toString();
+
+                                                    if(numberOfDate > 0){
+                                                        DataManager.insertPlan();
+                                                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                                        ft.replace(R.id.fragment_container, new Screen_choose_plan_date(numberOfDate,dateGo,budget), "Screen_choose_plan_date");
+                                                        ft.commit();
+                                                    }else{
+                                                        Toast.makeText(getContext(),R.string.E03,Toast.LENGTH_SHORT).show();
+                                                    }
+
 
                                                 }
                                             })
