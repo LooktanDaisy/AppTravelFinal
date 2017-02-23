@@ -142,11 +142,6 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-//                        //TODO: delete plan , send key to server for delete and delete on model
-//                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                        ft.replace(R.id.fragment_container, Screen_Add_Plan.newInstance(), "Screen_choose_plan_date from delete");
-//                        ft.commit();
-
                     }
                 })
 
