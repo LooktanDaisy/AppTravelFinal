@@ -75,4 +75,6 @@
     <string name="E01">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
     <string name="E02">กรุณากรอกข้อมูลให้ครบถ้วน</string>
     <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
+    <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
+    <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>
 </resources>

@@ -30,7 +30,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDpSkMamblXe9HtIW8zSCsv3GVQP7xYotk"/>
-
+     
 
         <meta-data android:name="com.application.youngdeveloper.apptravelfinal.config.GlideConfiguration"
             android:value="GlideModule"/>

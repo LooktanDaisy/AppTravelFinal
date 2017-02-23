@@ -153,13 +153,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     PlaceListCollectionDao dao = response.body();
                     PlaceListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),
-                            dao.getData().get(0).getName(),
-                            Toast.LENGTH_SHORT)
-                            .show();
+
                 } else{
                     // Handle
                     try {
+                        Toast.makeText(MainActivity.this, "โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(),
                                 response.errorBody().string(),
                                 Toast.LENGTH_SHORT)
@@ -175,9 +173,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<PlaceListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ",Toast.LENGTH_LONG).show();
 
                 Log.d("ggg",t.toString());
+
+                btn_login.setEnabled(false);
+                tv_register.setEnabled(false);
             }
         });
 
@@ -195,13 +196,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     RestaurantListCollectionDao dao = response.body();
 //                    PlaceListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),
-                            dao.getData().get(0).getName(),
-                            Toast.LENGTH_SHORT)
-                            .show();
+
                 } else{
                     // Handle
                     try {
+                        Toast.makeText(MainActivity.this, "โหลดข้อมูลร้านอาหารไม่สำเร็จ", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(),
                                 response.errorBody().string(),
                                 Toast.LENGTH_SHORT)
@@ -217,9 +216,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<RestaurantListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, R.string.err_loadRestaurant,Toast.LENGTH_LONG).show();
 
                 Log.d("ggg",t.toString());
+
+                btn_login.setEnabled(false);
+                tv_register.setEnabled(false);
+
+
             }
         });
 
@@ -237,13 +241,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     AccommodationListCollectionDao dao = response.body();
                     //PlaceListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),
-                            dao.getData().get(0).getName(),
-                            Toast.LENGTH_SHORT)
-                            .show();
+
                 } else{
                     // Handle
                     try {
+                        Toast.makeText(MainActivity.this, R.string.err_loadAccommodation, Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(),
                                 response.errorBody().string(),
                                 Toast.LENGTH_SHORT)
@@ -259,9 +261,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<AccommodationListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, R.string.err_loadAccommodation,Toast.LENGTH_LONG).show();
 
                 Log.d("ggg",t.toString());
+
+                btn_login.setEnabled(false);
+                tv_register.setEnabled(false);
             }
         });
     }
