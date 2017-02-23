@@ -19,8 +19,8 @@
             android:text="ชื่อ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView35"
-            android:layout_toRightOf="@+id/imageView11"
+            android:id="@+id/tvNamePlace"
+            android:layout_toRightOf="@+id/ivImgPlace"
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/FontSizeS" />
@@ -28,20 +28,19 @@
         <ImageView
             android:layout_height="120dp"
             app:srcCompat="@color/text_grey"
-
-            android:id="@+id/imageView11"
+            android:id="@+id/ivImgPlace"
             android:layout_width="120dp" />
 
         <TextView
             android:text="ที่อยู่"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView36"
+            android:id="@+id/tvAddressPlace"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeSSS"
-            android:layout_below="@+id/textView35"
-            android:layout_alignStart="@+id/textView35"
-            android:layout_above="@+id/textView37"
+            android:layout_below="@+id/tvNamePlace"
+            android:layout_alignStart="@+id/tvNamePlace"
+            android:layout_above="@+id/tvCostPlace"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="@dimen/PaddingSpace4XL" />
 
@@ -49,11 +48,11 @@
             android:text="ราคา"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textView37"
+            android:id="@+id/tvCostPlace"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/FontSizeS"
-            android:layout_alignBottom="@+id/imageView11"
-            android:layout_alignStart="@+id/textView36" />
+            android:layout_alignBottom="@+id/ivImgPlace"
+            android:layout_alignStart="@+id/tvAddressPlace" />
 
         <TextView
             android:text="@string/bath"
@@ -62,9 +61,9 @@
             android:id="@+id/textView38"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeS"
-            android:layout_alignBaseline="@+id/textView37"
-            android:layout_alignBottom="@+id/textView37"
-            android:layout_toEndOf="@+id/textView37" />
+            android:layout_alignBaseline="@+id/tvCostPlace"
+            android:layout_alignBottom="@+id/tvCostPlace"
+            android:layout_toEndOf="@+id/tvCostPlace" />
 
         <ImageView
             app:srcCompat="@drawable/ic_add"

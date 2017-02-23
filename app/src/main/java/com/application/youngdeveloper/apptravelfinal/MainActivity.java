@@ -6,15 +6,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
 
@@ -32,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_login;
     private TextView tv_register;
     private FrameLayout frameLayout;
+    PlaceListAdapter listAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
-        initInstances();
+
+        downloadDataFromServer();
+
     }
+
+
 
 
     @Override
@@ -49,19 +62,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
 
-        frameLayout.animate()
-                .translationY(frameLayout.getHeight())
-                .alpha(0.0f)
-                .setDuration(1000)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        frameLayout.setVisibility(View.GONE);
-                    }
-                });
+        downloadDataFromServer();
 
-    }
+            frameLayout.animate()
+                    .translationY(frameLayout.getHeight())
+                    .alpha(0.0f)
+                    .setDuration(1000)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            frameLayout.setVisibility(View.GONE);
+                        }
+                    });
+        }
+
+
 
     private void initialView() {
         edt_user = (EditText) findViewById(R.id.edText_username);
@@ -121,9 +137,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void initInstances() {
+    private void downloadDataFromServer() {
 
-        //Call service for download data from server
+        /**
+         * Download Place
+         */
+
         Call<PlaceListCollectionDao> call = HttpManager.getInstance().getService().loadPlaceList();
         call.enqueue(new Callback<PlaceListCollectionDao>() { //Asynchronous
             @Override
@@ -132,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(response.isSuccessful()){
                     PlaceListCollectionDao dao = response.body();
+                    PlaceListManager.getInstance().setDao(dao);
+                    //listAdapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(),
                             dao.getData().get(0).getName(),
                             Toast.LENGTH_SHORT)
@@ -152,6 +173,90 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call<PlaceListCollectionDao> call, Throwable t) {
+                // Handle
+
+                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+
+                Log.d("ggg",t.toString());
+            }
+        });
+
+        /**
+         * Show Restaurant
+         */
+
+        Call<RestaurantListCollectionDao> callRestaurant = HttpManager.getInstance().getService().loadRestaurantList();
+        callRestaurant.enqueue(new Callback<RestaurantListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<RestaurantListCollectionDao> call,
+                                   Response<RestaurantListCollectionDao> response) {
+
+                if(response.isSuccessful()){
+                    RestaurantListCollectionDao dao = response.body();
+//                    PlaceListManager.getInstance().setDao(dao);
+                    //listAdapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(),
+                            dao.getData().get(0).getName(),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                } else{
+                    // Handle
+                    try {
+                        Toast.makeText(getApplicationContext(),
+                                response.errorBody().string(),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantListCollectionDao> call, Throwable t) {
+                // Handle
+
+                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+
+                Log.d("ggg",t.toString());
+            }
+        });
+
+        /**
+         * Show Accommodation
+         */
+
+        Call<AccommodationListCollectionDao> callAccomodation = HttpManager.getInstance().getService().loadAccommodation();
+        callAccomodation.enqueue(new Callback<AccommodationListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<AccommodationListCollectionDao> call,
+                                   Response<AccommodationListCollectionDao> response) {
+
+                if(response.isSuccessful()){
+                    AccommodationListCollectionDao dao = response.body();
+                    //PlaceListManager.getInstance().setDao(dao);
+                    //listAdapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(),
+                            dao.getData().get(0).getName(),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                } else{
+                    // Handle
+                    try {
+                        Toast.makeText(getApplicationContext(),
+                                response.errorBody().string(),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AccommodationListCollectionDao> call, Throwable t) {
                 // Handle
 
                 Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
