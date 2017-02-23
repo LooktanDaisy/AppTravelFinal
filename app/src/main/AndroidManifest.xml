@@ -30,9 +30,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDpSkMamblXe9HtIW8zSCsv3GVQP7xYotk"/>
-        <activity android:name=".screen.Screen_register"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
-        <activity android:name=".screen.Screen_Container_bar"></activity>
+
 
         <meta-data android:name="com.application.youngdeveloper.apptravelfinal.config.GlideConfiguration"
             android:value="GlideModule"/>
