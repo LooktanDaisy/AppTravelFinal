@@ -3,6 +3,10 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 import android.content.Context;
 
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
+import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
+
+import java.util.List;
 
 /**
  * Created by Wachiraya_Kam on 2/22/2017.
@@ -30,5 +34,19 @@ public class PlaceListManager {
 
     public void setDao(PlaceListCollectionDao dao) {
         this.dao = dao;
+    }
+
+
+    public PlaceListDao getPlace(int id_Place){
+        PlaceListDao PLACE = null;
+        List<PlaceListDao> ListPLACE =  getDao().getData();
+        int i;
+        for(i = 0;i<ListPLACE.size();i++){
+            if(ListPLACE.get(i).getId() == id_Place){
+                PLACE = ListPLACE.get(i);
+            }
+        }
+
+        return PLACE;
     }
 }

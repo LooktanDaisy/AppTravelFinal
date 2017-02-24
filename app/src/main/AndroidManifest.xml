@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,7 +37,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDpSkMamblXe9HtIW8zSCsv3GVQP7xYotk"/>
+            android:value="AIzaSyCHWEytndmpCMSoWe7HfWGf6u9DAytx_9o"/>
      
 
         <meta-data android:name="com.application.youngdeveloper.apptravelfinal.config.GlideConfiguration"

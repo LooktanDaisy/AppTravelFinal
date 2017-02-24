@@ -1,11 +1,15 @@
 package com.application.youngdeveloper.apptravelfinal.adapter;
 
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 
 /**
@@ -13,6 +17,9 @@ import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
  */
 
 public class PlaceListAdapter extends BaseAdapter {
+
+    private FragmentActivity MainActivity;
+
     @Override
     public int getCount() {
         if (PlaceListManager.getInstance().getDao() == null)
@@ -34,16 +41,35 @@ public class PlaceListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        PlaceListItem item;
+        final PlaceListItem item;
         if (convertView != null)
             item = (PlaceListItem) convertView;
         else
             item = new PlaceListItem(parent.getContext());
-        PlaceListDao dao = (PlaceListDao) getItem(position);
+        final PlaceListDao dao = (PlaceListDao) getItem(position);
         item.setIvImgPlaceText(dao.getImg());
         item.setTvNamePlaceText(dao.getName());
         item.setTvAddressPlaceText(dao.getDetail());
         item.setTvCostPlaceText(dao.getCost());
+
+        /**
+         * Set onclick to map ImageView
+         */
+        item.getIvMap().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openMap = new Intent(MainActivity, MapActivity.class);
+                openMap.putExtra("ID_PLACE",dao.getId());
+                MainActivity.startActivity(openMap);
+                MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
+            }
+        });
+
+
         return item;
+    }
+
+    public void setActivity(FragmentActivity activity) {
+        MainActivity = activity;
     }
 }

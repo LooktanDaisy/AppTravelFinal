@@ -103,7 +103,7 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
             setColorUnActive(tvProfile,imgProfile);
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Add_Plan.newInstance(),TAG).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Add_Plan.newInstance(),TAG).commit();
 
 
         }else if(view == menu_profile){
@@ -113,7 +113,7 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
             setColorActive(tvProfile,imgProfile);
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Dialog_Place.newInstance(),TAG).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Dialog_Place.newInstance(),TAG).commit();
 
         }
 

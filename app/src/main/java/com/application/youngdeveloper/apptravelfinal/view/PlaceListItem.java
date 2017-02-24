@@ -28,7 +28,7 @@ public class PlaceListItem extends BaseCustomViewGroup {
 
     private Context mContext;
 
-    ImageView ivImgPlace;
+    ImageView ivImgPlace,ivMap;
     TextView tvNamePlace;
     TextView tvAddressPlace;
     TextView tvCostPlace;
@@ -72,6 +72,7 @@ public class PlaceListItem extends BaseCustomViewGroup {
         tvNamePlace = (TextView) findViewById(R.id.tvNamePlace);
         tvAddressPlace = (TextView) findViewById(R.id.tvAddressPlace);
         tvCostPlace = (TextView) findViewById(R.id.tvCostPlace);
+        ivMap = (ImageView) findViewById(R.id.img_map);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -146,5 +147,9 @@ public class PlaceListItem extends BaseCustomViewGroup {
 
     public void setTvCostPlaceText (int text){
         tvCostPlace.setText(String.valueOf(text));
+    }
+
+    public ImageView getIvMap(){
+        return ivMap;
     }
 }

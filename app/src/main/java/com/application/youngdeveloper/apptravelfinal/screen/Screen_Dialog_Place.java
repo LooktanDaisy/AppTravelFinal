@@ -57,6 +57,7 @@ public class Screen_Dialog_Place extends DialogFragment {
 
     private void setListView() {
         PlaceListAdapter listPlaceAdapter = new PlaceListAdapter();
+        listPlaceAdapter.setActivity(getActivity());
         lvListPlace.setAdapter(listPlaceAdapter);
 
     }
