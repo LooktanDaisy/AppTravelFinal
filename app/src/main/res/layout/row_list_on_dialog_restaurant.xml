@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/border_row_list_on_dialog"
+        android:paddingBottom="@dimen/PaddingSpace3XL"
+        android:paddingLeft="@dimen/PaddingSpace"
+        android:paddingRight="@dimen/PaddingSpace"
+        android:paddingTop="@dimen/PaddingSpaceL"
+
+        android:id="@+id/row_list_restaurant">
+
+        <TextView
+            android:text="ชื่อ"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNameRestaurant"
+            android:layout_toRightOf="@+id/ivImgRestaurant"
+            android:layout_marginLeft="@dimen/MarginSpaceS"
+            android:paddingRight="@dimen/PaddingSpaceXL"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/FontSizeS"
+            android:layout_marginRight="@dimen/PaddingSpaceL" />
+
+        <ImageView
+            android:layout_height="120dp"
+            android:id="@+id/ivImgRestaurant"
+            android:scaleType="fitXY"
+            android:layout_width="120dp" />
+
+        <TextView
+            android:text="ที่อยู่"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDetailRestaurant"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSSS"
+            android:layout_below="@+id/tvNameRestaurant"
+            android:layout_alignStart="@+id/tvNameRestaurant"
+            android:layout_above="@+id/tvCostRestaurant"
+            android:layout_alignParentEnd="true"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:paddingRight="@dimen/PaddingSpaceXL"
+            android:layout_marginRight="@dimen/PaddingSpace4XL" />
+
+        <TextView
+            android:text="ราคา"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCostRestaurant"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/FontSizeS"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingRight="@dimen/PaddingSpaceXL"
+            android:layout_alignBottom="@+id/ivImgRestaurant"
+            android:layout_alignStart="@+id/tvDetailRestaurant" />
+
+        <TextView
+            android:text="@string/bath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView38"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSS"
+            android:paddingRight="@dimen/PaddingSpaceL"
+            android:layout_alignBaseline="@+id/tvCostRestaurant"
+            android:layout_alignBottom="@+id/tvCostRestaurant"
+            android:layout_toEndOf="@+id/tvCostRestaurant" />
+
+        <ImageView
+            app:srcCompat="@drawable/ic_add"
+
+            android:id="@+id/imageView5"
+            android:layout_alignParentEnd="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/ic_map"
+
+            android:id="@+id/imageView12"
+            android:layout_alignBottom="@+id/textView38"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

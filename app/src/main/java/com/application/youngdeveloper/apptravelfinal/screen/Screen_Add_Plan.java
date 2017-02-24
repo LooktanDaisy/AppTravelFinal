@@ -1,28 +1,19 @@
 package com.application.youngdeveloper.apptravelfinal.screen;
 
 
-import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
@@ -30,13 +21,10 @@ import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static com.application.youngdeveloper.apptravelfinal.R.id.dialog;
 
 /**
  * Created by theerawat on 2/21/2017 AD.

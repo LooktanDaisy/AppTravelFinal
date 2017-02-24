@@ -20,8 +20,10 @@ import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
 
@@ -211,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(response.isSuccessful()){
                     RestaurantListCollectionDao dao = response.body();
-//                    PlaceListManager.getInstance().setDao(dao);
+                    RestaurantListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
 
                 } else{
@@ -249,15 +251,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * Show Accommodation
          */
 
-        Call<AccommodationListCollectionDao> callAccomodation = HttpManager.getInstance().getService().loadAccommodation();
-        callAccomodation.enqueue(new Callback<AccommodationListCollectionDao>() { //Asynchronous
+        Call<AccommodationListCollectionDao> callAccommodation = HttpManager.getInstance().getService().loadAccommodation();
+        callAccommodation.enqueue(new Callback<AccommodationListCollectionDao>() { //Asynchronous
             @Override
             public void onResponse(Call<AccommodationListCollectionDao> call,
                                    Response<AccommodationListCollectionDao> response) {
 
                 if(response.isSuccessful()){
                     AccommodationListCollectionDao dao = response.body();
-                    //PlaceListManager.getInstance().setDao(dao);
+                    AccommodationListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
 
                 } else{

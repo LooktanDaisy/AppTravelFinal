@@ -17,33 +17,31 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
- * Created by Wachiraya_Kam on 2/22/2017.
+ * Created by Wachiraya_Kam on 2/23/2017.
  */
 
-public class PlaceListItem extends BaseCustomViewGroup {
+public class AccommodationListItem extends BaseCustomViewGroup {
 
     private Context mContext;
+    ImageView ivImgAccomodation;
+    TextView tvNameAccommodation;
+    TextView tvDetailAcccommodation;
+    TextView tvCostAccomodation;
 
-    ImageView ivImgPlace,ivMap;
-    TextView tvNamePlace;
-    TextView tvAddressPlace;
-    TextView tvCostPlace;
-
-
-    public PlaceListItem(Context context) {
+    public AccommodationListItem(Context context) {
         super(context);
         initInflate();
         initInstances();
     }
 
-    public PlaceListItem(Context context, AttributeSet attrs) {
+    public AccommodationListItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         initInflate();
         initInstances();
         initWithAttrs(attrs, 0, 0);
     }
 
-    public PlaceListItem(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AccommodationListItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initInflate();
         initInstances();
@@ -51,7 +49,7 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     @TargetApi(21)
-    public PlaceListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AccommodationListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initInflate();
         initInstances();
@@ -59,16 +57,15 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     private void initInflate() {
-        inflate(getContext(), R.layout.row_list_on_dialog, this);
+        inflate(getContext(), R.layout.row_list_on_dialog_accommodation, this);
     }
 
     private void initInstances() {
         // findViewById here
-        ivImgPlace = (ImageView) findViewById(R.id.ivImgPlace);
-        tvNamePlace = (TextView) findViewById(R.id.tvNamePlace);
-        tvAddressPlace = (TextView) findViewById(R.id.tvAddressPlace);
-        tvCostPlace = (TextView) findViewById(R.id.tvCostPlace);
-        ivMap = (ImageView) findViewById(R.id.img_map);
+        ivImgAccomodation = (ImageView) findViewById(R.id.ivImgAccommodation);
+        tvNameAccommodation = (TextView) findViewById(R.id.tvNameAccommodation);
+        tvDetailAcccommodation = (TextView) findViewById(R.id.tvDetailAccommodation);
+        tvCostAccomodation = (TextView) findViewById(R.id.tvCostAccommodation);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -107,7 +104,8 @@ public class PlaceListItem extends BaseCustomViewGroup {
         // Restore State from bundle here
     }
 
-    public void setIvImgPlaceText (String url){
+
+    public void setIvImgAccommodationText (String url){
 
         url = HttpManager.UrlImage+url;
 
@@ -116,22 +114,18 @@ public class PlaceListItem extends BaseCustomViewGroup {
                 .bitmapTransform(new RoundedCornersTransformation(mContext, 20, 0,
                         RoundedCornersTransformation.CornerType.ALL))
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                .into(ivImgPlace);
+                .into(ivImgAccomodation);
     }
 
-    public void setTvNamePlaceText (String text){
-        tvNamePlace.setText(text);
+    public void setTvNameAccommodationText (String text){
+        tvNameAccommodation.setText(text);
     }
 
-    public void setTvAddressPlaceText (String text){
-        tvAddressPlace.setText("ที่อยู่ : "+text);
+    public void setTvDetailAccommodationText (String text){
+        tvDetailAcccommodation.setText("รายละเอียด: "+text);
     }
 
-    public void setTvCostPlaceText (int text){
-        tvCostPlace.setText(String.valueOf(text));
-    }
-
-    public ImageView getIvMap(){
-        return ivMap;
+    public void setTvCostAccommodationText (int text){
+        tvCostAccomodation.setText(String.valueOf(text));
     }
 }

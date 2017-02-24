@@ -77,4 +77,6 @@
     <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
     <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>
+    <string name="add_place_text">เพิ่มสถานที่ท่องเที่ยว</string>
+    <string name="add_restaurant_text">เพิ่มร้านอาหาร</string>
 </resources>

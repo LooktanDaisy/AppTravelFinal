@@ -17,33 +17,31 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
- * Created by Wachiraya_Kam on 2/22/2017.
+ * Created by Wachiraya_Kam on 2/24/2017.
  */
 
-public class PlaceListItem extends BaseCustomViewGroup {
+public class RestaurantListItem extends BaseCustomViewGroup {
 
     private Context mContext;
+    ImageView ivImgRestaurant;
+    TextView tvNameRestaurant;
+    TextView tvDetailRestaurant;
+    TextView tvCostRestaurant;
 
-    ImageView ivImgPlace,ivMap;
-    TextView tvNamePlace;
-    TextView tvAddressPlace;
-    TextView tvCostPlace;
-
-
-    public PlaceListItem(Context context) {
+    public RestaurantListItem(Context context) {
         super(context);
         initInflate();
         initInstances();
     }
 
-    public PlaceListItem(Context context, AttributeSet attrs) {
+    public RestaurantListItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         initInflate();
         initInstances();
         initWithAttrs(attrs, 0, 0);
     }
 
-    public PlaceListItem(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RestaurantListItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initInflate();
         initInstances();
@@ -51,7 +49,7 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     @TargetApi(21)
-    public PlaceListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RestaurantListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initInflate();
         initInstances();
@@ -59,16 +57,15 @@ public class PlaceListItem extends BaseCustomViewGroup {
     }
 
     private void initInflate() {
-        inflate(getContext(), R.layout.row_list_on_dialog, this);
+        inflate(getContext(), R.layout.row_list_on_dialog_restaurant, this);
     }
 
     private void initInstances() {
         // findViewById here
-        ivImgPlace = (ImageView) findViewById(R.id.ivImgPlace);
-        tvNamePlace = (TextView) findViewById(R.id.tvNamePlace);
-        tvAddressPlace = (TextView) findViewById(R.id.tvAddressPlace);
-        tvCostPlace = (TextView) findViewById(R.id.tvCostPlace);
-        ivMap = (ImageView) findViewById(R.id.img_map);
+        ivImgRestaurant = (ImageView) findViewById(R.id.ivImgRestaurant);
+        tvNameRestaurant = (TextView) findViewById(R.id.tvNameRestaurant);
+        tvDetailRestaurant = (TextView) findViewById(R.id.tvDetailRestaurant);
+        tvCostRestaurant = (TextView) findViewById(R.id.tvCostRestaurant);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -107,7 +104,8 @@ public class PlaceListItem extends BaseCustomViewGroup {
         // Restore State from bundle here
     }
 
-    public void setIvImgPlaceText (String url){
+
+    public void setIvImgRestaurantText (String url){
 
         url = HttpManager.UrlImage+url;
 
@@ -116,22 +114,19 @@ public class PlaceListItem extends BaseCustomViewGroup {
                 .bitmapTransform(new RoundedCornersTransformation(mContext, 20, 0,
                         RoundedCornersTransformation.CornerType.ALL))
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                .into(ivImgPlace);
+                .into(ivImgRestaurant);
     }
 
-    public void setTvNamePlaceText (String text){
-        tvNamePlace.setText(text);
+    public void setTvNameRestaurantText (String text){
+        tvNameRestaurant.setText(text);
     }
 
-    public void setTvAddressPlaceText (String text){
-        tvAddressPlace.setText("ที่อยู่ : "+text);
+    public void setTvDetailRestaurantText (String text){
+        tvDetailRestaurant.setText("รายละเอียด: "+text);
     }
 
-    public void setTvCostPlaceText (int text){
-        tvCostPlace.setText(String.valueOf(text));
-    }
-
-    public ImageView getIvMap(){
-        return ivMap;
+    public void setTvCostRestaurantText (int text){
+        tvCostRestaurant.setText(String.valueOf(text));
     }
 }
+

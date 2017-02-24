@@ -1,7 +1,7 @@
 package com.application.youngdeveloper.apptravelfinal.screen;
 
-import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,23 +10,23 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.application.youngdeveloper.apptravelfinal.R;
-import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
+import com.application.youngdeveloper.apptravelfinal.adapter.AccommodationListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 
 /**
  * Created by Wachiraya_Kam on 2/23/2017.
  */
 
-public class Screen_Dialog_Place extends DialogFragment {
+public class Screen_Dialog_Accomodation extends DialogFragment {
 
-    private ListView lvListPlace;
+    private ListView lvListAccomodation;
 
-    public Screen_Dialog_Place() {
+    public Screen_Dialog_Accomodation() {
         super();
     }
 
-    public static Screen_Dialog_Place newInstance() {
-        Screen_Dialog_Place fragment = new Screen_Dialog_Place();
+    public static Screen_Dialog_Accomodation newInstance() {
+        Screen_Dialog_Accomodation fragment = new Screen_Dialog_Accomodation();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -34,7 +34,7 @@ public class Screen_Dialog_Place extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dialog_choose_to_list, container, false);
+        View rootView = inflater.inflate(R.layout.dialog_choose_to_list_accom, container, false);
 
 
 
@@ -43,28 +43,17 @@ public class Screen_Dialog_Place extends DialogFragment {
     }
 
     private void initialView(View rootView) {
-        lvListPlace = (ListView) rootView.findViewById(R.id.lvListPlace);
+        lvListAccomodation = (ListView) rootView.findViewById(R.id.lvListAccommodation);
 
         setListView();
 
     }
 
     private void setListView() {
-        PlaceListAdapter listPlaceAdapter = new PlaceListAdapter();
-        listPlaceAdapter.setActivity(getActivity());
-        lvListPlace.setAdapter(listPlaceAdapter);
+        AccommodationListAdapter listAccommodationAdapter = new AccommodationListAdapter();
+        lvListAccomodation.setAdapter(listAccommodationAdapter);
 
     }
-
-
-
-    private void setSpinnerProvince(Spinner provinceSpinner) {
-
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_item, Provinces.provinces);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
-        provinceSpinner.setAdapter(spinnerArrayAdapter);
-    }
-
 
 
     @Override
@@ -101,6 +90,8 @@ public class Screen_Dialog_Place extends DialogFragment {
 
         }
     }
+
+
 
 
 }

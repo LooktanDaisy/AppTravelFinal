@@ -11,20 +11,20 @@
         android:layout_margin="@dimen/MarginSpaceXXL"
         android:background="@drawable/border_add_on_list_grey"
         android:padding="@dimen/PaddingSpace"
-        android:id="@+id/dialog_Place">
+        android:id="@+id/dialog_accommodation">
 
         <TextView
-            android:text="@string/add_place_text"
+            android:text="@string/add_accom_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView34"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeS"
-            android:layout_marginTop="@dimen/MarginSpaceS"
-            android:layout_marginBottom="@dimen/MarginSpaceS" />
+            android:layout_marginLeft="@dimen/MarginSpace"
+            android:layout_marginTop="@dimen/MarginSpaceS" />
 
         <ListView
-            android:id="@+id/lvListPlace"
+            android:id="@+id/lvListAccommodation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/textView34"/>
