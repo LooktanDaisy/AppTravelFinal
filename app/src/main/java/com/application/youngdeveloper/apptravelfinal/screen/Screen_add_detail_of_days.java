@@ -40,7 +40,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
     private Date thisDate;
     private TextView tvDate,tvBack;
-    private ImageView imgBack,imgAddAccom;
+    private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant;
+
 
     public Screen_add_detail_of_days() {
         super();
@@ -84,6 +85,12 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
         imgAddAccom = (ImageView) rootView.findViewById(R.id.addAccom);
         imgAddAccom.setOnClickListener(this);
+
+        imgAddPlace = (ImageView) rootView.findViewById(R.id.add_travel_place);
+        imgAddPlace.setOnClickListener(this);
+
+        imgAddRestaurant = (ImageView) rootView.findViewById(R.id.add_restaurant);
+        imgAddRestaurant.setOnClickListener(this);
 
 
 
@@ -130,12 +137,18 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
             showAlertDialog();
 
         }else if(view == imgAddAccom){
-            showDialogListPlace();
+            showDialogListAccommodation();
         }
 
+        else if (view == imgAddPlace){
+            showDialogListPlace();
+
+        }else if(view == imgAddRestaurant){
+            showDialogListRestaurant();
+        }
+
+
     }
-
-
 
 
     private void showAlertDialog(){
@@ -167,11 +180,22 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
     }
 
 
+    private void showDialogListAccommodation() {
+        DialogFragment newFragment = Screen_Dialog_Accomodation.newInstance();
+        newFragment.setStyle(DialogFragment.STYLE_NORMAL,R.style.DialogFullScreen);
+        newFragment.show(getFragmentManager(), "Screen_Dialog_Accommodation");
+    }
 
     private void showDialogListPlace(){
         DialogFragment newFragment = Screen_Dialog_Place.newInstance();
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen );
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
+    }
+
+    private void showDialogListRestaurant() {
+        DialogFragment newFragment = Screen_Dialog_Restaurant.newInstance();
+        newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen);
+        newFragment.show(getFragmentManager(), "Screen_Dialog_Restaurant");
     }
 
 }

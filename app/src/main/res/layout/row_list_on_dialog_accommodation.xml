@@ -91,7 +91,7 @@
             android:layout_height="30dp"
             app:srcCompat="@drawable/ic_map"
 
-            android:id="@+id/imageView12"
+            android:id="@+id/img_map"
             android:layout_alignBottom="@+id/textView38"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>

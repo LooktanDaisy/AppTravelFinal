@@ -48,6 +48,7 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
 
     private void setListView() {
         RestaurantListAdapter listRestaurantAdapter = new RestaurantListAdapter();
+        listRestaurantAdapter.setActivity(getActivity());
         lvListRestaurant.setAdapter(listRestaurantAdapter);
 
     }

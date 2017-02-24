@@ -2,8 +2,13 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 
 import android.content.Context;
 
+import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
+
+import java.util.List;
 
 /**
  * Created by Wachiraya_Kam on 2/24/2017.
@@ -32,5 +37,18 @@ public class RestaurantListManager {
 
     public void setDao(RestaurantListCollectionDao dao) {
         this.dao = dao;
+    }
+
+
+    public RestaurantListDao getRestaurant(int id_Restaurant) {
+        RestaurantListDao RESTAURANT = null;
+        List<RestaurantListDao> ListRESTAURANT = getDao().getData();
+        int i;
+        for (i = 0; i < ListRESTAURANT.size(); i++) {
+            if (ListRESTAURANT.get(i).getId() == id_Restaurant) {
+                RESTAURANT = ListRESTAURANT.get(i);
+            }
+        }
+        return RESTAURANT;
     }
 }

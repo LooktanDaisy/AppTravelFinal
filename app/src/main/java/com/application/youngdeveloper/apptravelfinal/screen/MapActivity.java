@@ -11,9 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
+import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
+import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -32,8 +37,11 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
-    private Integer id_place;
+    private Integer id;
     private PlaceListDao PLACE;
+    private AccommodationListDao ACCOMMODATION;
+    private RestaurantListDao RESTAURANT;
+    private Integer id_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +49,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         Intent getPLACE = getIntent();
-        id_place = getPLACE.getIntExtra("ID_PLACE", 0);
+        id = getPLACE.getIntExtra("ID", 0);
+        id_type = getPLACE.getIntExtra("TYPE_ID",0);
 
-        PLACE = PlaceListManager.getInstance().getPlace(id_place);
+        if (id_type == Type_id_item.TYPE_PLACE) {
+            PLACE = PlaceListManager.getInstance().getPlace(id);
+        } else if (id_type == Type_id_item.TYPE_ACCOMMODATION) {
+            ACCOMMODATION = AccommodationListManager.getInstance().getAccommodation(id);
+        } else if (id_type == Type_id_item.TYPE_RESTAURANT){
+            RESTAURANT = RestaurantListManager.getInstance().getRestaurant(id);
+        }
 
         /**
          * Initial Map

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.application.youngdeveloper.apptravelfinal.R;
+import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
@@ -59,7 +60,9 @@ public class PlaceListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent openMap = new Intent(MainActivity, MapActivity.class);
-                openMap.putExtra("ID_PLACE",dao.getId());
+                openMap.putExtra("ID",dao.getId());
+                openMap.putExtra("TYPE_ID", Type_id_item.TYPE_PLACE);
+
                 MainActivity.startActivity(openMap);
                 MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
             }

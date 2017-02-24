@@ -51,6 +51,7 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private void setListView() {
         AccommodationListAdapter listAccommodationAdapter = new AccommodationListAdapter();
+        listAccommodationAdapter.setActivity(getActivity());
         lvListAccomodation.setAdapter(listAccommodationAdapter);
 
     }
