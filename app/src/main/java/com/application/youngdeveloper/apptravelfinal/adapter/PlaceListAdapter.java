@@ -11,6 +11,8 @@ import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Place;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 
 /**
@@ -20,6 +22,8 @@ import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 public class PlaceListAdapter extends BaseAdapter {
 
     private FragmentActivity MainActivity;
+    private Screen_add_detail_of_days MainControl;
+    private Screen_Dialog_Place Control_Main_Dialog;
 
     @Override
     public int getCount() {
@@ -68,11 +72,29 @@ public class PlaceListAdapter extends BaseAdapter {
             }
         });
 
+        /**
+         * Set add button
+         */
+        item.getIvAdd().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainControl.addItemToPlace(String.valueOf(dao.getId()));
+                Control_Main_Dialog.dismiss();
+//                MainActivity.finish();
+//                MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
+            }
+        });
+
 
         return item;
     }
 
-    public void setActivity(FragmentActivity activity) {
+    public void setActivity(FragmentActivity activity, Screen_Dialog_Place screen_dialog_place) {
         MainActivity = activity;
+        Control_Main_Dialog = screen_dialog_place;
+    }
+
+    public void setMainControl(Screen_add_detail_of_days controlMainScreen){
+        MainControl = controlMainScreen;
     }
 }

@@ -74,15 +74,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        if (PLACE != null) {
-            LatLng latLng = new LatLng(Double.parseDouble(PLACE.getLat().trim()), Double.parseDouble(PLACE.getLng().trim()));
-            googleMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location))
-                    .position(latLng)
-                    .title(PLACE.getName()));
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-            googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
+        //TODO:MAP
+
+        if (id_type == Type_id_item.TYPE_PLACE) {
+
+            if (PLACE != null) {
+                LatLng latLng = new LatLng(Double.parseDouble(PLACE.getLat().trim()), Double.parseDouble(PLACE.getLng().trim()));
+                googleMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location))
+                        .position(latLng)
+                        .title(PLACE.getName()));
+
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
+
+            }
+
+        } else if (id_type == Type_id_item.TYPE_ACCOMMODATION) {
+
+        } else if (id_type == Type_id_item.TYPE_RESTAURANT){
 
         }
 

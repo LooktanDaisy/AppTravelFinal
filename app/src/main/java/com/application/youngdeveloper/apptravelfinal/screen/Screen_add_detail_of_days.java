@@ -8,6 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +19,17 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
+import com.application.youngdeveloper.apptravelfinal.adapter.ChooseitemToListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
+import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 
@@ -40,6 +45,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
     private Date thisDate;
     private TextView tvDate,tvBack;
+    private RecyclerView listAccom,listPlace;
+    private ChooseitemToListAdapter adapterAccom,adapterPlace;
     private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant;
 
 
@@ -92,10 +99,34 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         imgAddRestaurant = (ImageView) rootView.findViewById(R.id.add_restaurant);
         imgAddRestaurant.setOnClickListener(this);
 
+        listAccom = (RecyclerView) rootView.findViewById(R.id.list_accom);
+        listPlace = (RecyclerView) rootView.findViewById(R.id.list_place);
+        setAccomRecycler();
+        setPlaceRecycler();
 
 
     }
 
+    private void setPlaceRecycler() {
+        adapterPlace = new ChooseitemToListAdapter(getContext());
+        listPlace.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayout.HORIZONTAL, false));
+        listPlace.setHasFixedSize(true);
+        listPlace.setAdapter(adapterPlace);
+    }
+
+
+    private void setAccomRecycler() {
+       adapterAccom = new ChooseitemToListAdapter(getContext());
+        listAccom.setAdapter(adapterAccom);
+    }
+
+    public void addItemToAccom(String idItem){
+        adapterAccom.addItem(idItem, Type_id_item.TYPE_ACCOMMODATION);
+    }
+
+    public void addItemToPlace(String idItem){
+        adapterPlace.addItem(idItem, Type_id_item.TYPE_PLACE);
+    }
 
 
 
@@ -142,8 +173,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
         else if (view == imgAddPlace){
             showDialogListPlace();
-
-        }else if(view == imgAddRestaurant){
+        }
+        else if(view == imgAddRestaurant){
             showDialogListRestaurant();
         }
 
@@ -187,7 +218,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
     }
 
     private void showDialogListPlace(){
-        DialogFragment newFragment = Screen_Dialog_Place.newInstance();
+        Screen_Dialog_Place newFragment = Screen_Dialog_Place.newInstance();
+        newFragment.setMainControl(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen );
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
     }

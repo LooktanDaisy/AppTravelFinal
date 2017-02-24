@@ -1,7 +1,10 @@
 package com.application.youngdeveloper.apptravelfinal.screen;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 public class Screen_Dialog_Place extends DialogFragment {
 
     private ListView lvListPlace;
+    private Screen_add_detail_of_days ControlMainScreen;
 
     public Screen_Dialog_Place() {
         super();
@@ -36,8 +40,6 @@ public class Screen_Dialog_Place extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.dialog_choose_to_list, container, false);
 
-
-
         initialView(rootView);
         return rootView;
     }
@@ -51,20 +53,12 @@ public class Screen_Dialog_Place extends DialogFragment {
 
     private void setListView() {
         PlaceListAdapter listPlaceAdapter = new PlaceListAdapter();
-        listPlaceAdapter.setActivity(getActivity());
+        listPlaceAdapter.setActivity(getActivity(),this);
+        listPlaceAdapter.setMainControl(ControlMainScreen);
         lvListPlace.setAdapter(listPlaceAdapter);
 
+
     }
-
-
-
-    private void setSpinnerProvince(Spinner provinceSpinner) {
-
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_item, Provinces.provinces);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
-        provinceSpinner.setAdapter(spinnerArrayAdapter);
-    }
-
 
 
     @Override
@@ -102,5 +96,9 @@ public class Screen_Dialog_Place extends DialogFragment {
         }
     }
 
+
+    public void setMainControl(Screen_add_detail_of_days activity) {
+        ControlMainScreen = activity;
+    }
 
 }
