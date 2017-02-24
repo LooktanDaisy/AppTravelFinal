@@ -36,14 +36,14 @@
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeSS"
             android:layout_below="@+id/name"
-            android:id="@+id/textView29"
+            android:id="@+id/textViewCost"
             android:layout_marginTop="@dimen/MarginSpaceS" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:srcCompat="@drawable/ic_delete"
-            android:id="@+id/imageView10"
+            android:id="@+id/imageViewDelete"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
