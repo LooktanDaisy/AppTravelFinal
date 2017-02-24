@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             frameLayout.animate()
                     .translationY(frameLayout.getHeight())
                     .alpha(0.0f)
-                    .setDuration(1000)
+                    .setDuration(2500)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -88,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tv_register = (TextView) findViewById(R.id.tv_register);
         tv_register.setOnClickListener(this);
+
+        btn_login.setEnabled(false);
+        btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
+        btn_login.setTextColor(getResources().getColor(R.color.white_trans));
+        tv_register.setEnabled(false);
+        tv_register.setTextColor(getResources().getColor(R.color.white_trans));
     }
 
     @Override
@@ -154,6 +160,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     PlaceListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
 
+
+                    /**
+                     * if connect server Enable button
+                     */
+                    btn_login.setEnabled(true);
+                    btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue));
+                    btn_login.setTextColor(getResources().getColor(R.color.white));
+                    tv_register.setEnabled(true);
+                    tv_register.setTextColor(getResources().getColor(R.color.white));
+
                 } else{
                     // Handle
                     try {
@@ -177,8 +193,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("ggg",t.toString());
 
-                btn_login.setEnabled(false);
-                tv_register.setEnabled(false);
+//                btn_login.setEnabled(false);
+//                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
+//                tv_register.setEnabled(false);
             }
         });
 
@@ -220,8 +237,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("ggg",t.toString());
 
-                btn_login.setEnabled(false);
-                tv_register.setEnabled(false);
+//                btn_login.setEnabled(false);
+//                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
+//                tv_register.setEnabled(false);
 
 
             }
@@ -265,8 +283,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("ggg",t.toString());
 
-                btn_login.setEnabled(false);
-                tv_register.setEnabled(false);
+//                btn_login.setEnabled(false);
+//                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
+//                tv_register.setEnabled(false);
             }
         });
     }

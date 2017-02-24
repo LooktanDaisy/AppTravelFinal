@@ -48,7 +48,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         /**
          * Initial Map
          */
-        //TODO:Map does not working
+
         mMapFragment = SupportMapFragment.newInstance();
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
