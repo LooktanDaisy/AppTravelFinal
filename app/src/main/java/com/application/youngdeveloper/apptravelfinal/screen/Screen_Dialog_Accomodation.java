@@ -20,6 +20,7 @@ import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private ListView lvListAccomodation;
+    private Screen_add_detail_of_days ControlMainScreen;
 
     public Screen_Dialog_Accomodation() {
         super();
@@ -51,7 +52,8 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private void setListView() {
         AccommodationListAdapter listAccommodationAdapter = new AccommodationListAdapter();
-        listAccommodationAdapter.setActivity(getActivity());
+        listAccommodationAdapter.setActivity(getActivity(),this);
+        listAccommodationAdapter.setMainControl(ControlMainScreen);
         lvListAccomodation.setAdapter(listAccommodationAdapter);
 
     }
@@ -92,7 +94,9 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
         }
     }
 
-
+    public void setMainControl(Screen_add_detail_of_days activity) {
+        ControlMainScreen = activity;
+    }
 
 
 }

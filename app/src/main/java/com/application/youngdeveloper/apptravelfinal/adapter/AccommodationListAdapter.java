@@ -12,6 +12,8 @@ import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Accomodation;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 
 /**
@@ -21,6 +23,8 @@ import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 public class AccommodationListAdapter extends BaseAdapter {
 
     private FragmentActivity MainActivity;
+    private Screen_add_detail_of_days MainControl;
+    private Screen_Dialog_Accomodation Control_Main_Dialog;
 
     @Override
     public int getCount() {
@@ -43,7 +47,7 @@ public class AccommodationListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AccommodationListItem item;
+        final AccommodationListItem item;
         if(convertView != null)
             item = (AccommodationListItem) convertView;
         else
@@ -67,10 +71,25 @@ public class AccommodationListAdapter extends BaseAdapter {
             }
         });
 
+        item.getIvAdd().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //TODO: Accommodation
+                        MainControl.addItemToAccom(String.valueOf(dao.getId()));
+                        Control_Main_Dialog.dismiss();
+            }
+        });
+
         return item;
     }
 
-    public void setActivity(FragmentActivity activity) {
+
+    public void setActivity(FragmentActivity activity, Screen_Dialog_Accomodation screen_dialog_accomodation) {
         MainActivity = activity;
+        Control_Main_Dialog = screen_dialog_accomodation;
+    }
+
+    public  void setMainControl(Screen_add_detail_of_days controlMainScreen){
+        MainControl = controlMainScreen;
     }
 }

@@ -23,7 +23,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class AccommodationListItem extends BaseCustomViewGroup {
 
     private Context mContext;
-    ImageView ivImgAccomodation,ivMap;
+    ImageView ivImgAccomodation,ivMap, ivAdd;
     TextView tvNameAccommodation;
     TextView tvDetailAcccommodation;
     TextView tvCostAccomodation;
@@ -67,6 +67,7 @@ public class AccommodationListItem extends BaseCustomViewGroup {
         tvDetailAcccommodation = (TextView) findViewById(R.id.tvDetailAccommodation);
         tvCostAccomodation = (TextView) findViewById(R.id.tvCostAccommodation);
         ivMap = (ImageView) findViewById(R.id.img_map);
+        ivAdd = (ImageView) findViewById(R.id.ivAdd);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -133,4 +134,7 @@ public class AccommodationListItem extends BaseCustomViewGroup {
     public ImageView getIvMap(){
         return ivMap;
     }
+
+    public ImageView getIvAdd() { return ivAdd;}
+
 }
