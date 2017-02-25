@@ -82,7 +82,7 @@
         <ImageView
             app:srcCompat="@drawable/ic_add"
 
-            android:id="@+id/imageView5"
+            android:id="@+id/ivAdd"
             android:layout_alignParentEnd="true"
             android:layout_width="30dp"
             android:layout_height="30dp" />

@@ -17,6 +17,7 @@ import com.application.youngdeveloper.apptravelfinal.adapter.RestaurantListAdapt
 public class Screen_Dialog_Restaurant extends DialogFragment {
 
     private ListView lvListRestaurant;
+    private Screen_add_detail_of_days ControlMainScreen;
 
     public Screen_Dialog_Restaurant() {
         super();
@@ -48,7 +49,8 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
 
     private void setListView() {
         RestaurantListAdapter listRestaurantAdapter = new RestaurantListAdapter();
-        listRestaurantAdapter.setActivity(getActivity());
+        listRestaurantAdapter.setActivity(getActivity(),this);
+        listRestaurantAdapter.setMainControl(ControlMainScreen);
         lvListRestaurant.setAdapter(listRestaurantAdapter);
 
     }
@@ -88,4 +90,9 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
 
         }
     }
+
+    public void setMainControl(Screen_add_detail_of_days activity) {
+        ControlMainScreen = activity;
+    }
+
 }

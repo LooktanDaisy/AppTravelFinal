@@ -13,6 +13,8 @@ import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Restaurant;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 import com.application.youngdeveloper.apptravelfinal.view.RestaurantListItem;
 
@@ -22,6 +24,9 @@ import com.application.youngdeveloper.apptravelfinal.view.RestaurantListItem;
 
 public class RestaurantListAdapter extends BaseAdapter {
     private FragmentActivity MainActivity;
+    private Screen_add_detail_of_days MainControl;
+    private Screen_Dialog_Restaurant Control_Main_Dialog;
+
 
     @Override
     public int getCount() {
@@ -67,10 +72,23 @@ public class RestaurantListAdapter extends BaseAdapter {
             }
         });
 
+        item.getIvAdd().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainControl.addItemToRestaurant(String.valueOf(dao.getId()));
+                Control_Main_Dialog.dismiss();
+            }
+        });
+
         return item;
     }
 
-    public void setActivity(FragmentActivity activity) {
+    public void setActivity(FragmentActivity activity, Screen_Dialog_Restaurant screen_dialog_restaurant) {
         MainActivity = activity;
+        Control_Main_Dialog = screen_dialog_restaurant;
+    }
+
+    public void setMainControl(Screen_add_detail_of_days controlMainScreen){
+        MainControl = controlMainScreen;
     }
 }

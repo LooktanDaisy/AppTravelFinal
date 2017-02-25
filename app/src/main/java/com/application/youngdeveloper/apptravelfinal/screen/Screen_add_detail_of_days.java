@@ -46,7 +46,7 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
     private Date thisDate;
     private TextView tvDate,tvBack;
-    private RecyclerView listAccom,listPlace;
+    private RecyclerView listAccom,listPlace,listRestaurant;
     private ChooseitemToListAdapter adapterAccom,adapterPlace, adapterRestaurant;
     private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant;
 
@@ -101,8 +101,11 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
         listAccom = (RecyclerView) rootView.findViewById(R.id.list_accom);
         listPlace = (RecyclerView) rootView.findViewById(R.id.list_place);
+        listRestaurant = (RecyclerView) rootView.findViewById(R.id.list_restaurant);
+
         setAccomRecycler();
         setPlaceRecycler();
+        setRestaurantRecycler();
 
 
     }
@@ -120,6 +123,13 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         listAccom.setLayoutManager(new GridLayoutManager(getActivity(),1, GridLayout.HORIZONTAL, false));
         listAccom.setHasFixedSize(true);
         listAccom.setAdapter(adapterAccom);
+    }
+
+    private void setRestaurantRecycler(){
+        adapterRestaurant = new ChooseitemToListAdapter(getContext());
+        listRestaurant.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayout.HORIZONTAL, false));
+        listRestaurant.setHasFixedSize(true);
+        listRestaurant.setAdapter(adapterRestaurant);
     }
 
     public void addItemToAccom(String idItem){
@@ -236,8 +246,10 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
     }
 
+    //TODO: Continue Restaurant
     private void showDialogListRestaurant() {
-        DialogFragment newFragment = Screen_Dialog_Restaurant.newInstance();
+        Screen_Dialog_Restaurant newFragment = Screen_Dialog_Restaurant.newInstance();
+        newFragment.setMainControl(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen);
         newFragment.show(getFragmentManager(), "Screen_Dialog_Restaurant");
     }
