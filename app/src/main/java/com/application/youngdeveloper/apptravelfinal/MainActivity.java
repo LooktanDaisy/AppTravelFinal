@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 public void run() {
 
-                    if (responseText.contains("wrong")) {
+                    if (responseText.contains("wrong username or password")) {
 
                         /**
                          * Login Fail check by echo from Server

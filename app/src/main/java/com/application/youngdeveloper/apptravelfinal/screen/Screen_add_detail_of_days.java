@@ -2,6 +2,7 @@ package com.application.youngdeveloper.apptravelfinal.screen;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
@@ -72,7 +74,6 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
 
         initialView(rootView);
-
 
         return rootView;
     }
@@ -163,7 +164,11 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             // Restore Instance State here
+
         }
+
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     @Override
