@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpManager {
 
     public static String UrlImage = "http://202.28.94.32/2559/563020499-9/tgst/img/";
+    public static String UrlPHP = "http://202.28.94.32/2559/563020499-9/tgst/php_android/";
 
     private static HttpManager instance;
 
@@ -40,7 +41,7 @@ public class HttpManager {
          */
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://202.28.94.32/2559/563020499-9/tgst/php_android/")
+                .baseUrl(UrlPHP)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

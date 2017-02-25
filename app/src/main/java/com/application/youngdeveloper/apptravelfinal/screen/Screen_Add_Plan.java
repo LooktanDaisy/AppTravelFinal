@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
-import com.application.youngdeveloper.apptravelfinal.datamanager.DataManager;
+import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 
 import java.text.ParseException;

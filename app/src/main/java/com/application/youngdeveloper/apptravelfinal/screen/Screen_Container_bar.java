@@ -113,7 +113,7 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
             setColorActive(tvProfile,imgProfile);
 
 
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Dialog_Place.newInstance(),TAG).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_Account.newInstance(),TAG).commit();
 
         }
 

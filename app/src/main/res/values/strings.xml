@@ -55,6 +55,8 @@
     <string name="are_you_sure_cancel_plan">แก้ไขแผนการท่องเที่ยว</string>
     <string name="are_you_sure_back_to_choose_day">กลับไปยังหน้าเลือกวันที่</string>
     <string name="choose_day">กรุณาเลือกวันที่ต้องการ</string>
+    <string name="add_place_text">เพิ่มสถานที่ท่องเที่ยว</string>
+    <string name="add_restaurant_text">เพิ่มร้านอาหาร</string>
 
     <string-array name="custom_months">
         <item>มกราคม</item>
@@ -75,8 +77,8 @@
     <string name="E01">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
     <string name="E02">กรุณากรอกข้อมูลให้ครบถ้วน</string>
     <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
+
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
     <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>
-    <string name="add_place_text">เพิ่มสถานที่ท่องเที่ยว</string>
-    <string name="add_restaurant_text">เพิ่มร้านอาหาร</string>
+
 </resources>

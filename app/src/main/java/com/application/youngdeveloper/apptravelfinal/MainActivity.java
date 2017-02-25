@@ -3,12 +3,11 @@ package com.application.youngdeveloper.apptravelfinal;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -16,7 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.application.youngdeveloper.apptravelfinal.adapter.AccommodationListAdapter;
 import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
@@ -25,10 +23,23 @@ import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListMa
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +49,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Create View
-    private EditText edt_user,edt_password;
+    private EditText edt_user, edt_password;
     private Button btn_login;
     private TextView tv_register;
     private FrameLayout frameLayout;
@@ -50,14 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_login);
 
+        /**
+         * set for connect http
+         */
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
 
         //downloadDataFromServer();
 
     }
-
-
 
 
     @Override
@@ -67,19 +84,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         downloadDataFromServer();
 
-            frameLayout.animate()
-                    .translationY(frameLayout.getHeight())
-                    .alpha(0.0f)
-                    .setDuration(2500)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            frameLayout.setVisibility(View.GONE);
-                        }
-                    });
-        }
-
+        frameLayout.animate()
+                .translationY(frameLayout.getHeight())
+                .alpha(0.0f)
+                .setDuration(2500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        frameLayout.setVisibility(View.GONE);
+                    }
+                });
+    }
 
 
     private void initialView() {
@@ -103,44 +119,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
 
-            if(view == tv_register){
-                Intent callRegisterScreen = new Intent(MainActivity.this, Screen_register.class);
-                startActivity(callRegisterScreen);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        if (view == tv_register) {
+            Intent callRegisterScreen = new Intent(MainActivity.this, Screen_register.class);
+            startActivity(callRegisterScreen);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
-            }else if(view == btn_login){
-                /**
-                 * Check blank and Valid with method
-                 */
+        } else if (view == btn_login) {
+            /**
+             * Check blank and Valid with method
+             */
 
-                if(CheckBlankEditText(edt_user)){
-                    if(CheckBlankEditText(edt_password)){
+            if (CheckBlankEditText(edt_user)) {
+                if (CheckBlankEditText(edt_password)) {
 
-                        /**
-                         * Check correct Here and call Main Screen
-                         */
+                    /**
+                     * Check correct Here and call Main Screen
+                     */
 
-                        Intent ShowBarMenuScreen = new Intent(MainActivity.this, Screen_Container_bar.class);
-                        ShowBarMenuScreen.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ShowBarMenuScreen);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    CheckLogin();
 
-
-                        finish();
-
-                    }
                 }
             }
+        }
 
 
     }
 
+    private void ShowMainScreenAfterLogin(){
+        Intent ShowBarMenuScreen = new Intent(MainActivity.this, Screen_Container_bar.class);
+        ShowBarMenuScreen.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(ShowBarMenuScreen);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        finish();
+    }
+
     private boolean CheckBlankEditText(EditText edittext) {
         String textFromEdittex = edittext.getText().toString();
-        if(textFromEdittex.isEmpty() || textFromEdittex.contains(" ")){
-            Toast.makeText(this.getApplicationContext(),R.string.E01,Toast.LENGTH_SHORT).show();
+        if (textFromEdittex.isEmpty() || textFromEdittex.contains(" ")) {
+            Toast.makeText(this.getApplicationContext(), R.string.E01, Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -158,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call<PlaceListCollectionDao> call,
                                    Response<PlaceListCollectionDao> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     PlaceListCollectionDao dao = response.body();
                     PlaceListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
@@ -173,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     tv_register.setEnabled(true);
                     tv_register.setTextColor(getResources().getColor(R.color.white));
 
-                } else{
+                } else {
                     // Handle
                     try {
                         Toast.makeText(MainActivity.this, "โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ", Toast.LENGTH_SHORT).show();
@@ -192,9 +210,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<PlaceListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(MainActivity.this, "โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ", Toast.LENGTH_LONG).show();
 
-                Log.d("ggg",t.toString());
+                Log.d("ggg", t.toString());
 
 //                btn_login.setEnabled(false);
 //                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
@@ -212,12 +230,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call<RestaurantListCollectionDao> call,
                                    Response<RestaurantListCollectionDao> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     RestaurantListCollectionDao dao = response.body();
                     RestaurantListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
 
-                } else{
+                } else {
                     // Handle
                     try {
                         Toast.makeText(MainActivity.this, "โหลดข้อมูลร้านอาหารไม่สำเร็จ", Toast.LENGTH_SHORT).show();
@@ -236,9 +254,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<RestaurantListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(MainActivity.this, R.string.err_loadRestaurant,Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, R.string.err_loadRestaurant, Toast.LENGTH_LONG).show();
 
-                Log.d("ggg",t.toString());
+                Log.d("ggg", t.toString());
 
 //                btn_login.setEnabled(false);
 //                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
@@ -258,12 +276,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call<AccommodationListCollectionDao> call,
                                    Response<AccommodationListCollectionDao> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     AccommodationListCollectionDao dao = response.body();
                     AccommodationListManager.getInstance().setDao(dao);
                     //listAdapter.notifyDataSetChanged();
 
-                } else{
+                } else {
                     // Handle
                     try {
                         Toast.makeText(MainActivity.this, R.string.err_loadAccommodation, Toast.LENGTH_SHORT).show();
@@ -282,17 +300,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Call<AccommodationListCollectionDao> call, Throwable t) {
                 // Handle
 
-                Toast.makeText(MainActivity.this, R.string.err_loadAccommodation,Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, R.string.err_loadAccommodation, Toast.LENGTH_LONG).show();
 
-                Log.d("ggg",t.toString());
+                Log.d("ggg", t.toString());
 
 //                btn_login.setEnabled(false);
 //                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
 //                tv_register.setEnabled(false);
             }
         });
+
+
     }
 
 
+    private void CheckLogin() {
+
+        try {
+            ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("username", edt_user.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("password", edt_password.getText().toString().trim()));
+
+                /* Set to Http post*/
+                /* End set Value*/
+            HttpClient httpclient = new DefaultHttpClient();
+                /* Set URL*/
+            HttpPost httppost = new HttpPost(HttpManager.UrlPHP + "android_checklogin.php");
+                /* End Set URL*/
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            final String responseText = httpclient.execute(httppost, responseHandler);
+
+            runOnUiThread(new Runnable() {
+
+                public void run() {
+
+                    if (responseText.contains("wrong")) {
+
+                        /**
+                         * Login Fail check by echo from Server
+                         */
+
+                        Toast.makeText(getApplicationContext(), R.string.E01, Toast.LENGTH_SHORT).show();
+
+                        Log.d("responseText", "Exception : " + responseText);
+
+                    } else {
+
+                        String[] dataText = responseText.split(",");
+                        Log.d("responseText", "Data From Sever : " + responseText);
+
+                        //response ID,NAME,EMAIL
+                        User.ID = dataText[0];
+                        User.NAME = dataText[1];
+                        User.EMAIL = dataText[2];
+
+                        /**
+                         * Login Success
+                         */
+                        ShowMainScreenAfterLogin();
+
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            Log.d("log_err", "Error in http connection " + e.toString());
+
+        }
+
+
+
+    }
 
 }
