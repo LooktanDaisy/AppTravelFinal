@@ -75,8 +75,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
 
-        //TODO:MAP
-
         if (id_type == Type_id_item.TYPE_PLACE) {
 
             if (PLACE != null) {
@@ -93,7 +91,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         } else if (id_type == Type_id_item.TYPE_ACCOMMODATION) {
 
+            if (ACCOMMODATION != null) {
+                LatLng latLng = new LatLng(Double.parseDouble(ACCOMMODATION.getLat().trim()), Double.parseDouble(ACCOMMODATION.getLng().trim()));
+                googleMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location))
+                        .position(latLng)
+                        .title(ACCOMMODATION.getName()));
+
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
+
+            }
+
         } else if (id_type == Type_id_item.TYPE_RESTAURANT){
+
+            if (RESTAURANT != null) {
+                LatLng latLng = new LatLng(Double.parseDouble(RESTAURANT.getLat().trim()), Double.parseDouble(RESTAURANT.getLng().trim()));
+                googleMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location))
+                        .position(latLng)
+                        .title(RESTAURANT.getName()));
+
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
+
+            }
 
         }
 
@@ -126,28 +148,81 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             myContentsView = inflater.inflate(R.layout.row_list_on_map,
                     null);
 
-            TextView tvName = (TextView) myContentsView.findViewById(R.id.tvNamePlace);
-            TextView tvAddress = (TextView) myContentsView.findViewById(R.id.tvAddressPlace);
-            TextView tvCost = (TextView) myContentsView.findViewById(R.id.tvCostPlace);
-            ImageView imageView = (ImageView) myContentsView.findViewById(R.id.ivImgPlace);
+            TextView tvName = (TextView) myContentsView.findViewById(R.id.tvName);
+            TextView tvAddress = (TextView) myContentsView.findViewById(R.id.tvAddress);
+            TextView tvCost = (TextView) myContentsView.findViewById(R.id.tvCost);
+            ImageView imageView = (ImageView) myContentsView.findViewById(R.id.ivImg);
 
 
-            tvName.setText(PLACE.getName());
-            tvAddress.setText(PLACE.getDetail());
-            tvCost.setText(String.valueOf(PLACE.getCost()));
+            if (id_type == Type_id_item.TYPE_PLACE) {
 
-            /**
-             * URL image
-             */
+                if (PLACE != null) {
+                    tvName.setText(PLACE.getName());
+                    tvAddress.setText(PLACE.getDetail());
+                    tvCost.setText(String.valueOf(PLACE.getCost()));
 
-            String url = HttpManager.UrlImage + PLACE.getImg();
+                    /**
+                     * URL image
+                     */
 
-            Glide.with(getApplicationContext())
-                    .load(url)
-                    .bitmapTransform(new RoundedCornersTransformation(getApplicationContext(), 20, 0,
-                            RoundedCornersTransformation.CornerType.ALL))
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                    .into(imageView);
+                    String url = HttpManager.UrlImage + PLACE.getImg();
+
+                    Glide.with(getApplicationContext())
+                            .load(url)
+                            .bitmapTransform(new RoundedCornersTransformation(getApplicationContext(), 20, 0,
+                                    RoundedCornersTransformation.CornerType.ALL))
+                            .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                            .into(imageView);
+                }
+
+            } else if (id_type == Type_id_item.TYPE_ACCOMMODATION) {
+
+                if (ACCOMMODATION != null) {
+                    tvName.setText(ACCOMMODATION.getName());
+                    tvAddress.setText(ACCOMMODATION.getDetail());
+                    tvCost.setText(String.valueOf(ACCOMMODATION.getPrice()));
+
+                    /**
+                     * URL image
+                     */
+
+                    String url = HttpManager.UrlImage + ACCOMMODATION.getImg();
+
+                    Glide.with(getApplicationContext())
+                            .load(url)
+                            .bitmapTransform(new RoundedCornersTransformation(getApplicationContext(), 20, 0,
+                                    RoundedCornersTransformation.CornerType.ALL))
+                            .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                            .into(imageView);
+
+                }
+
+            } else if (id_type == Type_id_item.TYPE_RESTAURANT){
+
+                if (RESTAURANT != null) {
+                    tvName.setText(RESTAURANT.getName());
+                    tvAddress.setText(RESTAURANT.getDetail());
+                    tvCost.setText(String.valueOf(RESTAURANT.getPrice()));
+
+                    /**
+                     * URL image
+                     */
+
+                    String url = HttpManager.UrlImage + RESTAURANT.getImg();
+
+                    Glide.with(getApplicationContext())
+                            .load(url)
+                            .bitmapTransform(new RoundedCornersTransformation(getApplicationContext(), 20, 0,
+                                    RoundedCornersTransformation.CornerType.ALL))
+                            .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                            .into(imageView);
+
+                }
+
+            }
+
+
+
 
             return myContentsView;
 

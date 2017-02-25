@@ -20,29 +20,29 @@
             android:text="ชื่อ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNameAccommodation"
-            android:layout_toRightOf="@+id/ivImgAccommodation"
+            android:id="@+id/tvName"
+            android:layout_toRightOf="@+id/ivImg"
             android:layout_marginLeft="@dimen/MarginSpaceS"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/FontSizeS"
-            android:layout_alignTop="@+id/ivImgPlace" />
+            android:layout_alignTop="@+id/ivImg" />
 
         <ImageView
             android:layout_height="120dp"
             app:srcCompat="@color/text_grey"
 
-            android:id="@+id/ivImgAccommodation"
+            android:id="@+id/ivImg"
             android:layout_width="120dp" />
 
         <TextView
             android:text="ที่อยู่"
             android:layout_height="wrap_content"
-            android:id="@+id/tvAddressAccommodation"
+            android:id="@+id/tvAddress"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeSSS"
-            android:layout_below="@+id/tvNameAccommodation"
-            android:layout_alignStart="@+id/tvNameAccommodation"
-            android:layout_above="@+id/tvCostAccommodation"
+            android:layout_below="@+id/tvName"
+            android:layout_alignStart="@+id/tvName"
+            android:layout_above="@+id/tvCost"
             android:layout_alignParentEnd="false"
             android:layout_width="130dp" />
 
@@ -50,11 +50,11 @@
             android:text="ราคา"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tvCostAccommodation"
+            android:id="@+id/tvCost"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/FontSizeS"
-            android:layout_alignBottom="@+id/ivImgAccommodation"
-            android:layout_alignStart="@+id/tvAddressAccommodation" />
+            android:layout_alignBottom="@+id/ivImg"
+            android:layout_alignStart="@+id/tvAddress" />
 
         <TextView
             android:text="@string/bath"
@@ -63,9 +63,9 @@
             android:id="@+id/textView38"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeS"
-            android:layout_alignBaseline="@+id/tvCostAccommodation"
-            android:layout_alignBottom="@+id/tvCostAccommodation"
-            android:layout_toEndOf="@+id/tvCostAccommodation" />
+            android:layout_alignBaseline="@+id/tvCost"
+            android:layout_alignBottom="@+id/tvCost"
+            android:layout_toEndOf="@+id/tvCost" />
 
     </RelativeLayout>
 </RelativeLayout>
