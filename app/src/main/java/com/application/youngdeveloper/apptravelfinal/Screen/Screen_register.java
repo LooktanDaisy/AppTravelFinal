@@ -130,25 +130,26 @@ public class Screen_register extends AppCompatActivity implements View.OnClickLi
                         Log.d("responseText", "Exception : " + responseText);
 
                     } else {
-                        String[] dataText = responseText.split(",");
-                        Log.d("responseText", "Data From Sever : " + responseText);
+//                        String[] dataText = responseText.split(",");
+//                        Log.d("responseText", "Data From Sever : " + responseText);
+//
+//                        //response NAME,EMAIL,PASSWORD
+//                        User.NAME = dataText[0];
+//                        User.EMAIL = dataText[1];
+//                        User.PASSWORD = dataText[2];
+//
+//                        /**
+//                         * Login Success
+//                         */
 
-                        //response NAME,EMAIL,PASSWORD
-                        User.NAME = dataText[0];
-                        User.EMAIL = dataText[1];
-                        User.PASSWORD = dataText[2];
-
-                        /**
-                         * Login Success
-                         */
-
+                        Toast.makeText(getApplicationContext(), R.string.register_success, Toast.LENGTH_SHORT).show();
                         ShowLoginScreenAfterRegister();
 
-                        /**
-                         * Register Fail check by echo from Server
-                         */
-
-                        Log.d("responseText", "Exception : " + responseText);
+//                        /**
+//                         * Register Fail check by echo from Server
+//                         */
+//
+//                        Log.d("responseText", "Exception : " + responseText);
 
                     }
 

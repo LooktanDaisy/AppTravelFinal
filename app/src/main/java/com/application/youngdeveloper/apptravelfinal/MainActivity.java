@@ -18,10 +18,12 @@ import android.widget.Toast;
 import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
@@ -136,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                      * Check correct Here and call Main Screen
                      */
 
+                    frameLayout.setVisibility(View.VISIBLE);
                     CheckLogin();
 
                 }
@@ -359,7 +362,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         /**
                          * Login Success
                          */
-                        ShowMainScreenAfterLogin();
+                        DownloadUserPlanOnserver();
+//                        ShowMainScreenAfterLogin();
 
                     }
                 }
@@ -372,6 +376,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+    }
+
+    private void DownloadUserPlanOnserver() {
+        /**
+         * Download Place
+         */
+
+        Call<PlanListCollectionDao> call = HttpManager.getInstance().getService().loadPlanList(User.ID);
+        call.enqueue(new Callback<PlanListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<PlanListCollectionDao> call,
+                                   Response<PlanListCollectionDao> response) {
+
+                if (response.isSuccessful()) {
+                    PlanListCollectionDao dao = response.body();
+                    if(dao.getData().size()>0) {
+                    PlanListManager.getInstance().setDao(dao);
+                    }
+
+                    /**
+                     * Show main screen when Loaded Plan
+                     */
+                    ShowMainScreenAfterLogin();
+
+                } else {
+                    // Handle
+                    try {
+                        Toast.makeText(MainActivity.this, "โหลดข้อมูลแผนการท่องเที่ยวไม่สำเร็จ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),
+                                response.errorBody().string(),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlanListCollectionDao> call, Throwable t) {
+                // Handle
+
+                Toast.makeText(MainActivity.this, "โหลดข้อมูลแผนการท่องเที่ยวไม่สำเร็จ", Toast.LENGTH_LONG).show();
+
+                Log.d("LOAD PLAN Error", t.toString());
+
+
+            }
+        });
     }
 
 }
