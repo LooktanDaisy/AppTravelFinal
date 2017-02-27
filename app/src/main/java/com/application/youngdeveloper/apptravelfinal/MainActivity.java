@@ -328,8 +328,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             HttpPost httppost = new HttpPost(HttpManager.UrlPHP + "android_checklogin.php");
                 /* End Set URL*/
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
 
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             final String responseText = httpclient.execute(httppost, responseHandler);

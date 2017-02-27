@@ -153,8 +153,6 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                 if(checkValidEditText(edtFoodCost)){
 
 
-
-
                                     AlertDialog alert = new AlertDialog.Builder(getContext())
                                             .setTitle(R.string.are_you_sure)
                                             .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
@@ -190,6 +188,8 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                      * Insert Plan to Database
                                                      */
                                                     //TODO: insert Plan to app and Server
+
+                                                    DataManager.getInstance().insertPlan();
 
                                                     /**
                                                      * send Budget to next screen

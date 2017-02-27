@@ -64,6 +64,9 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
         imgProfile = (ImageView) findViewById(R.id.imageProfile);
 
         setColorActive(tvHome,imgHome);
+        setColorUnActive(tvAddPlan,imgAddPlan);
+        setColorUnActive(tvMyPlan,imgMyPlan);
+        setColorUnActive(tvProfile,imgProfile);
 
     }
 

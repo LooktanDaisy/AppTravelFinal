@@ -53,9 +53,6 @@ public class Screen_register extends AppCompatActivity implements View.OnClickLi
         btn_register = (Button) findViewById(R.id.btn_register);
         btn_register.setOnClickListener(this);
 
-        strPassword = edText_password.getText().toString();
-        strCfPassword = edText_confirmpassword.getText().toString();
-
 
     }
 
@@ -71,6 +68,9 @@ public class Screen_register extends AppCompatActivity implements View.OnClickLi
                             /**
                              * Check correct blank
                              */
+
+                            strPassword = edText_password.getText().toString();
+                            strCfPassword = edText_confirmpassword.getText().toString();
 
                             //TODO: Check confirm password
                             if (strCfPassword.equals(strPassword)) {
@@ -113,8 +113,6 @@ public class Screen_register extends AppCompatActivity implements View.OnClickLi
                 HttpPost httppost = new HttpPost(HttpManager.UrlPHP + "android_insertuser.php");
                 /* End Set URL*/
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity entity = response.getEntity();
 
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
                 final String responseText = httpclient.execute(httppost, responseHandler);
