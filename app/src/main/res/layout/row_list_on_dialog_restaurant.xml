@@ -56,7 +56,6 @@
 
         <TextView
             android:text="ราคา"
-            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvCostRestaurant"
             android:textColor="@color/colorPrimary"
@@ -65,7 +64,8 @@
             android:ellipsize="end"
             android:paddingRight="@dimen/PaddingSpaceXL"
             android:layout_alignBottom="@+id/ivImgRestaurant"
-            android:layout_alignStart="@+id/tvDetailRestaurant" />
+            android:layout_alignStart="@+id/tvDetailRestaurant"
+            android:layout_width="80dp" />
 
         <TextView
             android:text="@string/bath"

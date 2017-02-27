@@ -54,7 +54,7 @@
 
         <TextView
             android:text="ราคา"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvCostPlace"
             android:textColor="@color/colorPrimary"

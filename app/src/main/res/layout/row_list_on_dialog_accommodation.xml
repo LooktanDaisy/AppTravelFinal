@@ -54,7 +54,6 @@
 
         <TextView
             android:text="ราคา"
-            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvCostAccommodation"
             android:textColor="@color/colorPrimary"
@@ -64,7 +63,8 @@
             android:paddingRight="@dimen/PaddingSpaceXL"
 
             android:layout_alignBottom="@+id/ivImgAccommodation"
-            android:layout_alignStart="@+id/tvDetailAccommodation" />
+            android:layout_alignStart="@+id/tvDetailAccommodation"
+            android:layout_width="80dp" />
 
         <TextView
             android:text="@string/bath"
