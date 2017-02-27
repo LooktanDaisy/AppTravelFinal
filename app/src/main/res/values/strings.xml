@@ -3,7 +3,7 @@
     <string name="home_text">หน้าแรก</string>
     <string name="plan_text">วางแผน</string>
     <string name="my_plan_text">แผนของฉัน</string>
-    <string name="user_text">บัญชีผู้ใช้</string>
+    <string name="user_text">ชื่อผู้ใช้</string>
     <string name="login">ลงชื่อเข้าใช้</string>
     <string name="register">สร้างบัญชีผู้ใช้</string>
     <string name="name_plan">ชื่อแผนการท่องเที่ยว</string>
@@ -44,7 +44,6 @@
     <string name="cost_accom_total">ราคาที่พักรวม</string>
     <string name="add_accom_text">เพิ่มที่พัก</string>
     <string name="add_travel_place">เพิ่มสถานที่ท่องเที่ยว</string>
-    <string name="user_name">เอดเวิร์ด เจแอนเดอร์สัน</string>
     <string name="logout">ลงชื่อออก</string>
     <string name="exit">ออกจากระบบ</string>
     <string name="cancel">ยกเลิก</string>
@@ -77,6 +76,8 @@
     <string name="E01">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
     <string name="E02">กรุณากรอกข้อมูลให้ครบถ้วน</string>
     <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
+    <string name="E04">ยืนยันรหัสผ่านไม่ถูกต้อง</string>
+    <string name="E05">กรุณากรอกชื่อผู้ใช้ใหม่</string>
 
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
     <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>

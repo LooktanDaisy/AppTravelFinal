@@ -29,7 +29,7 @@
 
             <EditText
                 android:id="@+id/edText_username"
-                android:hint="@string/email"
+                android:hint="@string/user_text"
                 android:textColorHint="@color/color_hint_white"
                 android:layout_below="@id/logo_app_white"
                 android:layout_width="match_parent"
