@@ -18,16 +18,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView34"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/FontSizeS"
-            android:layout_marginTop="@dimen/MarginSpaceS"
-            android:layout_marginBottom="@dimen/MarginSpaceS" />
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSSS"
+            android:layout_alignBottom="@+id/spinnerType"
+            android:layout_alignTop="@+id/spinnerType"
+            android:gravity="center" />
 
         <ListView
             android:id="@+id/lvListPlace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/textView34"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/dialog_Place"
+            android:id="@+id/spinnerType"
+            android:layout_toEndOf="@+id/textView34"
+            android:layout_marginLeft="@dimen/MarginSpace"
+            style="@style/Border_Edittext_Blue"/>
 
         <!--<android.support.v7.widget.RecyclerView-->
             <!--android:id="@+id/rvListPlace"-->

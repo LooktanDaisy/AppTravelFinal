@@ -80,6 +80,7 @@
     <string name="E05">กรุณากรอกชื่อผู้ใช้ใหม่</string>
 
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
+    <string name="err_loadPlace">โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ</string>
     <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>
     <string name="username">ชื่อบัญชีผู้ใช้</string>
     <string name="register_success">สมัครสมาชิกเรียบร้อยแล้ว</string>

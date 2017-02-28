@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
+import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListCollectionDao;
@@ -29,8 +30,6 @@ import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -46,6 +45,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -314,6 +314,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
+        DownloadTypePlace();
+
+
     }
 
 
@@ -364,6 +367,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          */
                         DownloadUserPlanOnserver();
 //                        ShowMainScreenAfterLogin();
+
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            Log.d("log_err", "Error in http connection " + e.toString());
+
+        }
+
+
+
+    }
+
+
+
+    private void DownloadTypePlace() {
+
+        try {
+            ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                /* Set to Http post*/
+                /* End set Value*/
+            HttpClient httpclient = new DefaultHttpClient();
+                /* Set URL*/
+            HttpPost httppost = new HttpPost(HttpManager.UrlPHP + "android_select_place_type.php");
+                /* End Set URL*/
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            final String responseText = httpclient.execute(httppost, responseHandler);
+
+            runOnUiThread(new Runnable() {
+
+                public void run() {
+
+                    if (responseText.contains("Error")) {
+
+                        /**
+                         * Fail download from Server
+                         */
+
+                        Toast.makeText(getApplicationContext(), R.string.err_loadPlace, Toast.LENGTH_SHORT).show();
+
+                        Log.d("responseText", "Exception : " + responseText);
+
+                    } else {
+
+                        String[] dataText = responseText.split(",");
+                        Log.d("responseText", "Data From Sever : " + responseText);
+
+                        if(dataText!=null){
+                            int i = 0;
+                            Type_id_item.PlaceTypes = new String[dataText.length];
+                            for(i=0;i<dataText.length;i++){
+                                Type_id_item.PlaceTypes[i] = dataText[i];
+                            }
+                        }
+
 
                     }
                 }

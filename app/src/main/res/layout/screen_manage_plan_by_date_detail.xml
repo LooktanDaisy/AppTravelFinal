@@ -75,8 +75,8 @@
         android:layout_below="@+id/textView22"
         android:layout_marginLeft="@dimen/MarginSpace"
         android:layout_marginRight="@dimen/MarginSpace"
-        android:layout_marginTop="@dimen/MarginSpace"
-        android:layout_marginBottom="@dimen/MarginSpace">
+        android:layout_marginTop="@dimen/MarginSpaceSS"
+        android:layout_marginBottom="@dimen/MarginSpaceS">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
         android:layout_below="@+id/row_hotel"
         android:layout_marginLeft="@dimen/MarginSpace"
         android:layout_marginRight="@dimen/MarginSpace"
-        android:layout_marginBottom="@dimen/MarginSpace">
+        android:layout_marginBottom="@dimen/MarginSpaceS">
 
         <ImageView
             android:layout_width="wrap_content"

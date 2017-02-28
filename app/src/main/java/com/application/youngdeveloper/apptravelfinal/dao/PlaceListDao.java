@@ -8,12 +8,21 @@ import com.google.gson.annotations.SerializedName;
 
 public class PlaceListDao {
     @SerializedName("id")           private int id;
+    @SerializedName("place_type_name") private String nameType;
     @SerializedName("name")         private String name;
     @SerializedName("lat")          private String lat;
     @SerializedName("lng")          private String lng;
     @SerializedName("detail")       private String detail;
     @SerializedName("img")          private String img;
     @SerializedName("cost")         private int cost;
+
+    public String getNameType() {
+        return nameType;
+    }
+
+    public void setNameType(String nameType) {
+        this.nameType = nameType;
+    }
 
     public int getId() {
         return id;
