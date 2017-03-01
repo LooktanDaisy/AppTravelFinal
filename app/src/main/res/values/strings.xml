@@ -78,6 +78,7 @@
     <string name="E03">เลือกวันที่ไม่ถูกต้อง</string>
     <string name="E04">ยืนยันรหัสผ่านไม่ถูกต้อง</string>
     <string name="E05">กรุณากรอกชื่อผู้ใช้ใหม่</string>
+    <string name="E06">กรุณาเลือกที่พักก่อนเป็นอันดับแรก</string>
 
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
     <string name="err_loadPlace">โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ</string>

@@ -16,6 +16,8 @@ import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Accomo
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 
+import java.util.ArrayList;
+
 /**
  * Created by Wachiraya_Kam on 2/23/2017.
  */
@@ -25,14 +27,19 @@ public class AccommodationListAdapter extends BaseAdapter {
     private FragmentActivity MainActivity;
     private Screen_add_detail_of_days MainControl;
     private Screen_Dialog_Accomodation Control_Main_Dialog;
+    private ArrayList<AccommodationListDao> AccomByCostLimit = new ArrayList<>();
 
     @Override
     public int getCount() {
-        if (AccommodationListManager.getInstance().getDao() == null)
+//        if (AccommodationListManager.getInstance().getDao() == null)
+//            return 0;
+//        if (AccommodationListManager.getInstance().getDao().getData() == null)
+//            return 0;
+//        return AccommodationListManager.getInstance().getDao().getData().size(); // get size of data
+        if (AccomByCostLimit == null)
             return 0;
-        if (AccommodationListManager.getInstance().getDao().getData() == null)
-            return 0;
-        return AccommodationListManager.getInstance().getDao().getData().size(); // get size of data
+
+        return AccomByCostLimit.size(); // get size of data
     }
 
     @Override
@@ -52,7 +59,8 @@ public class AccommodationListAdapter extends BaseAdapter {
             item = (AccommodationListItem) convertView;
         else
             item = new AccommodationListItem(parent.getContext());
-        final AccommodationListDao dao = (AccommodationListDao) getItem(position);
+//        final AccommodationListDao dao = (AccommodationListDao) getItem(position);
+        final AccommodationListDao dao = AccomByCostLimit.get(position);
         item.setIvImgAccommodationText(dao.getImg());
         item.setTvNameAccommodationText(dao.getName());
         item.setTvDetailAccommodationText(dao.getDetail());
@@ -74,8 +82,9 @@ public class AccommodationListAdapter extends BaseAdapter {
         item.getIvAdd().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO: Accommodation
+
                         MainControl.addItemToAccom(String.valueOf(dao.getId()));
+                        MainControl.setPointAccom(Double.parseDouble(dao.getLat()),Double.parseDouble(dao.getLng()));
                         Control_Main_Dialog.dismiss();
             }
         });
@@ -91,5 +100,15 @@ public class AccommodationListAdapter extends BaseAdapter {
 
     public  void setMainControl(Screen_add_detail_of_days controlMainScreen){
         MainControl = controlMainScreen;
+
+        /**
+         * get Accom with Cost Limit
+         */
+        getAccomByCostLimit();
+    }
+
+    public void getAccomByCostLimit(){
+        AccomByCostLimit = AccommodationListManager.getInstance().getDao().getAccomByCostLimit();
+
     }
 }

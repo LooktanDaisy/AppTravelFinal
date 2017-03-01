@@ -16,6 +16,16 @@ public class PlaceListDao {
     @SerializedName("img")          private String img;
     @SerializedName("cost")         private int cost;
 
+    private Double HowfarToAccom = 0.0;
+
+    public Double getHowfarToAccom() {
+        return HowfarToAccom;
+    }
+
+    public void setHowfarToAccom(Double howfarToAccom) {
+        HowfarToAccom = howfarToAccom;
+    }
+
     public String getNameType() {
         return nameType;
     }

@@ -53,6 +53,7 @@ public class ChooseitemToListAdapter extends RecyclerView.Adapter<ChooseitemToLi
             }
         }else if(TYPE_ID == Type_id_item.TYPE_ACCOMMODATION){
             if(ListItemAccom.contains(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)))==false) {
+                ListItemAccom.removeAll(ListItemAccom);
                 ListItemAccom.add(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)));
             }
         }else if(TYPE_ID == Type_id_item.TYPE_RESTAURANT){
@@ -98,6 +99,11 @@ public class ChooseitemToListAdapter extends RecyclerView.Adapter<ChooseitemToLi
 
             } else if (TYPE_ID == Type_id_item.TYPE_ACCOMMODATION) {
                 if(ListItemAccom.size()!=0) {
+                    /**
+                     * set pointAccom to Main
+                     */
+
+
                     AccommodationListDao dao = ListItemAccom.get(position);
                     holder.tvName.setText(dao.getName());
                     holder.tvCost.setText(dao.getPrice() + "  บาท");
@@ -118,6 +124,10 @@ public class ChooseitemToListAdapter extends RecyclerView.Adapter<ChooseitemToLi
                             notifyDataSetChanged();
                         }
                     });
+                    /**
+                     * Accom can change but can not delete
+                     */
+                    holder.imageDelete.setVisibility(View.GONE);
                 }
             } else if (TYPE_ID == Type_id_item.TYPE_RESTAURANT) {
                 if(ListItemRestau.size()!=0) {

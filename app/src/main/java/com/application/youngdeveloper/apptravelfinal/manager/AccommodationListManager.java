@@ -49,4 +49,7 @@ public class AccommodationListManager {
         return ACCOMMODATION;
     }
 
+
+
+
 }

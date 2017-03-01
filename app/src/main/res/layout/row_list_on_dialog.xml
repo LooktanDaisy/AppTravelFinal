@@ -9,7 +9,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/border_row_list_on_dialog"
-        android:paddingBottom="@dimen/PaddingSpace3XL"
+        android:paddingBottom="@dimen/PaddingSpaceXL"
         android:paddingLeft="@dimen/PaddingSpace"
         android:paddingRight="@dimen/PaddingSpace"
         android:paddingTop="@dimen/PaddingSpaceL"
@@ -94,5 +94,16 @@
             android:id="@+id/img_map"
             android:layout_alignBottom="@+id/textView38"
             android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="ห่างจากที่พัก"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textViewHowFar"
+            android:layout_below="@+id/ivImgPlace"
+            android:textColor="@color/red_main"
+            android:textSize="@dimen/FontSizeSSS"
+            android:layout_marginTop="@dimen/MarginSpaceS" />
     </RelativeLayout>
 </RelativeLayout>

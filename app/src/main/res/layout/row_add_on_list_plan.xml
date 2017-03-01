@@ -21,7 +21,7 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/image_preview"
             android:text="ชื่อ"
@@ -29,7 +29,9 @@
             android:textSize="@dimen/FontSizeSSS"
             android:id="@+id/name"
             android:ellipsize="end"
-            android:layout_marginLeft="@dimen/MarginSpaceS" />
+            android:singleLine="true"
+            android:layout_marginLeft="@dimen/MarginSpaceS"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +42,9 @@
             android:layout_below="@+id/name"
             android:id="@+id/textViewCost"
             android:layout_marginTop="@dimen/MarginSpaceS"
-            android:layout_alignLeft="@+id/name" />
+            android:layout_alignStart="@+id/name"
+            android:layout_alignBottom="@+id/image_preview"
+            android:gravity="center" />
 
         <ImageView
             android:layout_width="20dp"

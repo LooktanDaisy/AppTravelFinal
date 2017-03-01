@@ -41,7 +41,7 @@ public class PlanListManager {
     }
 
 
-    public PlanListDao getPlace(int id_Place){
+    public PlanListDao getPlan(int id_Place){
         PlanListDao PLAN = null;
         List<PlanListDao> ListPLAN =  getDao().getData();
         int i;

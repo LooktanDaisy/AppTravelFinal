@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
@@ -71,6 +72,7 @@ public class PlaceListAdapter extends BaseAdapter {
             item.setTvNamePlaceText(dao.getName());
             item.setTvAddressPlaceText(dao.getDetail());
             item.setTvCostPlaceText(dao.getCost());
+            item.setHowFar(dao.getHowfarToAccom());
 
             /**
              * Set onclick to map ImageView
@@ -95,6 +97,7 @@ public class PlaceListAdapter extends BaseAdapter {
                 public void onClick(View view) {
                     MainControl.addItemToPlace(String.valueOf(dao.getId()));
                     Control_Main_Dialog.dismiss();
+
 //                MainActivity.finish();
 //                MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
                 }
@@ -116,6 +119,7 @@ public class PlaceListAdapter extends BaseAdapter {
     public void selectTypePlace(int i) {
         typeId = i;
         placeByType = PlaceListManager.getInstance().getDao().getDataByTypePlace(typeId);
+        placeByType = PlaceListManager.getInstance().getDao().CalculateHowFarToAccom(placeByType,MainControl.getAccomLat(),MainControl.getAccomLng());
         notifyDataSetChanged();
     }
 }

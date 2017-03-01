@@ -6,17 +6,21 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
+import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Restaurant;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 import com.application.youngdeveloper.apptravelfinal.view.RestaurantListItem;
+
+import java.util.ArrayList;
 
 /**
  * Created by Wachiraya_Kam on 2/24/2017.
@@ -26,15 +30,21 @@ public class RestaurantListAdapter extends BaseAdapter {
     private FragmentActivity MainActivity;
     private Screen_add_detail_of_days MainControl;
     private Screen_Dialog_Restaurant Control_Main_Dialog;
+    private ArrayList<RestaurantListDao> RestaurantByCostLimit = new ArrayList<>();
 
 
     @Override
     public int getCount() {
-        if (RestaurantListManager.getInstance().getDao() == null)
+//        if (RestaurantListManager.getInstance().getDao() == null)
+//            return 0;
+//        if (RestaurantListManager.getInstance().getDao().getData() == null)
+//            return 0;
+//        return RestaurantListManager.getInstance().getDao().getData().size(); // get size of data
+
+        if (RestaurantByCostLimit == null)
             return 0;
-        if (RestaurantListManager.getInstance().getDao().getData() == null)
-            return 0;
-        return RestaurantListManager.getInstance().getDao().getData().size(); // get size of data
+
+        return RestaurantByCostLimit.size(); // get size of data
     }
 
     @Override
@@ -54,11 +64,15 @@ public class RestaurantListAdapter extends BaseAdapter {
             item = (RestaurantListItem) convertView;
         else
             item = new RestaurantListItem(parent.getContext());
-        final RestaurantListDao dao = (RestaurantListDao) getItem(position);
+//        final RestaurantListDao dao = (RestaurantListDao) getItem(position);
+
+        final RestaurantListDao dao = RestaurantByCostLimit.get(position);
+
         item.setIvImgRestaurantText(dao.getImg());
         item.setTvNameRestaurantText(dao.getName());
         item.setTvDetailRestaurantText(dao.getDetail());
         item.setTvCostRestaurantText(dao.getPrice());
+        item.setHowFar(dao.getHowfarToAccom());
 
         item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +89,10 @@ public class RestaurantListAdapter extends BaseAdapter {
         item.getIvAdd().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainControl.addItemToRestaurant(String.valueOf(dao.getId()));
-                Control_Main_Dialog.dismiss();
+
+                    MainControl.addItemToRestaurant(String.valueOf(dao.getId()));
+                    Control_Main_Dialog.dismiss();
+
             }
         });
 
@@ -90,5 +106,16 @@ public class RestaurantListAdapter extends BaseAdapter {
 
     public void setMainControl(Screen_add_detail_of_days controlMainScreen){
         MainControl = controlMainScreen;
+        getRestaurantByCostLimit();
+    }
+
+    public void getRestaurantByCostLimit(){
+        RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().getRestaurantByCostLimit();
+
+        /**
+         * Calculate How Far and Sort
+         */
+        RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().CalculateHowFarToAccom(RestaurantByCostLimit,MainControl.getAccomLat(),MainControl.getAccomLng());
+
     }
 }

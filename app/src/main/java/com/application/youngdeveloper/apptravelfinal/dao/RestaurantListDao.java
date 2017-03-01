@@ -15,6 +15,16 @@ public class RestaurantListDao {
     @SerializedName("price")        private int price;
     @SerializedName("img")          private String img;
 
+    private Double HowfarToAccom = 0.0;
+
+    public Double getHowfarToAccom() {
+        return HowfarToAccom;
+    }
+
+    public void setHowfarToAccom(Double howfarToAccom) {
+        HowfarToAccom = howfarToAccom;
+    }
+
     public int getId() {
         return id;
     }

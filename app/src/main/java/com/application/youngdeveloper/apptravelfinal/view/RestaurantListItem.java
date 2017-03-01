@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
+import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.view.state.BundleSavedState;
 import com.bumptech.glide.Glide;
@@ -27,6 +28,7 @@ public class RestaurantListItem extends BaseCustomViewGroup {
     TextView tvNameRestaurant;
     TextView tvDetailRestaurant;
     TextView tvCostRestaurant;
+    TextView HowFar;
 
     public RestaurantListItem(Context context) {
         super(context);
@@ -68,6 +70,7 @@ public class RestaurantListItem extends BaseCustomViewGroup {
         tvCostRestaurant = (TextView) findViewById(R.id.tvCostRestaurant);
         ivMap = (ImageView) findViewById(R.id.img_map);
         ivAdd = (ImageView) findViewById(R.id.ivAdd);
+        HowFar = (TextView) findViewById(R.id.textViewHowFar);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -136,6 +139,14 @@ public class RestaurantListItem extends BaseCustomViewGroup {
     }
 
     public ImageView getIvAdd() { return ivAdd; }
+
+    public TextView getTvHowFar() {
+        return HowFar;
+    }
+
+    public void setHowFar(Double howFar) {
+        HowFar.setText(String.valueOf(MainFunction.commaTwoDigit(howFar)) + " กิโลเมตร จากที่พัก");
+    }
 }
 
 

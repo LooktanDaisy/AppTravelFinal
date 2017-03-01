@@ -49,6 +49,7 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
     private RecyclerView listAccom,listPlace,listRestaurant;
     private ChooseitemToListAdapter adapterAccom,adapterPlace, adapterRestaurant;
     private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant;
+    private Double AccomLat = 0.0,AccomLng = 0.0;
 
 
     public Screen_add_detail_of_days() {
@@ -145,7 +146,18 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         adapterRestaurant.addItem(idItem, Type_id_item.TYPE_RESTAURANT);
     }
 
+    public Double getAccomLat() {
+        return AccomLat;
+    }
 
+    public Double getAccomLng() {
+        return AccomLng;
+    }
+
+    public void setPointAccom(Double Lat, Double Lng) {
+        this.AccomLat = Lat;
+        this.AccomLng = Lng;
+    }
 
     @Override
     public void onStart() {
@@ -193,10 +205,18 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         }
 
         else if (view == imgAddPlace){
-            showDialogListPlace();
+            if(getAccomLng()!=0.0) {
+                showDialogListPlace();
+            }else {
+                Toast.makeText(getContext(), R.string.E06, Toast.LENGTH_SHORT).show();
+            }
         }
         else if(view == imgAddRestaurant){
+            if(getAccomLng()!=0.0) {
             showDialogListRestaurant();
+            }else {
+                Toast.makeText(getContext(), R.string.E06, Toast.LENGTH_SHORT).show();
+            }
         }
 
 

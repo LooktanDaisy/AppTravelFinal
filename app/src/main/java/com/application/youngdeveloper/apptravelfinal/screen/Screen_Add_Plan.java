@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
+import com.application.youngdeveloper.apptravelfinal.manager.CostLimit;
 import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
 
@@ -188,6 +189,9 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                      * Insert Plan to Database
                                                      */
                                                     //TODO: insert Plan to app and Server
+
+                                                    CostLimit.AccomCost = Double.parseDouble(edtAccomCost.getText().toString());
+                                                    CostLimit.FoodCost = Double.parseDouble(edtFoodCost.getText().toString());
 
                                                     DataManager.getInstance().insertPlan();
 

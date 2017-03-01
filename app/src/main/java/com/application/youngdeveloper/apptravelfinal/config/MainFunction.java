@@ -1,5 +1,10 @@
 package com.application.youngdeveloper.apptravelfinal.config;
 
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
+
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -103,4 +108,78 @@ public class MainFunction {
         return String.format("%s %s %s", day, Provinces.months[month],year+543);
 
     }
+
+
+
+    public static ArrayList<AccommodationListDao> SortByCostAccom(ArrayList<AccommodationListDao> AccomByCost){
+        Collections.sort(AccomByCost, new Comparator<AccommodationListDao>() {
+            @Override
+            public int compare(AccommodationListDao accom1, AccommodationListDao accom2) {
+                /**
+                 * Less to More
+                 */
+                return Double.compare(accom1.getPrice(), accom2.getPrice());
+                /**
+                * More to Less
+                 */
+//                return Double.compare(accom1.getPrice(), accom2.getPrice());
+            }
+        });
+
+        return AccomByCost;
+    }
+
+    public static ArrayList<RestaurantListDao> SortByCostRestaurant(ArrayList<RestaurantListDao> RestaurantByCost){
+        Collections.sort(RestaurantByCost, new Comparator<RestaurantListDao>() {
+            @Override
+            public int compare(RestaurantListDao rest1, RestaurantListDao rest2) {
+                return Double.compare(rest1.getPrice(), rest2.getPrice());
+            }
+        });
+
+        return RestaurantByCost;
+    }
+
+    public static ArrayList<RestaurantListDao> SortByDistanceRestaurant(ArrayList<RestaurantListDao> RestaurantByCost){
+        Collections.sort(RestaurantByCost, new Comparator<RestaurantListDao>() {
+            @Override
+            public int compare(RestaurantListDao rest1, RestaurantListDao rest2) {
+                return Double.compare(rest1.getHowfarToAccom(), rest2.getHowfarToAccom());
+            }
+        });
+
+        return RestaurantByCost;
+    }
+
+
+    public static ArrayList<PlaceListDao> SortByDistancePlace(ArrayList<PlaceListDao> PlaceByType){
+        Collections.sort(PlaceByType, new Comparator<PlaceListDao>() {
+            @Override
+            public int compare(PlaceListDao place1, PlaceListDao place2) {
+                return Double.compare(place1.getHowfarToAccom(), place2.getHowfarToAccom());
+            }
+        });
+
+        return PlaceByType;
+    }
+
+    public static double distance(double lat1, double lat2, double lng1,
+                                  double lng2) {
+
+        double earthRadius = 6371000; //meters
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLng = Math.toRadians(lng2-lng1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLng/2) * Math.sin(dLng/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        float dist = (float) (earthRadius * c);
+        dist = dist/1000;
+
+        /**
+         * return Kilo Meters
+         */
+        return dist;
+    }
+
 }
