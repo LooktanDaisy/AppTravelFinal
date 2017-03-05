@@ -83,6 +83,8 @@ public class PlaceListAdapter extends BaseAdapter {
                     Intent openMap = new Intent(MainActivity, MapActivity.class);
                     openMap.putExtra("ID", dao.getId());
                     openMap.putExtra("TYPE_ID", Type_id_item.TYPE_PLACE);
+                    openMap.putExtra("ACCOM_LAT",MainControl.getAccomLat());
+                    openMap.putExtra("ACCOM_LNG",MainControl.getAccomLng());
 
                     MainActivity.startActivity(openMap);
                     MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);

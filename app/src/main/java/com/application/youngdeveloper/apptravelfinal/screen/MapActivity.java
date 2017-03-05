@@ -22,6 +22,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManag
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -42,6 +44,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private AccommodationListDao ACCOMMODATION;
     private RestaurantListDao RESTAURANT;
     private Integer id_type;
+    private Double AccomLat=0.0,AccomLng=0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Intent getPLACE = getIntent();
         id = getPLACE.getIntExtra("ID", 0);
         id_type = getPLACE.getIntExtra("TYPE_ID",0);
+        AccomLat = getPLACE.getDoubleExtra("ACCOM_LAT",0.0);
+        AccomLng = getPLACE.getDoubleExtra("ACCOM_LNG",0.0);
 
         if (id_type == Type_id_item.TYPE_PLACE) {
             PLACE = PlaceListManager.getInstance().getPlace(id);
@@ -84,7 +89,46 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(latLng)
                         .title(PLACE.getName()));
 
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
+                googleMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
+                        .position(AccomlatLng)
+                        .title("ที่พักของท่าน"));
+
+                /**
+                 * Disable click accom marker
+                 */
+                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        if (marker.getTitle().equals("ที่พักของท่าน")){
+                            return true;
+                        }else {
+                            return false;
+                        }
+                    }
+                });
+
+                /**
+                 * Set show all marker
+                 */
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                builder.include(latLng);
+                builder.include(AccomlatLng);
+                LatLngBounds bounds = builder.build();
+
+                /**
+                 * Show place and Accom
+                 */
+
+                int width = getResources().getDisplayMetrics().widthPixels;
+                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width,width,25);
+                googleMap.moveCamera(cu);
+
+                /**
+                 * Show place only
+                 */
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
 
             }
@@ -112,7 +156,42 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(latLng)
                         .title(RESTAURANT.getName()));
 
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
+                googleMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
+                        .position(AccomlatLng)
+                        .title("ที่พักของท่าน"));
+
+                /**
+                 * Disable click accom marker
+                 */
+                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        if (marker.getTitle().equals("ที่พักของท่าน")){
+                            return true;
+                        }else {
+                            return false;
+                        }
+                    }
+                });
+
+                /**
+                 * Set show all marker
+                 */
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                builder.include(latLng);
+                builder.include(AccomlatLng);
+                LatLngBounds bounds = builder.build();
+
+                /**
+                 * Show place and Accom
+                 */
+                int width = getResources().getDisplayMetrics().widthPixels;
+                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width,width,25);
+                googleMap.moveCamera(cu);
+
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
 
             }
