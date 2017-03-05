@@ -86,5 +86,6 @@
     <string name="username">ชื่อบัญชีผู้ใช้</string>
     <string name="register_success">สมัครสมาชิกเรียบร้อยแล้ว</string>
     <string name="notFound">ไม่พบข้อมูลที่ท่านต้องการ\nกรุณากำหนดราคาใหม่</string>
+    <string name="day_end_text">วันที่เดินทางกลับ</string>
 
 </resources>

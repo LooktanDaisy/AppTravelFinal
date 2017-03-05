@@ -65,13 +65,13 @@
         android:id="@+id/space" />
 
     <TextView
-        android:text="@string/day_start_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textView8"
         style="@style/text_above_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/space"
-        android:layout_toEndOf="@+id/space" />
+        android:layout_toEndOf="@+id/space"
+        android:text="@string/day_end_text" />
 
     <EditText
         android:layout_width="match_parent"
