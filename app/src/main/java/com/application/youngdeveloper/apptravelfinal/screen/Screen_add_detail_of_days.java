@@ -38,10 +38,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class Screen_add_detail_of_days extends Fragment implements View.OnClickListener{
 
     private Date thisDate;

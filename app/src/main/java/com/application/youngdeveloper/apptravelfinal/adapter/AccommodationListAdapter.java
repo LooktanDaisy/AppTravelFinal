@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.MainActivity;
 import com.application.youngdeveloper.apptravelfinal.R;
@@ -17,10 +18,6 @@ import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 
 import java.util.ArrayList;
-
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
 
 public class AccommodationListAdapter extends BaseAdapter {
 
@@ -110,5 +107,14 @@ public class AccommodationListAdapter extends BaseAdapter {
     public void getAccomByCostLimit(){
         AccomByCostLimit = AccommodationListManager.getInstance().getDao().getAccomByCostLimit();
 
+    }
+
+
+    public void setTextView(TextView tvNotFound) {
+        if(AccomByCostLimit.size()>0){
+            tvNotFound.setVisibility(View.GONE);
+        }else{
+            tvNotFound.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -25,10 +25,6 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-/**
- * Created by theerawat on 2/22/2017 AD.
- */
-
 public class ChooseitemToListAdapter extends RecyclerView.Adapter<ChooseitemToListAdapter.MainViewHolder> {
 
     private Context mContext;

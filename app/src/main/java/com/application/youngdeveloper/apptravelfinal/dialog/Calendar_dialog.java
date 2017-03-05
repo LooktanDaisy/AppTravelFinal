@@ -18,11 +18,6 @@ import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormat
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class Calendar_dialog extends DialogFragment implements OnDateSelectedListener {
 
     private EditText DateText;

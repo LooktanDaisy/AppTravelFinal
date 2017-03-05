@@ -8,10 +8,6 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Wachiraya_Kam on 2/21/2017.
- */
-
 public class HttpManager {
 
     public static String UrlImage = "http://202.28.94.32/2559/563020499-9/tgst/img/";

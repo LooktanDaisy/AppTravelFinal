@@ -11,10 +11,6 @@ import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListDao;
 
 import java.util.List;
 
-/**
- * Created by theerawat on 2/27/2017 AD.
- */
-
 public class PlanListManager {
 
     private static PlanListManager instance;

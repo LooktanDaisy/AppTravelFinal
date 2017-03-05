@@ -17,10 +17,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-/**
- * Created by Wachiraya_Kam on 2/22/2017.
- */
-
 public class PlaceListItem extends BaseCustomViewGroup {
 
     private Context mContext;

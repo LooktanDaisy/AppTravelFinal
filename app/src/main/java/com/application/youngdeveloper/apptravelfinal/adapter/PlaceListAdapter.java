@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
@@ -17,10 +18,6 @@ import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 
 import java.util.ArrayList;
-
-/**
- * Created by Wachiraya_Kam on 2/22/2017.
- */
 
 public class PlaceListAdapter extends BaseAdapter {
 
@@ -37,7 +34,6 @@ public class PlaceListAdapter extends BaseAdapter {
 //        if (PlaceListManager.getInstance().getDao().getData() == null)
 //            return 0;
 //        return PlaceListManager.getInstance().getDao().getData().size(); // get size of data
-
 
         if (placeByType == null)
             return 0;
@@ -124,4 +120,12 @@ public class PlaceListAdapter extends BaseAdapter {
         placeByType = PlaceListManager.getInstance().getDao().CalculateHowFarToAccom(placeByType,MainControl.getAccomLat(),MainControl.getAccomLng());
         notifyDataSetChanged();
     }
+
+//    public void setTextView(TextView tvNotFound) {
+//        if(placeByType.size()>0){
+//            tvNotFound.setVisibility(View.GONE);
+//        }else{
+//            tvNotFound.setVisibility(View.VISIBLE);
+//        }
+//    }
 }

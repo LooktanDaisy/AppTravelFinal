@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-/**
- * Created by theerawat on 2/27/2017 AD.
- */
-
 public class PlanAccommodationListDao {
     @SerializedName("plan_id")
     private int planID;

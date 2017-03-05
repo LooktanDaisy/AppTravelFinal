@@ -15,10 +15,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by theerawat on 2/23/2017 AD.
- */
-
 public class MainFunction {
     public static String comma(double agr1) {
         if (agr1 != 0) {

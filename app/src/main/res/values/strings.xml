@@ -85,5 +85,6 @@
     <string name="err_loadRestaurant">โหลดข้อมูลร้านอาหารไม่สำเร็จ</string>
     <string name="username">ชื่อบัญชีผู้ใช้</string>
     <string name="register_success">สมัครสมาชิกเรียบร้อยแล้ว</string>
+    <string name="notFound">ไม่พบข้อมูลที่ท่านต้องการ\nกรุณากำหนดราคาใหม่</string>
 
 </resources>

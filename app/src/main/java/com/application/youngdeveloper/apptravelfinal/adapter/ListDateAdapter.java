@@ -25,10 +25,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by theerawat on 2/22/2017 AD.
- */
-
 public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainViewHolder> {
 
     private Context mContext;

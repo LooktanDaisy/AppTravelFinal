@@ -8,10 +8,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
-
 public class AccommodationListCollectionDao {
     @SerializedName("success")  private int success;
     @SerializedName("accommodation")     private List<AccommodationListDao> data;

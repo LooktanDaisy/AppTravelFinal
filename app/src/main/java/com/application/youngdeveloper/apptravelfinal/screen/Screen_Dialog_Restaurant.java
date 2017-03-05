@@ -6,18 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.adapter.RestaurantListAdapter;
-
-/**
- * Created by Wachiraya_Kam on 2/24/2017.
- */
 
 public class Screen_Dialog_Restaurant extends DialogFragment {
 
     private ListView lvListRestaurant;
     private Screen_add_detail_of_days ControlMainScreen;
+    private TextView tvNotFound;
 
     public Screen_Dialog_Restaurant() {
         super();
@@ -42,6 +40,8 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
 
     private void initialView(View rootView) {
         lvListRestaurant = (ListView) rootView.findViewById(R.id.lvListRestaurant);
+        tvNotFound = (TextView) rootView.findViewById(R.id.tvNotfound);
+        tvNotFound.setVisibility(View.GONE);
 
         setListView();
 
@@ -51,7 +51,14 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
         RestaurantListAdapter listRestaurantAdapter = new RestaurantListAdapter();
         listRestaurantAdapter.setActivity(getActivity(),this);
         listRestaurantAdapter.setMainControl(ControlMainScreen);
+        listRestaurantAdapter.setTextView(tvNotFound);
         lvListRestaurant.setAdapter(listRestaurantAdapter);
+
+//        if(listRestaurantAdapter.getCount()>0) {
+//
+//        }else{
+//            tvNotFound.setVisibility(View.VISIBLE);
+//        }
 
     }
 

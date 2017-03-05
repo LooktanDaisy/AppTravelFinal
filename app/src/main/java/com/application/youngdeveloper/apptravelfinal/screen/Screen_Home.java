@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class Screen_Home extends Fragment {
 
 
@@ -26,8 +22,6 @@ public class Screen_Home extends Fragment {
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
-
-
     }
 
 

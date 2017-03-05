@@ -1,17 +1,10 @@
 package com.application.youngdeveloper.apptravelfinal.view.state;
 
-/**
- * Created by Wachiraya_Kam on 2/22/2017.
- */
-
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View.BaseSavedState;
 
-/**
- * Created by nuuneoi on 1/9/2016.
- */
 public class BundleSavedState extends BaseSavedState {
 
     private Bundle bundle = new Bundle();

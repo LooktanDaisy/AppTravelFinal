@@ -1,9 +1,5 @@
 package com.application.youngdeveloper.apptravelfinal.manager;
 
-/**
- * Created by Wachiraya_Kam on 2/21/2017.
- */
-
 import android.content.Context;
 
 /**

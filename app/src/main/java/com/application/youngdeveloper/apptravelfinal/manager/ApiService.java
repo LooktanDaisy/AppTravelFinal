@@ -10,10 +10,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
-/**
- * Created by Wachiraya_Kam on 2/21/2017.
- */
-
 public interface ApiService {
     @POST("android_select_place.php")
     Call<PlaceListCollectionDao> loadPlaceList(); //don't start URL with "/"

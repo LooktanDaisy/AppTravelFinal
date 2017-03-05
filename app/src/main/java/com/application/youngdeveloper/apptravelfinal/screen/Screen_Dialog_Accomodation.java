@@ -8,19 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.adapter.AccommodationListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
-
 public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private ListView lvListAccomodation;
     private Screen_add_detail_of_days ControlMainScreen;
+    private TextView tvNotFound;
 
     public Screen_Dialog_Accomodation() {
         super();
@@ -45,7 +43,8 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private void initialView(View rootView) {
         lvListAccomodation = (ListView) rootView.findViewById(R.id.lvListAccommodation);
-
+        tvNotFound = (TextView) rootView.findViewById(R.id.tvNotfound);
+        tvNotFound.setVisibility(View.GONE);
         setListView();
 
     }
@@ -54,6 +53,7 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
         AccommodationListAdapter listAccommodationAdapter = new AccommodationListAdapter();
         listAccommodationAdapter.setActivity(getActivity(),this);
         listAccommodationAdapter.setMainControl(ControlMainScreen);
+        listAccommodationAdapter.setTextView(tvNotFound);
         lvListAccomodation.setAdapter(listAccommodationAdapter);
 
     }

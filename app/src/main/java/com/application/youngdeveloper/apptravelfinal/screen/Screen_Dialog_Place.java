@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
-
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
+import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 
 public class Screen_Dialog_Place extends DialogFragment {
 
@@ -28,6 +28,7 @@ public class Screen_Dialog_Place extends DialogFragment {
     private Screen_add_detail_of_days ControlMainScreen;
     private Spinner spinnerTypePlace;
     private PlaceListAdapter listPlaceAdapter;
+    private TextView tvNotFound;
 
     public Screen_Dialog_Place() {
         super();
@@ -50,10 +51,12 @@ public class Screen_Dialog_Place extends DialogFragment {
 
     private void initialView(View rootView) {
         lvListPlace = (ListView) rootView.findViewById(R.id.lvListPlace);
+        tvNotFound = (TextView) rootView.findViewById(R.id.tvNotfound);
+        tvNotFound.setVisibility(View.GONE);
         spinnerTypePlace = (Spinner) rootView.findViewById(R.id.spinnerType);
-        setSpinnerType(spinnerTypePlace);
 
         setListView();
+        setSpinnerType(spinnerTypePlace);
 
     }
 
@@ -61,29 +64,36 @@ public class Screen_Dialog_Place extends DialogFragment {
         listPlaceAdapter = new PlaceListAdapter();
         listPlaceAdapter.setActivity(getActivity(),this);
         listPlaceAdapter.setMainControl(ControlMainScreen);
+//        listPlaceAdapter.setTextView(tvNotFound);
         lvListPlace.setAdapter(listPlaceAdapter);
 
+        if(listPlaceAdapter.getCount()>0) {
 
+        }else{
+            tvNotFound.setVisibility(View.VISIBLE);
+        }
     }
 
 
     private void setSpinnerType(Spinner typeSpinner) {
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_item, Type_id_item.PlaceTypes);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
-        typeSpinner.setAdapter(spinnerArrayAdapter);
 
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                listPlaceAdapter.selectTypePlace(i);
-            }
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, Type_id_item.PlaceTypes);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+            typeSpinner.setAdapter(spinnerArrayAdapter);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    listPlaceAdapter.selectTypePlace(i);
+                }
 
-            }
-        });
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
 
     }
 

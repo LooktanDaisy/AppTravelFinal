@@ -1,9 +1,5 @@
 package com.application.youngdeveloper.apptravelfinal.view;
 
-/**
- * Created by Wachiraya_Kam on 2/22/2017.
- */
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -15,9 +11,6 @@ import android.widget.FrameLayout;
 
 import com.application.youngdeveloper.apptravelfinal.view.state.BundleSavedState;
 
-/**
- * Created by nuuneoi on 1/9/2016.
- */
 public class BaseCustomViewGroup extends FrameLayout {
 
     public BaseCustomViewGroup(Context context) {

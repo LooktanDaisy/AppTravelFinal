@@ -9,10 +9,6 @@ import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 
 import java.util.List;
 
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
-
 public class AccommodationListManager {
     private static AccommodationListManager instance;
 

@@ -2,10 +2,6 @@ package com.application.youngdeveloper.apptravelfinal.dao;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Wachiraya_Kam on 2/21/2017.
- */
-
 public class PlaceListDao {
     @SerializedName("id")           private int id;
     @SerializedName("place_type_name") private String nameType;

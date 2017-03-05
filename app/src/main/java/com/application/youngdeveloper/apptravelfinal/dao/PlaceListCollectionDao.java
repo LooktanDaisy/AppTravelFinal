@@ -7,10 +7,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Wachiraya_Kam on 2/21/2017.
- */
-
 public class PlaceListCollectionDao {
     @SerializedName("success")  private int success;
     @SerializedName("place")     private List<PlaceListDao> data;

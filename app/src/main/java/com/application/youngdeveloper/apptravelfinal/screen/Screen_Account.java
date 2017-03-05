@@ -16,10 +16,6 @@ import com.application.youngdeveloper.apptravelfinal.MainActivity;
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.manager.User;
 
-/**
- * Created by theerawat on 2/25/2017 AD.
- */
-
 public class Screen_Account extends Fragment implements View.OnClickListener{
 
 

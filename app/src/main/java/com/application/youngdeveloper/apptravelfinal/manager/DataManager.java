@@ -1,9 +1,5 @@
 package com.application.youngdeveloper.apptravelfinal.manager;
 
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class DataManager {
 
     private static DataManager instance;

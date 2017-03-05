@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
@@ -21,10 +22,6 @@ import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 import com.application.youngdeveloper.apptravelfinal.view.RestaurantListItem;
 
 import java.util.ArrayList;
-
-/**
- * Created by Wachiraya_Kam on 2/24/2017.
- */
 
 public class RestaurantListAdapter extends BaseAdapter {
     private FragmentActivity MainActivity;
@@ -119,5 +116,13 @@ public class RestaurantListAdapter extends BaseAdapter {
          */
         RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().CalculateHowFarToAccom(RestaurantByCostLimit,MainControl.getAccomLat(),MainControl.getAccomLng());
 
+    }
+
+    public void setTextView(TextView tvNotFound) {
+        if(RestaurantByCostLimit.size()>0){
+            tvNotFound.setVisibility(View.GONE);
+        }else{
+            tvNotFound.setVisibility(View.VISIBLE);
+        }
     }
 }

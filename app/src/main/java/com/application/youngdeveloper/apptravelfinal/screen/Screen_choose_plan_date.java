@@ -21,10 +21,6 @@ import android.widget.TextView;
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.adapter.ListDateAdapter;
 
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class Screen_choose_plan_date extends Fragment implements View.OnClickListener{
 
     private int numberOfDate;

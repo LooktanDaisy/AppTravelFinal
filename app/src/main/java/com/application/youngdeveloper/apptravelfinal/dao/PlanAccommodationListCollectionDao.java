@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by theerawat on 2/27/2017 AD.
- */
-
 public class PlanAccommodationListCollectionDao {
     @SerializedName("success")  private int success;
     @SerializedName("plan_accommodation")     private List<PlanAccommodationListDao> data;

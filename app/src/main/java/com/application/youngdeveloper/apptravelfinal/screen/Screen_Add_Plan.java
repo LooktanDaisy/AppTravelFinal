@@ -90,7 +90,6 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
     }
 
     private void setSpinnerProvince(Spinner provinceSpinner) {
-
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_item, Provinces.provinces);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         provinceSpinner.setAdapter(spinnerArrayAdapter);

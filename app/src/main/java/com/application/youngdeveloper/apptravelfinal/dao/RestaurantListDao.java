@@ -2,10 +2,6 @@ package com.application.youngdeveloper.apptravelfinal.dao;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Wachiraya_Kam on 2/23/2017.
- */
-
 public class RestaurantListDao {
     @SerializedName("id")           private int id;
     @SerializedName("name")         private String name;

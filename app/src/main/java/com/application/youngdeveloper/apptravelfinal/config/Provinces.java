@@ -1,9 +1,5 @@
 package com.application.youngdeveloper.apptravelfinal.config;
 
-/**
- * Created by theerawat on 2/21/2017 AD.
- */
-
 public class Provinces {
 
     // Array of choices
@@ -28,7 +24,7 @@ public class Provinces {
             "อ่างทอง", "อำนาจเจริญ", "อุดรธานี", "อุตรดิตถ์", "อุทัยธานี", "อุบลราชธานี"};
 
     public static String months [] = {
-        "มกราคม", "กุมภาพันธ์", "มนาคม", "เมษายน",
+        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
                 "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
                 "กันยายน", "ตุลาคม", "พฤศจิยากน", "ธันวาคม"};
 }

@@ -8,10 +8,6 @@ import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 
 import java.util.List;
 
-/**
- * Created by Wachiraya_Kam on 2/22/2017.
- */
-
 public class PlaceListManager {
     private static PlaceListManager instance;
 

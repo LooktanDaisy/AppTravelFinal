@@ -10,10 +10,6 @@ import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
 
 import java.util.List;
 
-/**
- * Created by Wachiraya_Kam on 2/24/2017.
- */
-
 public class RestaurantListManager {
 
     private static RestaurantListManager instance;
