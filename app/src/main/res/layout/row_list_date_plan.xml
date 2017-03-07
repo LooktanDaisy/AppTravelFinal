@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/row_date"
+        android:id="@+id/row_plan"
         android:background="@drawable/border_row_list_date"
         android:padding="@dimen/PaddingSpace4XL"
         android:layout_marginRight="@dimen/MarginSpace"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/TextViewDate"
+            android:id="@+id/TextViewNamePlan"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/FontSizeM" />
     </RelativeLayout>

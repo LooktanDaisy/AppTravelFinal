@@ -11,6 +11,16 @@ public class PlanPlaceListDao {
     private int placeID;
     @SerializedName("date")
     private Date date;
+    @SerializedName("traveler_id")
+    private int traveler_id;
+
+    public int getTraveler_id() {
+        return traveler_id;
+    }
+
+    public void setTraveler_id(int traveler_id) {
+        this.traveler_id = traveler_id;
+    }
 
     public int getPlanID() {
         return planID;

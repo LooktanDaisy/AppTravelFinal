@@ -2,11 +2,12 @@ package com.application.youngdeveloper.apptravelfinal.dao;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlanPlaceListCollectionDao {
     @SerializedName("success")  private int success;
-    @SerializedName("plan_place")     private List<PlanPlaceListDao> data;
+    @SerializedName("plan_place")     private ArrayList<PlanPlaceListDao> data;
 
     public int getSuccess() {
         return success;
@@ -16,11 +17,11 @@ public class PlanPlaceListCollectionDao {
         this.success = success;
     }
 
-    public List<PlanPlaceListDao> getData() {
+    public ArrayList<PlanPlaceListDao> getData() {
         return data;
     }
 
-    public void setData(List<PlanPlaceListDao> data) {
+    public void setData(ArrayList<PlanPlaceListDao> data) {
         this.data = data;
     }
 }

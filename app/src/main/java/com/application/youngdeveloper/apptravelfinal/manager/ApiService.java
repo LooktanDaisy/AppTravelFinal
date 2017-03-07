@@ -2,7 +2,10 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanRestuarantListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
 
 import retrofit2.Call;
@@ -23,6 +26,25 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("android_select_plan.php")
     Call<PlanListCollectionDao> loadPlanList(
+            @Field("userID") String userID
+    );
+
+
+    @FormUrlEncoded
+    @POST("android_select_place_plan.php")
+    Call<PlanPlaceListCollectionDao> loadPlacePlanList(
+            @Field("userID") String userID
+    );
+
+    @FormUrlEncoded
+    @POST("android_select_accom_plan.php")
+    Call<PlanAccommodationListCollectionDao> loadAccommodationPlanList(
+            @Field("userID") String userID
+    );
+
+    @FormUrlEncoded
+    @POST("android_select_restau_plan.php")
+    Call<PlanRestuarantListCollectionDao> loadReataurantPlanList(
             @Field("userID") String userID
     );
 

@@ -200,7 +200,7 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                     String budget = edtBudget.getText().toString();
 
                                                     if(numberOfDate > 0){
-                                                        DataManager.insertPlan();
+                                                        DataManager.getInstance().insertPlan();
                                                         final FragmentTransaction ft = getFragmentManager().beginTransaction();
                                                         ft.replace(R.id.fragment_container, new Screen_choose_plan_date(numberOfDate,dateGo,budget), "Screen_choose_plan_date");
                                                         ft.commit();

@@ -9,6 +9,7 @@ import com.application.youngdeveloper.apptravelfinal.dao.PlanListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlanListManager {
@@ -21,12 +22,7 @@ public class PlanListManager {
         return instance;
     }
 
-    private Context mContext;
     private PlanListCollectionDao dao;
-
-    private PlanListManager() {
-        mContext = Contextor.getInstance().getContext();
-    }
 
     public PlanListCollectionDao getDao() {
         return dao;
@@ -37,12 +33,12 @@ public class PlanListManager {
     }
 
 
-    public PlanListDao getPlan(int id_Place){
+    public PlanListDao getPlan(int idPlan){
         PlanListDao PLAN = null;
         List<PlanListDao> ListPLAN =  getDao().getData();
         int i;
         for(i = 0;i<ListPLAN.size();i++){
-            if(ListPLAN.get(i).getId() == id_Place){
+            if(ListPLAN.get(i).getId() == idPlan){
                 PLAN = ListPLAN.get(i);
             }
         }

@@ -16,7 +16,17 @@ public class PlanListDao {
     @SerializedName("date_end")
     private Date dateEnd;
     @SerializedName("budgets")
-    private Double budgets;
+    private int budgets;
+    @SerializedName("plan_name")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -58,11 +68,11 @@ public class PlanListDao {
         this.dateEnd = dateEnd;
     }
 
-    public Double getBudgets() {
+    public int getBudgets() {
         return budgets;
     }
 
-    public void setBudgets(Double budgets) {
+    public void setBudgets(int budgets) {
         this.budgets = budgets;
     }
 }

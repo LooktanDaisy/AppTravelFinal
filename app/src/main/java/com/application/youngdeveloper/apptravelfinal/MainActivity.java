@@ -4,8 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,18 @@ import com.application.youngdeveloper.apptravelfinal.adapter.PlaceListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanRestuarantListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.HttpManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanAccommodationListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanPlaceListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanRestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
@@ -441,7 +448,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void DownloadUserPlanOnserver() {
         /**
-         * Download Place
+         * Download Plan
          */
 
         Call<PlanListCollectionDao> call = HttpManager.getInstance().getService().loadPlanList(User.ID);
@@ -454,8 +461,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     PlanListCollectionDao dao = response.body();
                     if(dao.getData().size()>0) {
                     PlanListManager.getInstance().setDao(dao);
+                    }else{
+                        PlanListManager.getInstance().setDao(null);
                     }
 
+                    /**
+                     * Download place accom restaurant plan
+                     */
+                    DownloadSubPlan();
                     /**
                      * Show main screen when Loaded Plan
                      */
@@ -487,6 +500,114 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+    }
+
+    private void DownloadSubPlan() {
+
+        /**
+         * Download Place Plan
+         */
+
+        Call<PlanPlaceListCollectionDao> call = HttpManager.getInstance().getService().loadPlacePlanList(User.ID);
+        call.enqueue(new Callback<PlanPlaceListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<PlanPlaceListCollectionDao> call,
+                                   Response<PlanPlaceListCollectionDao> response) {
+
+                if (response.isSuccessful()) {
+                    PlanPlaceListCollectionDao dao = response.body();
+                    if(dao!=null) {
+                        PlanPlaceListManager.getInstance().setDao(dao);
+                    }else{
+                        PlanPlaceListManager.getInstance().setDao(null);
+                    }
+
+                } else {
+                    // Handle
+                    Log.d("LOAD PLACE PLAN Error", response.body().toString());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlanPlaceListCollectionDao> call, Throwable t) {
+                // Handle
+                Log.d("LOAD PLACE PLAN Error", t.toString());
+
+
+            }
+        });
+
+
+        /**
+         * Download Accom Plan
+         */
+
+        Call<PlanAccommodationListCollectionDao> callAccom = HttpManager.getInstance().getService().loadAccommodationPlanList(User.ID);
+        callAccom.enqueue(new Callback<PlanAccommodationListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<PlanAccommodationListCollectionDao> call,
+                                   Response<PlanAccommodationListCollectionDao> response) {
+
+                if (response.isSuccessful()) {
+                    PlanAccommodationListCollectionDao dao = response.body();
+                    if(dao!=null) {
+                        PlanAccommodationListManager.getInstance().setDao(dao);
+                    }else{
+                        PlanAccommodationListManager.getInstance().setDao(null);
+                    }
+
+                } else {
+                    // Handle
+                    Log.d("LOAD ACCOM PLAN Error", response.body().toString());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlanAccommodationListCollectionDao> call, Throwable t) {
+                // Handle
+                Log.d("LOAD ACCOM PLAN Error", t.toString());
+
+
+            }
+        });
+
+
+        /**
+         * Download Restaurant Plan
+         */
+
+        Call<PlanRestuarantListCollectionDao> callRestau = HttpManager.getInstance().getService().loadReataurantPlanList(User.ID);
+        callRestau.enqueue(new Callback<PlanRestuarantListCollectionDao>() { //Asynchronous
+            @Override
+            public void onResponse(Call<PlanRestuarantListCollectionDao> call,
+                                   Response<PlanRestuarantListCollectionDao> response) {
+
+                if (response.isSuccessful()) {
+                    PlanRestuarantListCollectionDao dao = response.body();
+                    if(dao!=null) {
+                        PlanRestaurantListManager.getInstance().setDao(dao);
+                    }else{
+                        PlanRestaurantListManager.getInstance().setDao(null);
+                    }
+
+                } else {
+                    // Handle
+                    Log.d("LOAD Restaurant PLAN Error", response.body().toString());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlanRestuarantListCollectionDao> call, Throwable t) {
+                // Handle
+                Log.d("LOAD Restaurant PLAN Error", t.toString());
+
+
+            }
+        });
+
     }
 
 }

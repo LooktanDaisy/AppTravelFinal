@@ -11,27 +11,32 @@ import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanListDao;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_show_detail_of_days;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainViewHolder> {
+public class ListMyPlanDateAdapter extends RecyclerView.Adapter<ListMyPlanDateAdapter.MainViewHolder> {
 
     private Context mContext;
     private int numberOfDate = 0;
-    private String startDate;
+    private Date startDate;
     private Date date_startDate;
     private Calendar c = Calendar.getInstance();
     private FragmentTransaction fragmentTran;
+    private PlanListDao plan;
 
-    public ListDateAdapter(Context context,int numberDate,String startDate) {
+    public ListMyPlanDateAdapter(Context context, int numberDate, int keyPlan) {
         mContext = context;
+        plan = PlanListManager.getInstance().getPlan(keyPlan);
         this.numberOfDate = numberDate;
-        this.startDate = startDate;
-        ConvertStringToDate(startDate);
+        this.startDate = plan.getDateStart();
+
     }
 
 
@@ -44,10 +49,7 @@ public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainVi
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
 
-
-
-
-        c.setTime(date_startDate);
+        c.setTime(startDate);
         c.add(Calendar.DATE, position);
         final Date date = c.getTime();
 
@@ -60,7 +62,7 @@ public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainVi
                 /**
                  * Call next Screen and send date to screen
                  */
-                fragmentTran.replace(R.id.fragment_container, new Screen_add_detail_of_days(date), "Screen add detail of days");
+                fragmentTran.replace(R.id.fragment_container, new Screen_show_detail_of_days(date,plan.getId()), "Screen add detail of days");
                 fragmentTran.addToBackStack("Screen_add_detail_of_days");
                 fragmentTran.commit();
             }
@@ -91,14 +93,5 @@ public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainVi
     }
 
 
-    private void ConvertStringToDate(String startDate) {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            date_startDate = formatter.parse(startDate);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 }

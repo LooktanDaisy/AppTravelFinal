@@ -26,24 +26,26 @@
         android:gravity="center" />
 
     <ImageView
+        android:id="@+id/imageViewEdit"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_done"
-        android:id="@+id/imageViewEdit"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_done" />
 
     <TextView
-        android:text="@string/done"
+        android:id="@+id/textViewEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewEdit"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
+        android:layout_alignBottom="@+id/imageViewEdit"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/imageViewEdit"
-        android:layout_alignBottom="@+id/imageViewEdit" />
+        android:gravity="center"
+        android:text="@string/done"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/FontSizeS"
+        android:visibility="invisible" />
 
     <TextView
         android:text="@string/cost_total"
@@ -127,12 +129,12 @@
         android:layout_toStartOf="@+id/imageViewEdit" />
 
     <TextView
-        android:text="@string/plan_topic_text"
+        android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewEdit"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView22"
+        android:text="@string/my_plan_topic_text"
         android:textSize="@dimen/FontSizeS" />
 
     <TextView

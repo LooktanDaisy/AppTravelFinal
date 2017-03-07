@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/row_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/MarginSpace"
+        android:layout_marginRight="@dimen/MarginSpace"
+        android:layout_marginTop="@dimen/MarginSpace"
+        android:background="@drawable/border_row_list_date"
+        android:padding="@dimen/PaddingSpaceM">
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/TextViewNamePlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textViewBudget"
+            android:layout_alignEnd="@+id/space2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="ชื่อแผน"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeM" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/TextViewNamePlan"
+            android:layout_marginBottom="@dimen/MarginSpaceS"
+            android:layout_marginTop="@dimen/MarginSpaceS"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/province_text"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSS" />
+
+        <TextView
+            android:id="@+id/textViewProvince"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_marginLeft="@dimen/MarginSpace"
+            android:layout_toEndOf="@+id/textView3"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/province_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/FontSizeSS" />
+
+        <TextView
+            android:id="@+id/textViewDateGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView3"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="วันไป"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/FontSizeSSS" />
+
+        <TextView
+            android:id="@+id/textViewDateBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView20"
+            android:layout_alignBottom="@+id/textView20"
+            android:layout_marginLeft="@dimen/MarginSpace"
+            android:layout_toEndOf="@+id/textView20"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="วันกลับ"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/FontSizeSSS" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewDateGo"
+            android:layout_alignBottom="@+id/textViewDateGo"
+            android:layout_alignEnd="@+id/space2"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="ถึง"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSSS" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textViewBudget"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textViewBudget"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/bath"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/FontSizeSS" />
+
+        <TextView
+            android:id="@+id/textViewBudget"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignStart="@+id/space2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="100000"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/FontSizeM" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageViewDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/row_plan"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_bin_active" />
+
+</RelativeLayout>

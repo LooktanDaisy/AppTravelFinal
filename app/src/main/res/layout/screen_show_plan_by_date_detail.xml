@@ -26,24 +26,27 @@
         android:gravity="center" />
 
     <ImageView
+        android:id="@+id/imageViewEdit"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_done"
-        android:id="@+id/imageViewEdit"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:clickable="true"
+        android:padding="@dimen/PaddingSpaceS"
+        app:srcCompat="@drawable/ic_edit" />
 
     <TextView
-        android:text="@string/done"
+        android:id="@+id/textViewEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewEdit"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
+        android:layout_alignBottom="@+id/imageViewEdit"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/imageViewEdit"
-        android:layout_alignBottom="@+id/imageViewEdit" />
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/edit"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/FontSizeS" />
 
     <TextView
         android:text="@string/plan_topic_text"
