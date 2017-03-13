@@ -79,7 +79,6 @@ public class AccommodationListAdapter extends BaseAdapter {
         item.getIvAdd().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         MainControl.addItemToAccom(String.valueOf(dao.getId()));
                         MainControl.setPointAccom(Double.parseDouble(dao.getLat()),Double.parseDouble(dao.getLng()));
                         Control_Main_Dialog.dismiss();

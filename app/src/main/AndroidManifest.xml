@@ -30,7 +30,10 @@
             android:name=".screen.Screen_register"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".screen.Screen_Container_bar" />
-        <activity android:name=".screen.MapActivity"></activity>
+        <activity android:name=".screen.MapActivity">
+
+
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
