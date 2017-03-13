@@ -29,7 +29,7 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
     private String startDate,budget;
     private RecyclerView listDate;
     private ListDateAdapter listDateAdapter;
-    private TextView tvBudget,tvBack,tvDone;
+    private TextView tvBudget,tvBack,tvDone,tvCost;
     private ImageView ImgBack,ImgDone;
     private int planID=0;
 
@@ -85,6 +85,12 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
 
         ImgDone =(ImageView) rootView.findViewById(R.id.imageViewDone);
         ImgDone.setOnClickListener(this);
+
+        tvCost = (TextView) rootView.findViewById(R.id.textViewCost);
+    }
+
+    private void setShowCost() {
+        tvCost.setText(MainFunction.commaDouble(DataManager.getInstance().calculateCost(planID)));
     }
 
     @Override
@@ -97,9 +103,15 @@ public class Screen_choose_plan_date extends Fragment implements View.OnClickLis
         super.onStop();
     }
 
+    @Override
+    public void onResume() {
+        setShowCost();
+        super.onResume();
+    }
+
     /*
-     * Save Instance State Here
-     */
+         * Save Instance State Here
+         */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

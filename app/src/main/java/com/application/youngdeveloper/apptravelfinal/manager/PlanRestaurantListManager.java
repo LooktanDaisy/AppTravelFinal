@@ -2,6 +2,7 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 
 import android.content.Context;
 
+import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanRestaurantListDao;
@@ -55,6 +56,21 @@ public class PlanRestaurantListManager {
         return PlanRestauByDateAndPlanID;
     }
 
+    public ArrayList<PlanRestaurantListDao> getListPlanAccomByPlanID(int idPlan){
+        ArrayList<PlanRestaurantListDao> PlanRestauByDateAndPlanID = new ArrayList<>();
+        if(getDao()!=null) {
+            ArrayList<PlanRestaurantListDao> ListPlanRestau = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanRestau.size(); i++) {
+                if (ListPlanRestau.get(i).getPlanID() == idPlan) {
+
+                    PlanRestauByDateAndPlanID.add(ListPlanRestau.get(i));
+                }
+            }
+        }
+        return PlanRestauByDateAndPlanID;
+    }
+
     public void removeByPlanID(int planID){
         if(getDao()!=null) {
             ArrayList<PlanRestaurantListDao> ListPlanRest = getDao().getData();
@@ -85,4 +101,6 @@ public class PlanRestaurantListManager {
             getDao().getData().add(planRestau);
         }
     }
+
+
 }

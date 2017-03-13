@@ -23,6 +23,7 @@ import com.application.youngdeveloper.apptravelfinal.adapter.ListDateAdapter;
 import com.application.youngdeveloper.apptravelfinal.adapter.ListMyPlanDateAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListDao;
+import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
 
 import java.util.Date;
@@ -33,7 +34,7 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
     private int budget;
     private RecyclerView listDate;
     private ListMyPlanDateAdapter listMyPlanDateAdapter;
-    private TextView tvBudget,tvBack;
+    private TextView tvBudget,tvBack,tvCost;
     private ImageView ImgBack;
 
 
@@ -73,6 +74,8 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
         listMyPlanDateAdapter.setFragmentTran(ft);
         listDate.setAdapter(listMyPlanDateAdapter);
 
+        tvCost = (TextView) rootView.findViewById(R.id.textViewCost);
+
         tvBudget = (TextView) rootView.findViewById(R.id.textViewBudget);
         tvBudget.setText(MainFunction.commaDouble(budget));
 
@@ -81,6 +84,13 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
 
         tvBack = (TextView) rootView.findViewById(R.id.textViewBack);
         tvBack.setOnClickListener(this);
+
+
+//        setShowCost();
+    }
+
+    private void setShowCost() {
+        tvCost.setText(MainFunction.commaDouble(DataManager.getInstance().calculateCost(keyPlan)));
     }
 
     @Override
@@ -93,9 +103,15 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
         super.onStop();
     }
 
+    @Override
+    public void onResume() {
+        setShowCost();
+        super.onResume();
+    }
+
     /*
-     * Save Instance State Here
-     */
+         * Save Instance State Here
+         */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
