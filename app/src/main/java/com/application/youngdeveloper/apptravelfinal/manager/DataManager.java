@@ -7,7 +7,10 @@ import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlaceListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanRestaurantListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
 
 import org.apache.http.NameValuePair;
@@ -23,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 public class DataManager {
 
@@ -429,5 +433,31 @@ public class DataManager {
                 }
             }
         }
+    }
+
+    public double calculateCost(int keyPlan) {
+        double Cost=0.0;
+        ArrayList<PlanAccommodationListDao> planAccom = PlanAccommodationListManager.getInstance().getListPlanAccomByPlanID(keyPlan);
+
+        int i=0;
+        for (i = 0 ; i<planAccom.size();i++){
+            Cost = Cost + AccommodationListManager.getInstance().getAccommodation(planAccom.get(i).getAccomID()).getPrice();
+        }
+
+        ArrayList<PlanPlaceListDao> planPlace = PlanPlaceListManager.getInstance().getListPlanPlaceByPlanID(keyPlan);
+
+        int j=0;
+        for (i = 0 ; i<planPlace.size();i++){
+            Cost = Cost + PlaceListManager.getInstance().getPlace(planPlace.get(i).getPlaceID()).getCost();
+        }
+
+        ArrayList<PlanRestaurantListDao> planRest = PlanRestaurantListManager.getInstance().getListPlanAccomByPlanID(keyPlan);
+
+        int k=0;
+        for (i = 0 ; i<planRest.size();i++){
+            Cost = Cost + RestaurantListManager.getInstance().getRestaurant(planRest.get(i).getRestauID()).getPrice();
+        }
+
+        return Cost;
     }
 }

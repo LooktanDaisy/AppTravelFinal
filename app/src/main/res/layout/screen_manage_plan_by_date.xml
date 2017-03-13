@@ -60,6 +60,19 @@
         android:layout_alignParentBottom="true" />
 
     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView17"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:padding="@dimen/MarginSpace"
+        android:text="@string/cost_total"
+        android:textAlignment="textStart"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeS" />
+
+    <TextView
         android:text="@string/bath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +83,19 @@
         android:padding="@dimen/MarginSpace"
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/MarginSpace"
+        android:text="@string/bath"
+        android:textAlignment="textStart"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/FontSizeS"
+        android:layout_above="@+id/textView18"
         android:layout_alignParentEnd="true" />
 
     <TextView
@@ -97,8 +123,21 @@
         android:padding="@dimen/MarginSpace"
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView16"
-        android:layout_toStartOf="@+id/imageViewDone" />
+        android:layout_toStartOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textViewCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView19"
+        android:layout_alignBottom="@+id/textView19"
+        android:layout_toStartOf="@+id/textView19"
+        android:gravity="center"
+        android:padding="@dimen/MarginSpace"
+        android:text="0"
+        android:textAlignment="textStart"
+        android:textColor="@color/red_main"
+        android:textSize="@dimen/FontSizeS" />
 
     <TextView
         android:text="@string/plan_topic_text"
@@ -110,11 +149,10 @@
         android:textSize="@dimen/FontSizeS" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_date"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView22"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView17"
-        android:background="@android:color/white"
-        android:id="@+id/list_date" />
+        android:layout_below="@+id/textView22"
+        android:background="@android:color/white" />
 </RelativeLayout>

@@ -56,6 +56,21 @@ public class PlanAccommodationListManager {
         return PlanAccomByDateAndPlanID;
     }
 
+
+    public ArrayList<PlanAccommodationListDao> getListPlanAccomByPlanID(int idPlan){
+        ArrayList<PlanAccommodationListDao> PlanAccomByDateAndPlanID = new ArrayList<>();
+        if(getDao()!=null) {
+            ArrayList<PlanAccommodationListDao> ListPlanAccom = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanAccom.size(); i++) {
+                if (ListPlanAccom.get(i).getPlanID() == idPlan) {
+                    PlanAccomByDateAndPlanID.add(ListPlanAccom.get(i));
+                }
+            }
+        }
+        return PlanAccomByDateAndPlanID;
+    }
+
     public void removeByPlanID(int planID){
         if(getDao()!=null) {
             ArrayList<PlanAccommodationListDao> ListPlanAccom = getDao().getData();

@@ -288,7 +288,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
                         DataManager.getInstance().addPlanAccom(planID,thisDate,adapterAccom.getListAccom());
                         DataManager.getInstance().addPlanPlace(planID,thisDate,adapterPlace.getListPlace());
                         DataManager.getInstance().addPlanRestaurant(planID,thisDate,adapterRestaurant.getListRestaurant());
-                        ((Screen_Container_bar)getActivity()).showMyPlanScreen();
+//                        ((Screen_Container_bar)getActivity()).showMyPlanScreen();
+                        getFragmentManager().popBackStack();
 
 
                     }

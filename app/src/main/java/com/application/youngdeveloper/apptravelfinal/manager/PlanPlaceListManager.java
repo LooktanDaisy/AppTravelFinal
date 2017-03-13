@@ -57,6 +57,21 @@ public class PlanPlaceListManager {
         return PlanPlaceByDateAndPlanID;
     }
 
+    public ArrayList<PlanPlaceListDao> getListPlanPlaceByPlanID(int idPlan){
+        ArrayList<PlanPlaceListDao> PlanPlaceByDateAndPlanID = new ArrayList<>();
+        if(getDao()!=null) {
+            ArrayList<PlanPlaceListDao> ListPlanPlace = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanPlace.size(); i++) {
+                if (ListPlanPlace.get(i).getPlanID() == idPlan) {
+
+                    PlanPlaceByDateAndPlanID.add(ListPlanPlace.get(i));
+                }
+            }
+        }
+        return PlanPlaceByDateAndPlanID;
+    }
+
     public void removeByPlanID(int planID){
         if(getDao()!=null) {
             ArrayList<PlanPlaceListDao> ListPlanPlace = getDao().getData();
