@@ -31,6 +31,9 @@ public class RestaurantListCollectionDao {
     public ArrayList<RestaurantListDao> getRestaurantByCostLimit() {
         ArrayList<RestaurantListDao> RestaurantByCost = new ArrayList<RestaurantListDao>();
 
+        if(CostLimit.FoodCost==0.0){
+            CostLimit.FoodCost = 100000.00;
+        }
         for(int i=0;i<getData().size();i++){
             if(getData().get(i).getPrice() <= CostLimit.FoodCost){
                 RestaurantByCost.add(getData().get(i));

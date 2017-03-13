@@ -29,6 +29,7 @@ public class Screen_Dialog_Place extends DialogFragment {
     private Spinner spinnerTypePlace;
     private PlaceListAdapter listPlaceAdapter;
     private TextView tvNotFound;
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
 
     public Screen_Dialog_Place() {
         super();
@@ -64,6 +65,7 @@ public class Screen_Dialog_Place extends DialogFragment {
         listPlaceAdapter = new PlaceListAdapter();
         listPlaceAdapter.setActivity(getActivity(),this);
         listPlaceAdapter.setMainControl(ControlMainScreen);
+        listPlaceAdapter.setMainControlShow(ControlMainScreenShow);
 //        listPlaceAdapter.setTextView(tvNotFound);
         lvListPlace.setAdapter(listPlaceAdapter);
 
@@ -138,4 +140,7 @@ public class Screen_Dialog_Place extends DialogFragment {
         ControlMainScreen = activity;
     }
 
+    public void setMainControlShow(Screen_show_detail_of_days screen_show_detail_of_days) {
+        ControlMainScreenShow = screen_show_detail_of_days;
+    }
 }

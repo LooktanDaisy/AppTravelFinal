@@ -26,7 +26,7 @@
         android:gravity="center" />
 
     <ImageView
-        android:id="@+id/imageViewEdit"
+        android:id="@+id/imageViewDone"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
@@ -36,12 +36,12 @@
         app:srcCompat="@drawable/ic_edit" />
 
     <TextView
-        android:id="@+id/textViewEdit"
+        android:id="@+id/textViewDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewEdit"
+        android:layout_alignBottom="@+id/imageViewDone"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageViewEdit"
+        android:layout_toStartOf="@+id/imageViewDone"
         android:clickable="true"
         android:gravity="center"
         android:text="@string/edit"
@@ -65,7 +65,7 @@
         android:id="@+id/tvDate"
         android:textSize="@dimen/FontSizeSS"
         android:layout_marginLeft="@dimen/MarginSpace"
-        android:layout_below="@+id/imageViewEdit"
+        android:layout_below="@+id/imageViewDone"
         android:layout_toEndOf="@+id/textView22"
         android:textColor="@color/colorPrimary" />
 

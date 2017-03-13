@@ -15,6 +15,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.PlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Place;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_show_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.PlaceListItem;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PlaceListAdapter extends BaseAdapter {
     private FragmentActivity MainActivity;
     private Screen_add_detail_of_days MainControl;
     private Screen_Dialog_Place Control_Main_Dialog;
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
     private int typeId=0;
     private ArrayList<PlaceListDao> placeByType = new ArrayList<>();
 
@@ -79,8 +81,13 @@ public class PlaceListAdapter extends BaseAdapter {
                     Intent openMap = new Intent(MainActivity, MapActivity.class);
                     openMap.putExtra("ID", dao.getId());
                     openMap.putExtra("TYPE_ID", Type_id_item.TYPE_PLACE);
-                    openMap.putExtra("ACCOM_LAT",MainControl.getAccomLat());
-                    openMap.putExtra("ACCOM_LNG",MainControl.getAccomLng());
+                    if(MainControl!=null) {
+                        openMap.putExtra("ACCOM_LAT", MainControl.getAccomLat());
+                        openMap.putExtra("ACCOM_LNG", MainControl.getAccomLng());
+                    }else{
+                        openMap.putExtra("ACCOM_LAT", ControlMainScreenShow.getAccomLat());
+                        openMap.putExtra("ACCOM_LNG", ControlMainScreenShow.getAccomLng());
+                    }
 
                     MainActivity.startActivity(openMap);
                     MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
@@ -93,8 +100,15 @@ public class PlaceListAdapter extends BaseAdapter {
             item.getIvAdd().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainControl.addItemToPlace(String.valueOf(dao.getId()));
-                    Control_Main_Dialog.dismiss();
+
+                    if(MainControl!=null) {
+
+                        MainControl.addItemToPlace(String.valueOf(dao.getId()));
+                        Control_Main_Dialog.dismiss();
+                    }else{
+                        ControlMainScreenShow.addItemToPlace(String.valueOf(dao.getId()));
+                        Control_Main_Dialog.dismiss();
+                    }
 
 //                MainActivity.finish();
 //                MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
@@ -117,8 +131,18 @@ public class PlaceListAdapter extends BaseAdapter {
     public void selectTypePlace(int i) {
         typeId = i;
         placeByType = PlaceListManager.getInstance().getDao().getDataByTypePlace(typeId);
-        placeByType = PlaceListManager.getInstance().getDao().CalculateHowFarToAccom(placeByType,MainControl.getAccomLat(),MainControl.getAccomLng());
+        if(MainControl!=null){
+            placeByType = PlaceListManager.getInstance().getDao().CalculateHowFarToAccom(placeByType,MainControl.getAccomLat(),MainControl.getAccomLng());
+        }else{
+            placeByType = PlaceListManager.getInstance().getDao().CalculateHowFarToAccom(placeByType,ControlMainScreenShow.getAccomLat(),ControlMainScreenShow.getAccomLng());
+
+        }
         notifyDataSetChanged();
+    }
+
+
+    public void setMainControlShow(Screen_show_detail_of_days controlMainScreenShow) {
+        ControlMainScreenShow = controlMainScreenShow;
     }
 
 //    public void setTextView(TextView tvNotFound) {

@@ -190,5 +190,28 @@ public class ChooseitemToListAdapter extends RecyclerView.Adapter<ChooseitemToLi
     }
 
 
+    public ArrayList<PlaceListDao> getListPlace() {
+        if (ListItemPlace.size()>0) {
+            return ListItemPlace;
+        } else {
+            return null;
+        }
+    }
+
+    public ArrayList<RestaurantListDao> getListRestaurant() {
+        if (ListItemRestau.size()>0) {
+            return ListItemRestau;
+        } else {
+            return null;
+        }
+    }
+
+    public ArrayList<AccommodationListDao> getListAccom() {
+        if (ListItemAccom.size()>0) {
+            return ListItemAccom;
+        } else {
+            return null;
+        }
+    }
 
 }

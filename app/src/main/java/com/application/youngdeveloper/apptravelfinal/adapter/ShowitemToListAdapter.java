@@ -25,6 +25,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlanPlaceListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.PlanRestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -37,12 +38,15 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
 
     private Context mContext;
     private String listOfID = null;
-    private ArrayList<PlanPlaceListDao> ListItemPlace = new ArrayList<>();
-    private ArrayList<PlanAccommodationListDao> ListItemAccom = new ArrayList<>();
-    private ArrayList<PlanRestaurantListDao> ListItemRestau= new ArrayList<>();
+    private ArrayList<PlaceListDao> ListItemPlace = new ArrayList<>();
+    private ArrayList<AccommodationListDao> ListItemAccom = new ArrayList<>();
+    private ArrayList<RestaurantListDao> ListItemRestau= new ArrayList<>();
+
+
     private int TYPE_ID = 0;
     private int PLAN_ID=0;
     private Date thisDate;
+    private boolean statusEdit = false;
 
     public ShowitemToListAdapter(Context context,int typeAdapter,int keyPlan,Date date) {
         mContext = context;
@@ -51,16 +55,44 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
         thisDate = date;
 
         if(TYPE_ID == Type_id_item.TYPE_PLACE){
+            ArrayList<PlanPlaceListDao> listPlanPlace = PlanPlaceListManager.getInstance().getListPlanPlaceByDateAndPlanID(PLAN_ID,thisDate);
+            if(listPlanPlace.size()>0){
+                ListItemPlace.remove(ListItemPlace);
+                int i=0;
+                for(i=0;i<listPlanPlace.size();i++){
+                    int placeID = listPlanPlace.get(i).getPlaceID();
+                    if(ListItemPlace.contains(listPlanPlace.get(i))==false) {
+                        ListItemPlace.add(PlaceListManager.getInstance().getPlace(placeID));
+                    }
+                }
+            }
 
-            ListItemPlace = PlanPlaceListManager.getInstance().getListPlanPlaceByDateAndPlanID(PLAN_ID,thisDate);
 
         }else if(TYPE_ID == Type_id_item.TYPE_ACCOMMODATION){
-
-            ListItemAccom = PlanAccommodationListManager.getInstance().getListPlanAccomByDateAndPlanID(PLAN_ID,thisDate);
+            ListItemAccom.remove(ListItemAccom);
+            ArrayList<PlanAccommodationListDao> listPlanAccom = PlanAccommodationListManager.getInstance().getListPlanAccomByDateAndPlanID(PLAN_ID,thisDate);
+            if(listPlanAccom.size()>0){
+                int i=0;
+                for(i=0;i<listPlanAccom.size();i++){
+                    int accomID = listPlanAccom.get(i).getAccomID();
+                    ListItemAccom.add(AccommodationListManager.getInstance().getAccommodation(accomID));
+                }
+            }
 
         }else if(TYPE_ID == Type_id_item.TYPE_RESTAURANT){
 
-            ListItemRestau = PlanRestaurantListManager.getInstance().getListPlanAccomByDateAndPlanID(PLAN_ID,thisDate);
+            ArrayList<PlanRestaurantListDao> listPlanRestau = PlanRestaurantListManager.getInstance().getListPlanAccomByDateAndPlanID(PLAN_ID,thisDate);
+            if(listPlanRestau.size()>0){
+                ListItemRestau.remove(ListItemRestau);
+                int i=0;
+                for(i=0;i<listPlanRestau.size();i++){
+                    int restuaID = listPlanRestau.get(i).getRestauID();
+                    if(ListItemRestau.contains(listPlanRestau.get(i))==false) {
+                        ListItemRestau.add(RestaurantListManager.getInstance().getRestaurant(restuaID));
+                    }
+
+                }
+            }
 
         }
 
@@ -68,27 +100,37 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
     }
 
 
-//    public void addItem(String listOfID,int TYPE_ID){
-//        this.listOfID = listOfID;
-//        this.TYPE_ID = TYPE_ID;
-//
-//        if(TYPE_ID == Type_id_item.TYPE_PLACE){
-//            if(ListItemPlace.contains(PlaceListManager.getInstance().getPlace(Integer.parseInt(listOfID)))==false) {
-////                ListItemPlace.add(PlaceListManager.getInstance().getPlace(Integer.parseInt(listOfID)));
-//            }
-//        }else if(TYPE_ID == Type_id_item.TYPE_ACCOMMODATION){
-//            if(ListItemAccom.contains(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)))==false) {
-//                ListItemAccom.removeAll(ListItemAccom);
-////                ListItemAccom.add(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)));
-//            }
-//        }else if(TYPE_ID == Type_id_item.TYPE_RESTAURANT){
-//            if(ListItemRestau.contains(RestaurantListManager.getInstance().getRestaurant(Integer.parseInt(listOfID)))==false){
-//
-//            }
-////           ListItemRestau.add(RestaurantListManager.getInstance().getRestaurant(Integer.parseInt(listOfID)));
-//        }
-//        notifyDataSetChanged();
-//    }
+    public int getAccomDetail(){
+        if(ListItemAccom.size()>0) {
+            return ListItemAccom.get(0).getId();
+        }else{
+            return 0;
+        }
+    }
+
+
+    public void addItem(String listOfID,int TYPE_ID){
+        this.listOfID = listOfID;
+        this.TYPE_ID = TYPE_ID;
+
+        if(TYPE_ID == Type_id_item.TYPE_PLACE){
+            if(ListItemPlace.contains(PlaceListManager.getInstance().getPlace(Integer.parseInt(listOfID)))==false) {
+                ListItemPlace.add(PlaceListManager.getInstance().getPlace(Integer.parseInt(listOfID)));
+            }
+        }else if(TYPE_ID == Type_id_item.TYPE_ACCOMMODATION){
+            if(ListItemAccom.contains(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)))==false) {
+                ListItemAccom.removeAll(ListItemAccom);
+                ListItemAccom.add(AccommodationListManager.getInstance().getAccommodation(Integer.parseInt(listOfID)));
+
+            }
+        }else if(TYPE_ID == Type_id_item.TYPE_RESTAURANT){
+            if(ListItemRestau.contains(RestaurantListManager.getInstance().getRestaurant(Integer.parseInt(listOfID)))==false){
+           ListItemRestau.add(RestaurantListManager.getInstance().getRestaurant(Integer.parseInt(listOfID)));
+            }
+
+        }
+        notifyDataSetChanged();
+    }
 
 
 
@@ -102,8 +144,8 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
 
             if (TYPE_ID == Type_id_item.TYPE_PLACE) {
                 if(ListItemPlace.size()!=0) {
-                    PlanPlaceListDao dao = ListItemPlace.get(position);
-                    PlaceListDao placeDao = PlaceListManager.getInstance().getPlace(dao.getPlaceID());
+                    PlaceListDao dao = ListItemPlace.get(position);
+                    PlaceListDao placeDao = PlaceListManager.getInstance().getPlace(dao.getId());
                     holder.tvName.setText(placeDao.getName());
                     holder.tvCost.setText(placeDao.getCost() + "  บาท");
 
@@ -123,6 +165,17 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                             notifyDataSetChanged();
                         }
                     });
+
+                    if(statusEdit){
+
+                        holder.imageDelete.setVisibility(View.VISIBLE);
+
+                    }else{
+
+                        holder.imageDelete.setVisibility(View.INVISIBLE);
+                    }
+
+
                 }
 
             } else if (TYPE_ID == Type_id_item.TYPE_ACCOMMODATION) {
@@ -131,8 +184,8 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                      * set pointAccom to Main
                      */
 
-                    PlanAccommodationListDao dao = ListItemAccom.get(position);
-                    AccommodationListDao accomDao = AccommodationListManager.getInstance().getAccommodation((dao.getAccomID()));
+                    AccommodationListDao dao = ListItemAccom.get(position);
+                    AccommodationListDao accomDao = AccommodationListManager.getInstance().getAccommodation((dao.getId()));
 
 
                     holder.tvName.setText(accomDao.getName());
@@ -161,8 +214,8 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                 }
             } else if (TYPE_ID == Type_id_item.TYPE_RESTAURANT) {
                 if(ListItemRestau.size()!=0) {
-                    PlanRestaurantListDao dao = ListItemRestau.get(position);
-                    RestaurantListDao restauDao = RestaurantListManager.getInstance().getRestaurant(dao.getRestauID());
+                    RestaurantListDao dao = ListItemRestau.get(position);
+                    RestaurantListDao restauDao = RestaurantListManager.getInstance().getRestaurant(dao.getId());
                     holder.tvName.setText(restauDao.getName());
                     holder.tvCost.setText(restauDao.getPrice() + "  บาท");
 
@@ -182,6 +235,15 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                             notifyDataSetChanged();
                         }
                     });
+
+                    if(statusEdit){
+
+                        holder.imageDelete.setVisibility(View.VISIBLE);
+
+                    }else{
+
+                        holder.imageDelete.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
 
@@ -208,6 +270,11 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
 
     }
 
+    public void setEnableEdit(boolean statusEdit){
+        this.statusEdit = statusEdit;
+        notifyDataSetChanged();
+    }
+
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName,tvCost;
@@ -221,6 +288,26 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
             tvName = (TextView) itemView.findViewById(R.id.name);
             tvCost = (TextView) itemView.findViewById(R.id.textViewCost);
 
+        }
+    }
+
+
+
+    public ArrayList<PlaceListDao> getListPlace() {
+//
+        return ListItemPlace;
+    }
+
+    public ArrayList<RestaurantListDao> getListRestaurant() {
+
+        return  ListItemRestau;
+    }
+
+    public ArrayList<AccommodationListDao> getListAccom() {
+        if (ListItemAccom.size()>0) {
+            return ListItemAccom;
+        } else {
+            return null;
         }
     }
 

@@ -31,6 +31,10 @@ public class AccommodationListCollectionDao {
     public ArrayList<AccommodationListDao> getAccomByCostLimit() {
         ArrayList<AccommodationListDao> AccomByCost = new ArrayList<AccommodationListDao>();
 
+        if(CostLimit.AccomCost==0.0){
+            CostLimit.AccomCost = 100000.00;
+        }
+
         for(int i=0;i<getData().size();i++){
             if(getData().get(i).getPrice() <= CostLimit.AccomCost){
                 AccomByCost.add(getData().get(i));

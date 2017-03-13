@@ -22,6 +22,7 @@ import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.manager.CostLimit;
 import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
+import com.application.youngdeveloper.apptravelfinal.manager.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -184,25 +185,31 @@ public class Screen_Add_Plan extends Fragment implements View.OnClickListener{
                                                      * confirmed
                                                      */
 
-                                                    /**
-                                                     * Insert Plan to Database
-                                                     */
-                                                    //TODO: insert Plan to app and Server
+
 
                                                     CostLimit.AccomCost = Double.parseDouble(edtAccomCost.getText().toString());
                                                     CostLimit.FoodCost = Double.parseDouble(edtFoodCost.getText().toString());
 
-                                                    DataManager.getInstance().insertPlan();
+
 
                                                     /**
                                                      * send Budget to next screen
                                                      */
                                                     String budget = edtBudget.getText().toString();
 
+
+                                                    /**
+                                                     * Insert Plan to Database and Server
+                                                     */
+
                                                     if(numberOfDate > 0){
-                                                        DataManager.getInstance().insertPlan();
+                                                        /**
+                                                         * Traveler_id,province,date_start,date_end,budget,plan_name
+                                                         */
+                                                        int planId = DataManager.getInstance().insertPlan(User.ID, provinceSpinner.getSelectedItem().toString(), dateGo, dateBack, edtBudget.getText().toString(), edtNamePlan.getText().toString());
                                                         final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                                        ft.replace(R.id.fragment_container, new Screen_choose_plan_date(numberOfDate,dateGo,budget), "Screen_choose_plan_date");
+                                                        ft.replace(R.id.fragment_container, new Screen_choose_plan_date(numberOfDate,dateGo,budget,planId), "Screen_choose_plan_date");
+                                                        ft.addToBackStack("Screen_choose_plan_date");
                                                         ft.commit();
                                                     }else{
                                                         Toast.makeText(getContext(),R.string.E03,Toast.LENGTH_SHORT).show();

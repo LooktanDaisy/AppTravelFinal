@@ -123,6 +123,18 @@ public class Screen_Container_bar extends AppCompatActivity implements View.OnCl
     }
 
 
+    public void showMyPlanScreen(){
+        setColorUnActive(tvHome,imgHome);
+        setColorUnActive(tvAddPlan,imgAddPlan);
+        setColorActive(tvMyPlan,imgMyPlan);
+        setColorUnActive(tvProfile,imgProfile);
+
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Screen_my_plan.newInstance(),TAG).commit();
+
+    }
+
+
     private void setColorActive(TextView textMenu,ImageView imgMenu){
         textMenu.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         Drawable img_Menu = imgMenu.getDrawable();

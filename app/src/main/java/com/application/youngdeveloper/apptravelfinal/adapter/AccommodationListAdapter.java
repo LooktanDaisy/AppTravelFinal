@@ -15,6 +15,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListMa
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Accomodation;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_show_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class AccommodationListAdapter extends BaseAdapter {
     private Screen_add_detail_of_days MainControl;
     private Screen_Dialog_Accomodation Control_Main_Dialog;
     private ArrayList<AccommodationListDao> AccomByCostLimit = new ArrayList<>();
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
 
     @Override
     public int getCount() {
@@ -69,6 +71,13 @@ public class AccommodationListAdapter extends BaseAdapter {
                 Intent openMap = new Intent(MainActivity, MapActivity.class);
                 openMap.putExtra("ID", dao.getId());
                 openMap.putExtra("TYPE_ID", Type_id_item.TYPE_ACCOMMODATION);
+                if(MainControl!=null) {
+                    openMap.putExtra("ACCOM_LAT", MainControl.getAccomLat());
+                    openMap.putExtra("ACCOM_LNG", MainControl.getAccomLng());
+                }else{
+                    openMap.putExtra("ACCOM_LAT", ControlMainScreenShow.getAccomLat());
+                    openMap.putExtra("ACCOM_LNG", ControlMainScreenShow.getAccomLng());
+                }
 
                 MainActivity.startActivity(openMap);
                 MainActivity.overridePendingTransition(R.anim.fade_in_fast, R.anim.fade_out_fast);
@@ -80,9 +89,16 @@ public class AccommodationListAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View view) {
 
-                        MainControl.addItemToAccom(String.valueOf(dao.getId()));
-                        MainControl.setPointAccom(Double.parseDouble(dao.getLat()),Double.parseDouble(dao.getLng()));
-                        Control_Main_Dialog.dismiss();
+                        if(MainControl!=null) {
+
+                            MainControl.addItemToAccom(String.valueOf(dao.getId()));
+                            MainControl.setPointAccom(Double.parseDouble(dao.getLat()), Double.parseDouble(dao.getLng()));
+                            Control_Main_Dialog.dismiss();
+                        }else{
+                            ControlMainScreenShow.addItemToAccom(String.valueOf(dao.getId()));
+                            ControlMainScreenShow.setPointAccom(Double.parseDouble(dao.getLat()), Double.parseDouble(dao.getLng()));
+                            Control_Main_Dialog.dismiss();
+                        }
             }
         });
 
@@ -96,6 +112,7 @@ public class AccommodationListAdapter extends BaseAdapter {
     }
 
     public  void setMainControl(Screen_add_detail_of_days controlMainScreen){
+
         MainControl = controlMainScreen;
 
         /**
@@ -116,5 +133,9 @@ public class AccommodationListAdapter extends BaseAdapter {
         }else{
             tvNotFound.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setMainControlShow(Screen_show_detail_of_days controlMainScreenShow) {
+        ControlMainScreenShow = controlMainScreenShow;
     }
 }

@@ -29,7 +29,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:srcCompat="@drawable/ic_done"
-        android:id="@+id/imageViewEdit"
+        android:id="@+id/imageViewDone"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -37,13 +37,13 @@
         android:text="@string/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewEdit"
+        android:id="@+id/textViewDone"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/FontSizeS"
         android:gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageViewEdit"
-        android:layout_alignBottom="@+id/imageViewEdit" />
+        android:layout_toStartOf="@+id/imageViewDone"
+        android:layout_alignBottom="@+id/imageViewDone" />
 
     <TextView
         android:text="@string/plan_topic_text"
@@ -62,7 +62,7 @@
         android:id="@+id/tvDate"
         android:textSize="@dimen/FontSizeSS"
         android:layout_marginLeft="@dimen/MarginSpace"
-        android:layout_below="@+id/imageViewEdit"
+        android:layout_below="@+id/imageViewDone"
         android:layout_toEndOf="@+id/textView22"
         android:textColor="@color/colorPrimary" />
 

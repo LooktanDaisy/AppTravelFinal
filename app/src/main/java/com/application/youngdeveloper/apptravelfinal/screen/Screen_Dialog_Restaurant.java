@@ -16,6 +16,7 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
     private ListView lvListRestaurant;
     private Screen_add_detail_of_days ControlMainScreen;
     private TextView tvNotFound;
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
 
     public Screen_Dialog_Restaurant() {
         super();
@@ -51,6 +52,7 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
         RestaurantListAdapter listRestaurantAdapter = new RestaurantListAdapter();
         listRestaurantAdapter.setActivity(getActivity(),this);
         listRestaurantAdapter.setMainControl(ControlMainScreen);
+        listRestaurantAdapter.setMainControlShow(ControlMainScreenShow);
         listRestaurantAdapter.setTextView(tvNotFound);
         lvListRestaurant.setAdapter(listRestaurantAdapter);
 
@@ -102,4 +104,7 @@ public class Screen_Dialog_Restaurant extends DialogFragment {
         ControlMainScreen = activity;
     }
 
+    public void setMainControlShow(Screen_show_detail_of_days screen_show_detail_of_days) {
+        ControlMainScreenShow = screen_show_detail_of_days;
+    }
 }

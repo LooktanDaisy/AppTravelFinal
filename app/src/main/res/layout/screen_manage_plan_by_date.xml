@@ -29,7 +29,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:srcCompat="@drawable/ic_done"
-        android:id="@+id/imageViewEdit"
+        android:id="@+id/imageViewDone"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -37,26 +37,13 @@
         android:text="@string/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewEdit"
+        android:id="@+id/textViewDone"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/FontSizeS"
         android:gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageViewEdit"
-        android:layout_alignBottom="@+id/imageViewEdit" />
-
-    <TextView
-        android:text="@string/cost_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView16"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:padding="@dimen/MarginSpace"
-        android:textAlignment="textStart" />
+        android:layout_toStartOf="@+id/imageViewDone"
+        android:layout_alignBottom="@+id/imageViewDone" />
 
     <TextView
         android:text="@string/budget_text"
@@ -67,10 +54,10 @@
         android:textSize="@dimen/FontSizeS"
         android:gravity="center"
         android:padding="@dimen/MarginSpace"
-        android:layout_above="@+id/textView16"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/textView16"
-        android:textAlignment="textStart" />
+        android:textAlignment="textStart"
+        android:layout_alignParentBottom="true" />
 
     <TextView
         android:text="@string/bath"
@@ -83,19 +70,6 @@
         android:padding="@dimen/MarginSpace"
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/bath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView19"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:textAlignment="textStart"
-        android:layout_above="@+id/textView18"
         android:layout_alignParentEnd="true" />
 
     <TextView
@@ -124,30 +98,16 @@
         android:textAlignment="textStart"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/textView16"
-        android:layout_toStartOf="@+id/imageViewEdit" />
+        android:layout_toStartOf="@+id/imageViewDone" />
 
     <TextView
         android:text="@string/plan_topic_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewEdit"
+        android:layout_below="@+id/textViewDone"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView22"
         android:textSize="@dimen/FontSizeS" />
-
-    <TextView
-        android:text="@string/budget_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView23"
-        android:textColor="@color/text_grey"
-        android:textSize="@dimen/FontSizeS"
-        android:gravity="center"
-        android:padding="@dimen/MarginSpace"
-        android:layout_above="@+id/textView16"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView16"
-        android:textAlignment="textStart" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

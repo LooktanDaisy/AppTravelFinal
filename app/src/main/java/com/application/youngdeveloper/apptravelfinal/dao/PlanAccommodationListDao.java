@@ -14,6 +14,10 @@ public class PlanAccommodationListDao {
     @SerializedName("traveler_id")
     private int traveler_id;
 
+    public PlanAccommodationListDao(){
+
+    }
+
     public int getTraveler_id() {
         return traveler_id;
     }
@@ -44,5 +48,12 @@ public class PlanAccommodationListDao {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public PlanAccommodationListDao(int planID, int accomID, Date date, int traveler_id) {
+        this.planID = planID;
+        this.accomID = accomID;
+        this.date = date;
+        this.traveler_id = traveler_id;
     }
 }

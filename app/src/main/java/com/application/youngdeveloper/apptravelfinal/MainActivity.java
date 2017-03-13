@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         frameLayout = (FrameLayout) findViewById(R.id.first_open_anim);
         initialView();
 
-        //downloadDataFromServer();
-
     }
 
 
@@ -146,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                      */
 
                     frameLayout.setVisibility(View.VISIBLE);
+                    DownloadTypePlace();
                     CheckLogin();
 
                 }
@@ -189,8 +188,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (response.isSuccessful()) {
                     PlaceListCollectionDao dao = response.body();
                     PlaceListManager.getInstance().setDao(dao);
-                    //listAdapter.notifyDataSetChanged();
-
 
                     /**
                      * if connect server Enable button
@@ -224,9 +221,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("ggg", t.toString());
 
-//                btn_login.setEnabled(false);
-//                btn_login.setBackground(getDrawable(R.drawable.border_button_dark_blue_trans));
-//                tv_register.setEnabled(false);
             }
         });
 
@@ -321,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        DownloadTypePlace();
+//        DownloadTypePlace();
 
 
     }
@@ -578,7 +572,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * Download Restaurant Plan
          */
 
-        Call<PlanRestuarantListCollectionDao> callRestau = HttpManager.getInstance().getService().loadReataurantPlanList(User.ID);
+        Call<PlanRestuarantListCollectionDao> callRestau = HttpManager.getInstance().getService().loadRestaurantPlanList(User.ID);
         callRestau.enqueue(new Callback<PlanRestuarantListCollectionDao>() { //Asynchronous
             @Override
             public void onResponse(Call<PlanRestuarantListCollectionDao> call,
