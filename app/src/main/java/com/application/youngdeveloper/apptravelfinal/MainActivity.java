@@ -36,6 +36,17 @@ import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManag
 import com.application.youngdeveloper.apptravelfinal.manager.User;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Container_bar;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_register;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -64,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout frameLayout;
     PlaceListAdapter listAdapter;
     ListView listView;
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
+    private AccessTokenTracker accessTokenTracker;
+    private AccessToken accessToken;
+    private ProfileTracker profileTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +136,136 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_login.setTextColor(getResources().getColor(R.color.white_trans));
         tv_register.setEnabled(false);
         tv_register.setTextColor(getResources().getColor(R.color.white_trans));
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        LoginManager.getInstance().logOut();
+
+        setUpFacebookLogin();
+
+    }
+
+    private void setUpFacebookLogin() {
+
+
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions("email");
+
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(
+                    AccessToken oldAccessToken,
+                    AccessToken currentAccessToken) {
+                // Set the access token using
+                // currentAccessToken when it's loaded or set.
+            }
+        };
+        // If the access token is available already assign it.
+        accessToken = AccessToken.getCurrentAccessToken();
+
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(
+                    Profile oldProfile,
+                    Profile currentProfile) {
+
+                frameLayout.setVisibility(View.VISIBLE);
+                LoginFacebook(currentProfile);
+//                Log.d("Profile",currentProfile.getId()+ " " + currentProfile.getFirstName()+ " " + currentProfile.getLastName());
+
+            }
+        };
+
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(getApplicationContext(), R.string.E07, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void LoginFacebook(final Profile currentProfile) {
+        try {
+            ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("username", String.valueOf(currentProfile.getFirstName())));
+            nameValuePairs.add(new BasicNameValuePair("password", String.valueOf(currentProfile.getId())));
+            nameValuePairs.add(new BasicNameValuePair("email", String.valueOf(currentProfile.getFirstName())));
+
+                /* Set to Http post*/
+                /* End set Value*/
+            HttpClient httpclient = new DefaultHttpClient();
+                /* Set URL*/
+            HttpPost httppost = new HttpPost(HttpManager.UrlPHP + "android_login_facebook.php");
+                /* End Set URL*/
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            final String responseText = httpclient.execute(httppost, responseHandler);
+
+            runOnUiThread(new Runnable() {
+
+                public void run() {
+
+                    if (responseText.contains("Error")) {
+
+                        /**
+                         * Login Fail check by echo from Server
+                         */
+
+                        Toast.makeText(getApplicationContext(), R.string.E07, Toast.LENGTH_SHORT).show();
+
+                        Log.d("responseText", "Exception : " + responseText);
+
+                    } else {
+
+                        Log.d("responseText", "Data From Sever : " + responseText);
+
+                        //response ID,NAME,EMAIL
+                        User.ID = responseText;
+                        User.NAME = currentProfile.getFirstName()+" "+currentProfile.getLastName();
+                        User.EMAIL = currentProfile.getFirstName();
+
+                        /**
+                         * Login Success
+                         */
+                        DownloadUserPlanOnserver();
+//                        ShowMainScreenAfterLogin();
+
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            Log.d("log_err", "Error in http connection " + e.toString());
+
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        accessTokenTracker.stopTracking();
+        profileTracker.stopTracking();
     }
 
     @Override

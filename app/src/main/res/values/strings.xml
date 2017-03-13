@@ -82,6 +82,7 @@
     <string name="E04">ยืนยันรหัสผ่านไม่ถูกต้อง</string>
     <string name="E05">กรุณากรอกชื่อผู้ใช้ใหม่</string>
     <string name="E06">กรุณาเลือกที่พักก่อนเป็นอันดับแรก</string>
+    <string name="E07">เข้าสู่ระบบล้มเหลว</string>
 
     <string name="err_loadAccommodation">โหลดข้อมูลที่พักไม่สำเร็จ</string>
     <string name="err_loadPlace">โหลดข้อมูลสถานที่ท่องเที่ยวไม่สำเร็จ</string>
@@ -91,5 +92,11 @@
     <string name="notFound">ไม่พบข้อมูลที่ท่านต้องการ\nกรุณากำหนดราคาใหม่</string>
     <string name="day_end_text">วันที่เดินทางกลับ</string>
     <string name="my_plan_topic_text">ดูแผนการท่องเที่ยว</string>
+
+    <string name="facebook_app_id">1002251349878825</string>
+
+    <string name="fb_login_protocol_scheme">fb1002251349878825</string>
+
+    <!--zY00cczs2SG28RTn1bZQvsCftvI= key facebook-->
 
 </resources>

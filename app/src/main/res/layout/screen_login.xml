@@ -31,7 +31,7 @@
                 android:id="@+id/edText_username"
                 android:hint="@string/user_text"
                 android:textColorHint="@color/color_hint_white"
-                android:layout_below="@id/logo_app_white"
+                android:layout_below="@+id/logo_app_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/editText_border_white"
@@ -73,11 +73,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/btn_login"
+            android:layout_alignStart="@+id/btn_login"
+            android:layout_below="@+id/btn_login"
+            android:layout_marginBottom="@dimen/PaddingSpace4XL" />
+
         <TextView
             android:id="@+id/tv_register"
             android:text="@string/register"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/btn_login"
+            android:layout_below="@+id/login_button"
             android:textColor="#ffffff"
             android:layout_marginTop="@dimen/marginSpace20dp"
             android:layout_marginBottom="@dimen/marginSpace10dp"
@@ -103,13 +112,5 @@
             />
 
     </FrameLayout>
-
-    <!--<com.facebook.login.widget.LoginButton-->
-        <!--android:id="@+id/btn_facebook"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/btn_login"-->
-        <!--android:layout_alignStart="@+id/btn_login"-->
-        <!--android:layout_alignEnd="@+id/btn_login" />-->
 
 </RelativeLayout>
