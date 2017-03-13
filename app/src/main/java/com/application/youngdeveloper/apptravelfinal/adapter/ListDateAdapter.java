@@ -26,12 +26,14 @@ public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainVi
     private Date date_startDate;
     private Calendar c = Calendar.getInstance();
     private FragmentTransaction fragmentTran;
+    private int planID=0;
 
-    public ListDateAdapter(Context context,int numberDate,String startDate) {
+    public ListDateAdapter(Context context,int numberDate,String startDate,int planID) {
         mContext = context;
         this.numberOfDate = numberDate;
         this.startDate = startDate;
         ConvertStringToDate(startDate);
+        this.planID = planID;
     }
 
 
@@ -60,7 +62,7 @@ public class ListDateAdapter extends RecyclerView.Adapter<ListDateAdapter.MainVi
                 /**
                  * Call next Screen and send date to screen
                  */
-                fragmentTran.replace(R.id.fragment_container, new Screen_add_detail_of_days(date), "Screen add detail of days");
+                fragmentTran.replace(R.id.fragment_container, new Screen_add_detail_of_days(date,planID), "Screen add detail of days");
                 fragmentTran.addToBackStack("Screen_add_detail_of_days");
                 fragmentTran.commit();
             }

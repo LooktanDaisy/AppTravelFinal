@@ -3,11 +3,14 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 import android.content.Context;
 
 import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanRestaurantListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanRestuarantListCollectionDao;
+import com.application.youngdeveloper.apptravelfinal.dao.RestaurantListDao;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PlanRestaurantListManager {
 
@@ -50,5 +53,36 @@ public class PlanRestaurantListManager {
             }
         }
         return PlanRestauByDateAndPlanID;
+    }
+
+    public void removeByPlanID(int planID){
+        if(getDao()!=null) {
+            ArrayList<PlanRestaurantListDao> ListPlanRest = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanRest.size(); i++) {
+                if (ListPlanRest.get(i).getPlanID() == planID) {
+                    getDao().getData().remove(ListPlanRest.get(i));
+                }
+            }
+        }
+    }
+
+    public PlanRestaurantListDao getPlanRestaurant(int id_Restaurant) {
+        PlanRestaurantListDao RESTAURANT = null;
+        List<PlanRestaurantListDao> ListRESTAURANT = getDao().getData();
+        int i;
+        for (i = 0; i < ListRESTAURANT.size(); i++) {
+            if (ListRESTAURANT.get(i).getRestauID() == id_Restaurant) {
+                RESTAURANT = ListRESTAURANT.get(i);
+            }
+        }
+        return RESTAURANT;
+    }
+
+    public void addPlanRestaurant(int planID, Date thisDate, int restuaId, String userID) {
+        if(getDao()!=null){
+            PlanRestaurantListDao planRestau = new PlanRestaurantListDao(planID,restuaId,thisDate,Integer.parseInt(userID));
+            getDao().getData().add(planRestau);
+        }
     }
 }

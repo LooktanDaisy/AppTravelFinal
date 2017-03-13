@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.youngdeveloper.apptravelfinal.R;
-import com.application.youngdeveloper.apptravelfinal.adapter.ChooseitemToListAdapter;
 import com.application.youngdeveloper.apptravelfinal.adapter.ShowitemToListAdapter;
 import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
+import com.application.youngdeveloper.apptravelfinal.manager.AccommodationListManager;
+import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
+import com.application.youngdeveloper.apptravelfinal.manager.PlanPlaceListManager;
 
 import java.util.Date;
 
@@ -92,18 +96,22 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
         listPlace = (RecyclerView) rootView.findViewById(R.id.list_place);
         listRestaurant = (RecyclerView) rootView.findViewById(R.id.list_restaurant);
 
-        tvEdit = (TextView) rootView.findViewById(R.id.textViewEdit);
+        tvEdit = (TextView) rootView.findViewById(R.id.textViewDone);
         tvEdit.setOnClickListener(this);
-        ivEdit = (ImageView) rootView.findViewById(R.id.imageViewEdit);
+        ivEdit = (ImageView) rootView.findViewById(R.id.imageViewDone);
         ivEdit.setOnClickListener(this);
 
         imgAddAccom.setVisibility(View.INVISIBLE);
         imgAddPlace.setVisibility(View.INVISIBLE);
         imgAddRestaurant.setVisibility(View.INVISIBLE);
 
+
+
         setAccomRecycler();
         setPlaceRecycler();
         setRestaurantRecycler();
+
+        setPointAccom();
 
 
     }
@@ -130,18 +138,18 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
         listRestaurant.setAdapter(adapterRestaurant);
     }
 
-//    public void addItemToAccom(String idItem){
-//        adapterAccom.addItem(idItem, Type_id_item.TYPE_ACCOMMODATION);
-//
-//    }
-//
-//    public void addItemToPlace(String idItem){
-//        adapterPlace.addItem(idItem, Type_id_item.TYPE_PLACE);
-//    }
-//
-//    public void addItemToRestaurant(String idItem){
-//        adapterRestaurant.addItem(idItem, Type_id_item.TYPE_RESTAURANT);
-//    }
+    public void addItemToAccom(String idItem){
+        adapterAccom.addItem(idItem, Type_id_item.TYPE_ACCOMMODATION);
+
+    }
+
+    public void addItemToPlace(String idItem){
+        adapterPlace.addItem(idItem, Type_id_item.TYPE_PLACE);
+    }
+
+    public void addItemToRestaurant(String idItem){
+        adapterRestaurant.addItem(idItem, Type_id_item.TYPE_RESTAURANT);
+    }
 
     public Double getAccomLat() {
         return AccomLat;
@@ -150,6 +158,15 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
     public Double getAccomLng() {
         return AccomLng;
     }
+
+    public void setPointAccom() {
+        if(adapterAccom.getAccomDetail()!=0) {
+            AccommodationListDao accom = AccommodationListManager.getInstance().getAccommodation(adapterAccom.getAccomDetail());
+            this.AccomLat = Double.parseDouble(accom.getLat());
+            this.AccomLng = Double.parseDouble(accom.getLng());
+        }
+    }
+
 
     public void setPointAccom(Double Lat, Double Lng) {
         this.AccomLat = Lat;
@@ -222,8 +239,9 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
                 imgAddAccom.setVisibility(View.VISIBLE);
                 imgAddPlace.setVisibility(View.VISIBLE);
                 imgAddRestaurant.setVisibility(View.VISIBLE);
+                adapterPlace.setEnableEdit(StatusEdit);
+                adapterRestaurant.setEnableEdit(StatusEdit);
             }else{
-                StatusEdit = false;
                 showFinishedDialog();
             }
         }
@@ -238,12 +256,20 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
                 .setTitle(R.string.are_you_sure_edit_plan)
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO:UPDATE SUB PLAN BY DATE ON APP AND SERVER
+
+                        DataManager.getInstance().addPlanAccom(planID,thisDate,adapterAccom.getListAccom());
+                        DataManager.getInstance().addPlanPlace(planID,thisDate,adapterPlace.getListPlace());
+                        DataManager.getInstance().addPlanRestaurant(planID,thisDate,adapterRestaurant.getListRestaurant());
+
+
                         tvEdit.setText(R.string.edit);
                         ivEdit.setImageDrawable(getResources().getDrawable(R.drawable.ic_edit));
                         imgAddAccom.setVisibility(View.INVISIBLE);
                         imgAddPlace.setVisibility(View.INVISIBLE);
                         imgAddRestaurant.setVisibility(View.INVISIBLE);
+                        StatusEdit = false;
+                        adapterPlace.setEnableEdit(StatusEdit);
+                        adapterRestaurant.setEnableEdit(StatusEdit);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -268,21 +294,21 @@ public class Screen_show_detail_of_days extends Fragment implements View.OnClick
 
     private void showDialogListAccommodation() {
         Screen_Dialog_Accomodation newFragment = Screen_Dialog_Accomodation.newInstance();
-//        newFragment.setMainControl(this);
+        newFragment.setMainControlShow(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL,R.style.DialogFullScreen);
         newFragment.show(getFragmentManager(), "Screen_Dialog_Accommodation");
     }
 
     private void showDialogListPlace(){
         Screen_Dialog_Place newFragment = Screen_Dialog_Place.newInstance();
-//        newFragment.setMainControl(this);
+        newFragment.setMainControlShow(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen );
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
     }
 
     private void showDialogListRestaurant() {
         Screen_Dialog_Restaurant newFragment = Screen_Dialog_Restaurant.newInstance();
-//        newFragment.setMainControl(this);
+        newFragment.setMainControlShow(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen);
         newFragment.show(getFragmentManager(), "Screen_Dialog_Restaurant");
     }

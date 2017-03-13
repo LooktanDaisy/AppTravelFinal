@@ -18,6 +18,7 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
 
     private ListView lvListAccomodation;
     private Screen_add_detail_of_days ControlMainScreen;
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
     private TextView tvNotFound;
 
     public Screen_Dialog_Accomodation() {
@@ -53,6 +54,7 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
         AccommodationListAdapter listAccommodationAdapter = new AccommodationListAdapter();
         listAccommodationAdapter.setActivity(getActivity(),this);
         listAccommodationAdapter.setMainControl(ControlMainScreen);
+        listAccommodationAdapter.setMainControlShow(ControlMainScreenShow);
         listAccommodationAdapter.setTextView(tvNotFound);
         lvListAccomodation.setAdapter(listAccommodationAdapter);
 
@@ -96,6 +98,11 @@ public class Screen_Dialog_Accomodation extends DialogFragment {
 
     public void setMainControl(Screen_add_detail_of_days activity) {
         ControlMainScreen = activity;
+    }
+
+
+    public void setMainControlShow(Screen_show_detail_of_days activity) {
+        ControlMainScreenShow = activity;
     }
 
 

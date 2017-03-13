@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.application.youngdeveloper.apptravelfinal.R;
 import com.application.youngdeveloper.apptravelfinal.adapter.ListDateAdapter;
 import com.application.youngdeveloper.apptravelfinal.adapter.ListMyPlanDateAdapter;
+import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanListDao;
 import com.application.youngdeveloper.apptravelfinal.manager.PlanListManager;
 
@@ -29,7 +30,7 @@ import java.util.Date;
 public class Screen_choose_my_plan_date extends Fragment implements View.OnClickListener{
 
     private int numberOfDate,keyPlan;
-    private String budget;
+    private int budget;
     private RecyclerView listDate;
     private ListMyPlanDateAdapter listMyPlanDateAdapter;
     private TextView tvBudget,tvBack;
@@ -43,7 +44,7 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
     public Screen_choose_my_plan_date(int numberOfDate, int keyPlan,int budget) {
         this.numberOfDate = numberOfDate;
         this.keyPlan = keyPlan;
-        this.budget = String.valueOf(budget);
+        this.budget = budget;
     }
 
     public static Screen_choose_my_plan_date newInstance() {
@@ -73,7 +74,7 @@ public class Screen_choose_my_plan_date extends Fragment implements View.OnClick
         listDate.setAdapter(listMyPlanDateAdapter);
 
         tvBudget = (TextView) rootView.findViewById(R.id.textViewBudget);
-        tvBudget.setText(budget);
+        tvBudget.setText(MainFunction.commaDouble(budget));
 
         ImgBack =(ImageView) rootView.findViewById(R.id.imageViewBack);
         ImgBack.setOnClickListener(this);

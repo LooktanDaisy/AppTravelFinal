@@ -58,6 +58,7 @@
     <string name="add_restaurant_text">เพิ่มร้านอาหาร</string>
     <string name="are_you_sure_delete_plan">ต้องการลบแผนการท่องเที่ยว</string>
     <string name="are_you_sure_edit_plan">แก้ไขแผนเรียบร้อย</string>
+    <string name="are_you_sure_done_plan">เพิ่มแผนการท่องเที่ยวเรียบร้อย</string>
 
     <string-array name="custom_months">
         <item>มกราคม</item>

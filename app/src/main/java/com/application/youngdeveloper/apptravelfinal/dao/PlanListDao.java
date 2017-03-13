@@ -20,6 +20,22 @@ public class PlanListDao {
     @SerializedName("plan_name")
     private String name;
 
+    public PlanListDao(){
+
+    }
+
+
+
+    public PlanListDao(int id, int travelerID, String province, Date dateStart, Date dateEnd, int budgets, String name) {
+        this.id = id;
+        this.travelerID = travelerID;
+        this.province = province;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.budgets = budgets;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

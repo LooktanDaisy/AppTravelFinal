@@ -44,9 +44,8 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("android_select_restau_plan.php")
-    Call<PlanRestuarantListCollectionDao> loadReataurantPlanList(
+    Call<PlanRestuarantListCollectionDao> loadRestaurantPlanList(
             @Field("userID") String userID
     );
-
 
 }

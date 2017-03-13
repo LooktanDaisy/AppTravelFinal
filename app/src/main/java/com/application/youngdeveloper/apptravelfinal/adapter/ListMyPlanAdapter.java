@@ -68,7 +68,7 @@ public class ListMyPlanAdapter extends RecyclerView.Adapter<ListMyPlanAdapter.Ma
             final PlanListDao plan = planList.get(position);
 
             holder.tvNamePlan.setText(plan.getName());
-            holder.tvBudget.setText(String.valueOf(plan.getBudgets()));
+            holder.tvBudget.setText(String.valueOf(MainFunction.commaDouble(plan.getBudgets())));
             holder.tvProvince.setText(plan.getProvince());
 
 //            int numberOfDate = CalculateNumberOfDate(plan.getDateStart(),plan.getDateEnd());

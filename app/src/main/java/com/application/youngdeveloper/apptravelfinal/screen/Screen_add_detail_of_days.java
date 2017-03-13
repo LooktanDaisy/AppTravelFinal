@@ -33,6 +33,7 @@ import com.application.youngdeveloper.apptravelfinal.config.MainFunction;
 import com.application.youngdeveloper.apptravelfinal.config.Provinces;
 import com.application.youngdeveloper.apptravelfinal.config.Type_id_item;
 import com.application.youngdeveloper.apptravelfinal.dialog.Calendar_dialog;
+import com.application.youngdeveloper.apptravelfinal.manager.DataManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,19 +42,21 @@ import java.util.Date;
 public class Screen_add_detail_of_days extends Fragment implements View.OnClickListener{
 
     private Date thisDate;
-    private TextView tvDate,tvBack;
+    private TextView tvDate,tvBack,tvDone;
     private RecyclerView listAccom,listPlace,listRestaurant;
     private ChooseitemToListAdapter adapterAccom,adapterPlace, adapterRestaurant;
-    private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant;
+    private ImageView imgBack,imgAddAccom, imgAddPlace, imgAddRestaurant,imgDone;
     private Double AccomLat = 0.0,AccomLng = 0.0;
+    private int planID=0;
 
 
     public Screen_add_detail_of_days() {
         super();
     }
 
-    public Screen_add_detail_of_days(Date date){
+    public Screen_add_detail_of_days(Date date,int planID){
         thisDate = date;
+        this.planID = planID;
     }
 
     public static Screen_add_detail_of_days newInstance() {
@@ -99,6 +102,11 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         listAccom = (RecyclerView) rootView.findViewById(R.id.list_accom);
         listPlace = (RecyclerView) rootView.findViewById(R.id.list_place);
         listRestaurant = (RecyclerView) rootView.findViewById(R.id.list_restaurant);
+
+        tvDone = (TextView) rootView.findViewById(R.id.textViewDone);
+        tvDone.setOnClickListener(this);
+        imgDone = (ImageView) rootView.findViewById(R.id.imageViewDone);
+        imgDone.setOnClickListener(this);
 
         setAccomRecycler();
         setPlaceRecycler();
@@ -213,6 +221,8 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
             }else {
                 Toast.makeText(getContext(), R.string.E06, Toast.LENGTH_SHORT).show();
             }
+        }else if(view == imgDone || view == tvDone){
+            showDoneDialog();
         }
 
 
@@ -262,12 +272,44 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
         newFragment.show(getFragmentManager(), "Screen_Dialog_Place");
     }
 
-    //TODO: Continue Restaurant
     private void showDialogListRestaurant() {
         Screen_Dialog_Restaurant newFragment = Screen_Dialog_Restaurant.newInstance();
         newFragment.setMainControl(this);
         newFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFullScreen);
         newFragment.show(getFragmentManager(), "Screen_Dialog_Restaurant");
+    }
+
+    private void showDoneDialog() {
+        AlertDialog alert = new AlertDialog.Builder(getContext())
+                .setTitle(R.string.are_you_sure_done_plan)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        DataManager.getInstance().addPlanAccom(planID,thisDate,adapterAccom.getListAccom());
+                        DataManager.getInstance().addPlanPlace(planID,thisDate,adapterPlace.getListPlace());
+                        DataManager.getInstance().addPlanRestaurant(planID,thisDate,adapterRestaurant.getListRestaurant());
+                        ((Screen_Container_bar)getActivity()).showMyPlanScreen();
+
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+
+                .setIcon(R.drawable.ic_plan_active)
+                .create();
+
+        alert.show();
+
+        Button pbutton = alert.getButton(DialogInterface.BUTTON_POSITIVE);
+        Button nbutton = alert.getButton(DialogInterface.BUTTON_NEGATIVE);
+        //Set positive button background
+        pbutton.setTextColor(getResources().getColor(R.color.colorPrimary));
+        nbutton.setTextColor(getResources().getColor(R.color.text_blue_trans));
     }
 
 }

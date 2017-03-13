@@ -3,6 +3,7 @@ package com.application.youngdeveloper.apptravelfinal.adapter;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,6 +19,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManag
 import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_Dialog_Restaurant;
 import com.application.youngdeveloper.apptravelfinal.screen.Screen_add_detail_of_days;
+import com.application.youngdeveloper.apptravelfinal.screen.Screen_show_detail_of_days;
 import com.application.youngdeveloper.apptravelfinal.view.AccommodationListItem;
 import com.application.youngdeveloper.apptravelfinal.view.RestaurantListItem;
 
@@ -28,6 +30,7 @@ public class RestaurantListAdapter extends BaseAdapter {
     private Screen_add_detail_of_days MainControl;
     private Screen_Dialog_Restaurant Control_Main_Dialog;
     private ArrayList<RestaurantListDao> RestaurantByCostLimit = new ArrayList<>();
+    private Screen_show_detail_of_days ControlMainScreenShow = null;
 
 
     @Override
@@ -77,8 +80,13 @@ public class RestaurantListAdapter extends BaseAdapter {
                 Intent openMap = new Intent(MainActivity, MapActivity.class);
                 openMap.putExtra("ID",dao.getId());
                 openMap.putExtra("TYPE_ID", Type_id_item.TYPE_RESTAURANT);
-                openMap.putExtra("ACCOM_LAT",MainControl.getAccomLat());
-                openMap.putExtra("ACCOM_LNG",MainControl.getAccomLng());
+                if(MainControl!=null) {
+                    openMap.putExtra("ACCOM_LAT", MainControl.getAccomLat());
+                    openMap.putExtra("ACCOM_LNG", MainControl.getAccomLng());
+                }else{
+                    openMap.putExtra("ACCOM_LAT", ControlMainScreenShow.getAccomLat());
+                    openMap.putExtra("ACCOM_LNG", ControlMainScreenShow.getAccomLng());
+                }
 
                 MainActivity.startActivity(openMap);
                 MainActivity.overridePendingTransition(R.anim.fade_in_fast,R.anim.fade_out_fast);
@@ -89,8 +97,15 @@ public class RestaurantListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
+                if(MainControl!=null) {
+
                     MainControl.addItemToRestaurant(String.valueOf(dao.getId()));
                     Control_Main_Dialog.dismiss();
+                }else{
+                    ControlMainScreenShow.addItemToRestaurant(String.valueOf(dao.getId()));
+                    Control_Main_Dialog.dismiss();
+                }
+
 
             }
         });
@@ -105,7 +120,9 @@ public class RestaurantListAdapter extends BaseAdapter {
 
     public void setMainControl(Screen_add_detail_of_days controlMainScreen){
         MainControl = controlMainScreen;
-        getRestaurantByCostLimit();
+        if (MainControl!=null) {
+            getRestaurantByCostLimit();
+        }
     }
 
     public void getRestaurantByCostLimit(){
@@ -114,8 +131,11 @@ public class RestaurantListAdapter extends BaseAdapter {
         /**
          * Calculate How Far and Sort
          */
-        RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().CalculateHowFarToAccom(RestaurantByCostLimit,MainControl.getAccomLat(),MainControl.getAccomLng());
-
+        if(MainControl!=null) {
+            RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().CalculateHowFarToAccom(RestaurantByCostLimit, MainControl.getAccomLat(), MainControl.getAccomLng());
+        }else{
+            RestaurantByCostLimit = RestaurantListManager.getInstance().getDao().CalculateHowFarToAccom(RestaurantByCostLimit, ControlMainScreenShow.getAccomLat(), ControlMainScreenShow.getAccomLng());
+        }
     }
 
     public void setTextView(TextView tvNotFound) {
@@ -123,6 +143,13 @@ public class RestaurantListAdapter extends BaseAdapter {
             tvNotFound.setVisibility(View.GONE);
         }else{
             tvNotFound.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void setMainControlShow(Screen_show_detail_of_days controlMainScreenShow) {
+        ControlMainScreenShow = controlMainScreenShow;
+        if(ControlMainScreenShow!=null) {
+            getRestaurantByCostLimit();
         }
     }
 }

@@ -2,12 +2,14 @@ package com.application.youngdeveloper.apptravelfinal.manager;
 
 import android.content.Context;
 
+import com.application.youngdeveloper.apptravelfinal.dao.AccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListCollectionDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanAccommodationListDao;
 import com.application.youngdeveloper.apptravelfinal.dao.PlanPlaceListCollectionDao;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PlanAccommodationListManager {
 
@@ -52,5 +54,37 @@ public class PlanAccommodationListManager {
             }
         }
         return PlanAccomByDateAndPlanID;
+    }
+
+    public void removeByPlanID(int planID){
+        if(getDao()!=null) {
+            ArrayList<PlanAccommodationListDao> ListPlanAccom = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanAccom.size(); i++) {
+                if (ListPlanAccom.get(i).getPlanID() == planID) {
+                    getDao().getData().remove(ListPlanAccom.get(i));
+                }
+            }
+        }
+    }
+
+    public void addPlanAccom(int planID, Date thisDate, int accomId, String userID) {
+        if(getDao()!=null){
+            PlanAccommodationListDao planAccom = new PlanAccommodationListDao(planID,accomId,thisDate,Integer.parseInt(userID));
+            getDao().getData().add(planAccom);
+        }
+    }
+
+
+    public PlanAccommodationListDao getPlanAccommodation(int id_Accom){
+        PlanAccommodationListDao PlanACCOMMODATION = null;
+        List<PlanAccommodationListDao> ListACCOMMODATION = getDao().getData();
+        int i;
+        for (i=0;i<ListACCOMMODATION.size();i++) {
+            if (ListACCOMMODATION.get(i).getAccomID() == id_Accom) {
+                PlanACCOMMODATION = ListACCOMMODATION.get(i);
+            }
+        }
+        return PlanACCOMMODATION;
     }
 }

@@ -28,7 +28,8 @@ public class MainFunction {
     public static String commaDouble(double agr1) {
         if (agr1 != 0) {
 
-            DecimalFormat formatter = new DecimalFormat("#,##0.00");
+//            DecimalFormat formatter = new DecimalFormat("#,##0.00");
+            DecimalFormat formatter = new DecimalFormat("#,##0");
             return formatter.format(agr1);
         }
         return "0.00";

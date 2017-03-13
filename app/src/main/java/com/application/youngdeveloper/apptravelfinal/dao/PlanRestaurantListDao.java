@@ -46,4 +46,14 @@ public class PlanRestaurantListDao {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public PlanRestaurantListDao(int planID, int restauID, Date date, int traveler_id) {
+        this.planID = planID;
+        this.restauID = restauID;
+        this.date = date;
+        this.traveler_id = traveler_id;
+    }
+
+    public PlanRestaurantListDao() {
+    }
 }
