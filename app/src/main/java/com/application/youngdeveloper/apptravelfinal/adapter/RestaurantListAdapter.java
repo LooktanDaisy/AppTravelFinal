@@ -31,6 +31,7 @@ public class RestaurantListAdapter extends BaseAdapter {
     private Screen_Dialog_Restaurant Control_Main_Dialog;
     private ArrayList<RestaurantListDao> RestaurantByCostLimit = new ArrayList<>();
     private Screen_show_detail_of_days ControlMainScreenShow = null;
+    private TextView tvNotfound;
 
 
     @Override
@@ -60,6 +61,15 @@ public class RestaurantListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         RestaurantListItem item;
+
+        if(RestaurantByCostLimit.size() > 0) {
+            tvNotfound.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvNotfound.setVisibility(View.VISIBLE);
+        }
+
         if(convertView != null)
             item = (RestaurantListItem) convertView;
         else
@@ -139,11 +149,8 @@ public class RestaurantListAdapter extends BaseAdapter {
     }
 
     public void setTextView(TextView tvNotFound) {
-        if(RestaurantByCostLimit.size()>0){
-            tvNotFound.setVisibility(View.GONE);
-        }else{
-            tvNotFound.setVisibility(View.VISIBLE);
-        }
+        this.tvNotfound = tvNotFound;
+
     }
 
     public void setMainControlShow(Screen_show_detail_of_days controlMainScreenShow) {
