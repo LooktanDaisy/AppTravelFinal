@@ -173,7 +173,7 @@ public class DataManager {
 
         if(listAccom!=null) {
 
-            PlanAccommodationListManager.getInstance().removeByPlanID(planID);
+            PlanAccommodationListManager.getInstance().removeByPlanIDAndDate(planID,thisDate);
 
 
             SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
@@ -237,7 +237,7 @@ public class DataManager {
             SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
             String date_formatted = format1.format(thisDate);
 
-            PlanPlaceListManager.getInstance().removeByPlanID(planID);
+            PlanPlaceListManager.getInstance().removeByPlanIDAndDate(planID,thisDate);
 
 
             /**
@@ -341,7 +341,7 @@ public class DataManager {
 
         if(listRestau!=null) {
 
-            PlanRestaurantListManager.getInstance().removeByPlanID(planID);
+            PlanRestaurantListManager.getInstance().removeByPlanIDAndDate(planID,thisDate);
 
             SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
             String date_formatted = format1.format(thisDate);

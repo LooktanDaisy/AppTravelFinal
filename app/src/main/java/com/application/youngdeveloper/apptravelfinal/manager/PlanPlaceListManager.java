@@ -84,6 +84,23 @@ public class PlanPlaceListManager {
         }
     }
 
+
+    public void removeByPlanIDAndDate(int planID,Date date){
+        if(getDao()!=null) {
+            ArrayList<PlanPlaceListDao> ListPlanPlace = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanPlace.size(); i++) {
+                if (ListPlanPlace.get(i).getPlanID() == planID) {
+
+                    if (ListPlanPlace.get(i).getDate().compareTo(date) == 0) {
+                        getDao().getData().remove(ListPlanPlace.get(i));
+                    }
+
+                }
+            }
+        }
+    }
+
     public PlanPlaceListDao getPlanPlace(int id_Place){
         PlanPlaceListDao PlanPLACE = null;
         List<PlanPlaceListDao> ListPlanPLACE =  getDao().getData();

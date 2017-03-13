@@ -83,6 +83,22 @@ public class PlanRestaurantListManager {
         }
     }
 
+
+    public void removeByPlanIDAndDate(int planID,Date date){
+        if(getDao()!=null) {
+            ArrayList<PlanRestaurantListDao> ListPlanRest = getDao().getData();
+            int i;
+            for (i = 0; i < ListPlanRest.size(); i++) {
+                if (ListPlanRest.get(i).getPlanID() == planID) {
+                    if (ListPlanRest.get(i).getDate().compareTo(date) == 0) {
+                        getDao().getData().remove(ListPlanRest.get(i));
+                    }
+                }
+
+            }
+        }
+    }
+
     public PlanRestaurantListDao getPlanRestaurant(int id_Restaurant) {
         PlanRestaurantListDao RESTAURANT = null;
         List<PlanRestaurantListDao> ListRESTAURANT = getDao().getData();
