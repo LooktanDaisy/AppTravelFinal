@@ -66,14 +66,14 @@ public class Screen_Dialog_Place extends DialogFragment {
         listPlaceAdapter.setActivity(getActivity(),this);
         listPlaceAdapter.setMainControl(ControlMainScreen);
         listPlaceAdapter.setMainControlShow(ControlMainScreenShow);
-//        listPlaceAdapter.setTextView(tvNotFound);
+        listPlaceAdapter.setTextView(tvNotFound);
         lvListPlace.setAdapter(listPlaceAdapter);
 
-        if(listPlaceAdapter.getCount()>0) {
-
-        }else{
-            tvNotFound.setVisibility(View.VISIBLE);
-        }
+//        if(listPlaceAdapter.getCount()>0) {
+//            tvNotFound.setVisibility(View.GONE);
+//        }else{
+//            tvNotFound.setVisibility(View.VISIBLE);
+//        }
     }
 
 

@@ -27,6 +27,7 @@ public class AccommodationListAdapter extends BaseAdapter {
     private Screen_Dialog_Accomodation Control_Main_Dialog;
     private ArrayList<AccommodationListDao> AccomByCostLimit = new ArrayList<>();
     private Screen_show_detail_of_days ControlMainScreenShow = null;
+    private TextView tvNotFound;
 
     @Override
     public int getCount() {
@@ -54,6 +55,15 @@ public class AccommodationListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final AccommodationListItem item;
+
+        if(AccomByCostLimit.size()>0)
+        {
+            tvNotFound.setVisibility(View.GONE);
+        }
+        else{
+            tvNotFound.setVisibility(View.VISIBLE);
+        }
+
         if(convertView != null)
             item = (AccommodationListItem) convertView;
         else
@@ -112,7 +122,6 @@ public class AccommodationListAdapter extends BaseAdapter {
     }
 
     public  void setMainControl(Screen_add_detail_of_days controlMainScreen){
-
         MainControl = controlMainScreen;
 
         /**
@@ -128,11 +137,7 @@ public class AccommodationListAdapter extends BaseAdapter {
 
 
     public void setTextView(TextView tvNotFound) {
-        if(AccomByCostLimit.size()>0){
-            tvNotFound.setVisibility(View.GONE);
-        }else{
-            tvNotFound.setVisibility(View.VISIBLE);
-        }
+        this.tvNotFound = tvNotFound;
     }
 
     public void setMainControlShow(Screen_show_detail_of_days controlMainScreenShow) {

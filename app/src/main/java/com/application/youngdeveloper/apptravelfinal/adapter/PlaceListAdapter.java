@@ -28,6 +28,7 @@ public class PlaceListAdapter extends BaseAdapter {
     private Screen_show_detail_of_days ControlMainScreenShow = null;
     private int typeId=0;
     private ArrayList<PlaceListDao> placeByType = new ArrayList<>();
+    private TextView tvNotFound;
 
     @Override
     public int getCount() {
@@ -57,6 +58,13 @@ public class PlaceListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final PlaceListItem item;
 
+        if (placeByType.size()>0){
+            tvNotFound.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvNotFound.setVisibility(View.VISIBLE);
+        }
 
         if (convertView != null)
             item = (PlaceListItem) convertView;
@@ -145,11 +153,8 @@ public class PlaceListAdapter extends BaseAdapter {
         ControlMainScreenShow = controlMainScreenShow;
     }
 
-//    public void setTextView(TextView tvNotFound) {
-//        if(placeByType.size()>0){
-//            tvNotFound.setVisibility(View.GONE);
-//        }else{
-//            tvNotFound.setVisibility(View.VISIBLE);
-//        }
-//    }
+
+    public void setTextView(TextView tvNotFound) {
+            this.tvNotFound = tvNotFound;
+    }
 }

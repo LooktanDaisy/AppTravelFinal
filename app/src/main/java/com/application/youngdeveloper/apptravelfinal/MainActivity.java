@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.StrictMode;
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -441,9 +441,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void DownloadUserPlanOnserver() {
-        /**
-         * Download Plan
-         */
 
         Call<PlanListCollectionDao> call = HttpManager.getInstance().getService().loadPlanList(User.ID);
         call.enqueue(new Callback<PlanListCollectionDao>() { //Asynchronous
