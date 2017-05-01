@@ -240,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          * Login Success
                          */
                         DownloadUserPlanOnserver();
+                        DownloadTypePlace();
 //                        ShowMainScreenAfterLogin();
 
                     }

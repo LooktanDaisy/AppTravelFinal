@@ -1,11 +1,13 @@
 package com.application.youngdeveloper.apptravelfinal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.application.youngdeveloper.apptravelfinal.R;
@@ -26,6 +28,7 @@ import com.application.youngdeveloper.apptravelfinal.manager.PlanPlaceListManage
 import com.application.youngdeveloper.apptravelfinal.manager.PlanRestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.RestaurantListManager;
 import com.application.youngdeveloper.apptravelfinal.manager.User;
+import com.application.youngdeveloper.apptravelfinal.screen.MapActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -144,7 +147,7 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
 
             if (TYPE_ID == Type_id_item.TYPE_PLACE) {
                 if(ListItemPlace.size()!=0) {
-                    PlaceListDao dao = ListItemPlace.get(position);
+                    final PlaceListDao dao = ListItemPlace.get(position);
                     PlaceListDao placeDao = PlaceListManager.getInstance().getPlace(dao.getId());
                     holder.tvName.setText(placeDao.getName());
                     holder.tvCost.setText(placeDao.getCost() + "  บาท");
@@ -166,6 +169,17 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                         }
                     });
 
+                    holder.Row.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent openMap = new Intent(mContext, MapActivity.class);
+                            openMap.putExtra("ID", dao.getId());
+                            openMap.putExtra("TYPE_ID", Type_id_item.TYPE_PLACE);
+
+                            mContext.startActivity(openMap);
+                        }
+                    });
+
                     if(statusEdit){
 
                         holder.imageDelete.setVisibility(View.VISIBLE);
@@ -184,7 +198,7 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                      * set pointAccom to Main
                      */
 
-                    AccommodationListDao dao = ListItemAccom.get(position);
+                    final AccommodationListDao dao = ListItemAccom.get(position);
                     AccommodationListDao accomDao = AccommodationListManager.getInstance().getAccommodation((dao.getId()));
 
 
@@ -207,6 +221,18 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                             notifyDataSetChanged();
                         }
                     });
+
+                    holder.Row.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent openMap = new Intent(mContext, MapActivity.class);
+                            openMap.putExtra("ID", dao.getId());
+                            openMap.putExtra("TYPE_ID", Type_id_item.TYPE_ACCOMMODATION);
+
+                            mContext.startActivity(openMap);
+                        }
+                    });
+
                     /**
                      * Accom can change but can not delete
                      */
@@ -214,7 +240,7 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                 }
             } else if (TYPE_ID == Type_id_item.TYPE_RESTAURANT) {
                 if(ListItemRestau.size()!=0) {
-                    RestaurantListDao dao = ListItemRestau.get(position);
+                    final RestaurantListDao dao = ListItemRestau.get(position);
                     RestaurantListDao restauDao = RestaurantListManager.getInstance().getRestaurant(dao.getId());
                     holder.tvName.setText(restauDao.getName());
                     holder.tvCost.setText(restauDao.getPrice() + "  บาท");
@@ -233,6 +259,17 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
                         public void onClick(View view) {
                             ListItemRestau.remove(position);
                             notifyDataSetChanged();
+                        }
+                    });
+
+                    holder.Row.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent openMap = new Intent(mContext, MapActivity.class);
+                            openMap.putExtra("ID", dao.getId());
+                            openMap.putExtra("TYPE_ID", Type_id_item.TYPE_RESTAURANT);
+
+                            mContext.startActivity(openMap);
                         }
                     });
 
@@ -279,6 +316,7 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
     public class MainViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName,tvCost;
         private ImageView imagePreview,imageDelete;
+        private RelativeLayout Row;
 
         public MainViewHolder(View itemView) {
             super(itemView);
@@ -287,7 +325,7 @@ public class ShowitemToListAdapter extends RecyclerView.Adapter<ShowitemToListAd
             imageDelete = (ImageView) itemView.findViewById(R.id.imageViewDelete);
             tvName = (TextView) itemView.findViewById(R.id.name);
             tvCost = (TextView) itemView.findViewById(R.id.textViewCost);
-
+            Row = (RelativeLayout) itemView.findViewById(R.id.row);
         }
     }
 

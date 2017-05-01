@@ -34,9 +34,9 @@
     <string name="travel_kan">ท่องเที่ยวจังหวัดกาญจนบุรี</string>
     <string name="kan_slogan1">แคว้นโบราณ ด่านเจดีย์ มณีเมืองกาญจน์</string>
     <string name="kan_slogan2">สะพานข้ามแม่น้ำแคว แหล่งแร่น้ำตก</string>
-    <string name="tv_calendar">ปฏิทินท่องเที่ยว</string>
-    <string name="tv_travel">ทริปท่องเทีี่ยว</string>
-    <string name="tv_news">ข่าวสารท่องเที่ยว</string>
+    <string name="tv_calendar">วางแผนได้ล่วงหน้า</string>
+    <string name="tv_travel">สนุกกับการเที่ยว</string>
+    <string name="tv_news">มาพร้อมข้อมูลใหม่ๆ</string>
     <string name="travel_place_text">สถานที่ท่องเที่ยว</string>
     <string name="restaurant_text">ร้านอาหาร</string>
     <string name="cost_of_restaurant">ราคาอาหารรวม</string>

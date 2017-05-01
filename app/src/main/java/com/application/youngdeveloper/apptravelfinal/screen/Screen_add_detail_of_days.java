@@ -116,7 +116,7 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
     }
 
     private void setPlaceRecycler() {
-        adapterPlace = new ChooseitemToListAdapter(getContext());
+        adapterPlace = new ChooseitemToListAdapter(getContext(),planID,thisDate,Type_id_item.TYPE_PLACE);
         listPlace.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayout.HORIZONTAL, false));
         listPlace.setHasFixedSize(true);
         listPlace.setAdapter(adapterPlace);
@@ -124,14 +124,14 @@ public class Screen_add_detail_of_days extends Fragment implements View.OnClickL
 
 
     private void setAccomRecycler() {
-       adapterAccom = new ChooseitemToListAdapter(getContext());
+       adapterAccom = new ChooseitemToListAdapter(getContext(),planID,thisDate,Type_id_item.TYPE_ACCOMMODATION);
         listAccom.setLayoutManager(new GridLayoutManager(getActivity(),1, GridLayout.HORIZONTAL, false));
         listAccom.setHasFixedSize(true);
         listAccom.setAdapter(adapterAccom);
     }
 
     private void setRestaurantRecycler(){
-        adapterRestaurant = new ChooseitemToListAdapter(getContext());
+        adapterRestaurant = new ChooseitemToListAdapter(getContext(),planID,thisDate,Type_id_item.TYPE_RESTAURANT);
         listRestaurant.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayout.HORIZONTAL, false));
         listRestaurant.setHasFixedSize(true);
         listRestaurant.setAdapter(adapterRestaurant);

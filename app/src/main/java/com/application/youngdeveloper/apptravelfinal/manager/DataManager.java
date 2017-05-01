@@ -111,7 +111,9 @@ public class DataManager {
         }
 
         PlanListDao newPlan = new PlanListDao(planID,Integer.parseInt(User.ID),province,date1,date2,Integer.parseInt(budget),plan_name);
-        PlanListManager.getInstance().getDao().getData().add(newPlan);
+        if(PlanListManager.getInstance().getDao().getData()!=null) {
+            PlanListManager.getInstance().getDao().getData().add(newPlan);
+        }
 
         return planID;
 

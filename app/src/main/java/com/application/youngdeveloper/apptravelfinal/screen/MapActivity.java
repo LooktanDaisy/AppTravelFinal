@@ -89,46 +89,49 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(latLng)
                         .title(PLACE.getName()));
 
-                LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
-                googleMap.addMarker(new MarkerOptions()
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
-                        .position(AccomlatLng)
-                        .title("ที่พักของท่าน"));
+                if(AccomLat!=0.0) {
+                    LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
+                    googleMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
+                            .position(AccomlatLng)
+                            .title("ที่พักของท่าน"));
 
-                /**
-                 * Disable click accom marker
-                 */
-                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        if (marker.getTitle().equals("ที่พักของท่าน")){
-                            return true;
-                        }else {
-                            return false;
+                    /**
+                     * Disable click accom marker
+                     */
+                    googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            if (marker.getTitle().equals("ที่พักของท่าน")) {
+                                return true;
+                            } else {
+                                return false;
+                            }
                         }
-                    }
-                });
+                    });
 
-                /**
-                 * Set show all marker
-                 */
-                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                builder.include(latLng);
-                builder.include(AccomlatLng);
-                LatLngBounds bounds = builder.build();
+                    /**
+                     * Set show all marker
+                     */
+                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    builder.include(latLng);
+                    builder.include(AccomlatLng);
+                    LatLngBounds bounds = builder.build();
 
-                /**
-                 * Show place and Accom
-                 */
+                    /**
+                     * Show place and Accom
+                     */
 
-                int width = getResources().getDisplayMetrics().widthPixels;
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width,width,25);
-                googleMap.moveCamera(cu);
+                    int width = getResources().getDisplayMetrics().widthPixels;
+                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, width, 25);
+                    googleMap.moveCamera(cu);
+                }else{
+                    /**
+                     * Show place only
+                     */
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                }
 
-                /**
-                 * Show place only
-                 */
-//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
 
             }
@@ -156,42 +159,46 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(latLng)
                         .title(RESTAURANT.getName()));
 
-                LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
-                googleMap.addMarker(new MarkerOptions()
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
-                        .position(AccomlatLng)
-                        .title("ที่พักของท่าน"));
+                if(AccomLat!=0.0) {
+                    LatLng AccomlatLng = new LatLng(AccomLat, AccomLng);
+                    googleMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_home_active))
+                            .position(AccomlatLng)
+                            .title("ที่พักของท่าน"));
 
-                /**
-                 * Disable click accom marker
-                 */
-                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        if (marker.getTitle().equals("ที่พักของท่าน")){
-                            return true;
-                        }else {
-                            return false;
+                    /**
+                     * Disable click accom marker
+                     */
+                    googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            if (marker.getTitle().equals("ที่พักของท่าน")) {
+                                return true;
+                            } else {
+                                return false;
+                            }
                         }
-                    }
-                });
+                    });
 
-                /**
-                 * Set show all marker
-                 */
-                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                builder.include(latLng);
-                builder.include(AccomlatLng);
-                LatLngBounds bounds = builder.build();
+                    /**
+                     * Set show all marker
+                     */
+                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    builder.include(latLng);
+                    builder.include(AccomlatLng);
+                    LatLngBounds bounds = builder.build();
 
-                /**
-                 * Show place and Accom
-                 */
-                int width = getResources().getDisplayMetrics().widthPixels;
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width,width,25);
-                googleMap.moveCamera(cu);
+                    /**
+                     * Show place and Accom
+                     */
+                    int width = getResources().getDisplayMetrics().widthPixels;
+                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, width, 25);
+                    googleMap.moveCamera(cu);
+                }else{
 
-//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                }
+
                 googleMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
 
             }
